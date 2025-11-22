@@ -11,16 +11,18 @@ public class RuleChangeTracker {
     }
 
     public static void ruleChanged(CommandSourceStack source, carpet.api.settings.CarpetRule<?> rule, String userInput) {
-        String sourceName = getSourceName(source);
-        long timestamp = System.currentTimeMillis();
+        if(IGNYSettings.ShowRuleChangeHistory) {
+            String sourceName = getSourceName(source);
+            long timestamp = System.currentTimeMillis();
 
-        RuleChangeDataManager.recordRuleChange(
-                rule.name(),
-                rule.value(),
-                userInput,
-                sourceName,
-                timestamp
-        );
+            RuleChangeDataManager.recordRuleChange(
+                    rule.name(),
+                    rule.value(),
+                    userInput,
+                    sourceName,
+                    timestamp
+            );
+        }
     }
 
     private static String getSourceName(CommandSourceStack source) {
