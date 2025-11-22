@@ -1,5 +1,6 @@
 package com.liuyue.igny.tracker;
 
+import com.liuyue.igny.IGNYSettings;
 import com.liuyue.igny.data.RuleChangeDataManager;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
