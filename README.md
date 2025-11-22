@@ -63,7 +63,7 @@
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `SURVIVAL`， `FEATURE`
 
-- ### 海绵吸收岩浆 (SpongeCanAbsorbLava)
+### 海绵吸收岩浆 (SpongeCanAbsorbLava)
 
 使海绵（湿海绵）碰到岩浆可以吸收岩浆，true：干海绵吸收岩浆（变为湿海绵），wet_sponge: 湿海绵吸收岩浆（变为海绵），false: 海绵（湿海绵）不吸收岩浆.
 
