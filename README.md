@@ -108,7 +108,7 @@
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `SURVIVAL`, `FEATURE`
 
-### 重新引入投掷物复制 (ProjectileDuplicationReintroduced)
+### 重新引入投掷物复制 (ProjectileDuplicationReintroduced) `MC>=1.21.2`
 
 重新引入1.21.2以下的投掷物残留刻复制行为（可视作恢复药水、鸡蛋、雪球等复制行为）。
 
