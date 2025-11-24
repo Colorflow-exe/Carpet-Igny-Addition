@@ -12,54 +12,72 @@ public class IGNYSettings
             categories = {IGNY,SURVIVAL,FEATURE}
     )
     public static boolean WardenNeverDig = false;
+
     @Rule(
             categories = {IGNY,SURVIVAL,FEATURE}
     )
     public static boolean PlayerLevitationFreeShulkerBullet = false;
+
     @Rule(
             categories = {IGNY,SURVIVAL,FEATURE}
     )
     public static boolean PlayerMiningFatigueFreeGuardian = false;
+
     @Rule(
             categories = {IGNY,FEATURE},
             options = {"true", "false"}
     )
     public static boolean ShowRuleChangeHistory = false;
+
     @Rule(
             categories = {IGNY,SURVIVAL,FEATURE},
             options = {"true", "false"}
     )
     public static boolean FakePlayerCanPush = true;
+
     @Rule(
             categories = {IGNY,SURVIVAL,FEATURE},
             options = {"true", "false"}
     )
     public static Boolean WetSpongeCanAbsorbLava = false;
+
     @Rule(
             categories = {IGNY, COMMAND, FEATURE},
             options = {"false", "true", "ops", "0", "1", "2", "3", "4"}
     )
     public static String CommandPlayerEnderChestDrop = "ops";
+
     @Rule(
             categories = {IGNY, SURVIVAL, FEATURE},
             options = {"false", "true"}
     )
     public static Boolean NoWardenDarkness = false;
+
     @Rule(
             categories = {IGNY, SURVIVAL, FEATURE},
             options = {"false", "true"}
     )
     public static Boolean FloatingIceWater = false;
+
     @Rule(
             categories = {IGNY, SURVIVAL, FEATURE},
             options = {"false", "true"}
     )
     public static Boolean NoZombifiedPiglinNetherPortalSpawn = false;
+
     //#if MC>=12102
     //$$ @Rule(
     //$$        categories = {IGNY,FEATURE},
     //$$        options = {"false", "true"}
     //$$ )
     //$$ public static Boolean ProjectileDuplicationReintroduced = false;
+    //#endif
+
+    //#if MC>=12104
+    //$$ @Rule(
+    //$$        categories = {IGNY,FEATURE},
+    //$$        options = {"false", "true"}
+    //$$ )
+    //$$ public static Boolean SkeletonsPickupSwordsReintroduced = false;
     //#endif
 }

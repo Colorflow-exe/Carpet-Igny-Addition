@@ -103,7 +103,7 @@
 
 ### 僵尸猪灵不会自然生成在下界传送门 (NoZombifiedPiglinNetherPortalSpawn)
 
-当难度不为和平时，僵尸猪灵将不能自然生成在下界传送门中。
+当难度不为和平时，僵尸猪灵将不能自然生成在主世界的下界传送门中。
 
 - 类型: `boolean`
 - 默认值: `false`
@@ -113,6 +113,15 @@
 ### 重新引入投掷物复制 (ProjectileDuplicationReintroduced) `MC>=1.21.2`
 
 重新引入1.21.2以下的投掷物残留刻复制行为（可视作恢复药水、鸡蛋、雪球等复制行为）。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `FEATURE`
+
+### 重新引入骷髅捡剑 (SkeletonsPickupSwordsReintroduced) `MC>=1.21.4`
+
+重新引入1.21.4以下的骷髅捡剑行为。
 
 - 类型: `boolean`
 - 默认值: `false`

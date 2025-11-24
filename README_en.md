@@ -110,7 +110,7 @@ When ice is broken without silk touch and there are no blocks beneath it, water 
 
 ### NoZombifiedPiglinNetherPortalSpawn
 
-Zombified piglins will not naturally spawn in nether portals when difficulty is not peaceful.
+Zombified piglins will not naturally spawn in nether portals in the Overworld when difficulty is not peaceful.
 
 - Type: `boolean`
 - Default value: `false`
@@ -120,6 +120,15 @@ Zombified piglins will not naturally spawn in nether portals when difficulty is 
 ### ProjectileDuplicationReintroduced `MC>=1.21.2`
 
 Reintroduces the projectile residual tick duplication behavior from versions below 1.21.2 (can be considered as restoring duplication behaviors for potions, eggs, snowballs, etc.).
+
+- Type: `boolean`
+- Default Value: `false`
+- Suggested Options: `false`, `true`
+- Categories: `IGNY`, `FEATURE`
+
+### SkeletonsPickupSwordsReintroduced `MC>=1.21.2`
+
+Reintroducing the skeleton pickup swords behavior from Minecraft versions below 1.21.4
 
 - Type: `boolean`
 - Default Value: `false`
