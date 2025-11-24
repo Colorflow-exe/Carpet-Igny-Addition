@@ -6,11 +6,11 @@
 
 ## Required Mods
 
-| Name | Type | Links                                                                                                                                                                       | Notes |
-|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
-| Carpet | Required | [MC百科](https://www.mcmod.cn/class/2361.html) &#124; [Modrinth](https://modrinth.com/mod/carpet) &#124; [CurseForge](https://www.curseforge.com/minecraft/mc-mods/carpet) | |
-| MixinExtras | Built-in | [MC百科](https://www.mcmod.cn/class/12750.html)                                                                                                                           | |
-| Fabric API | Required | [MC百科](https://www.mcmod.cn/class/3124.html) &#124; [Official](https://fabricmc.net/)                                                                                         | &gt;=1.21 |
+| Name | Type | Links                                                                                                                                                                       |
+|------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Carpet | Required | [MC百科](https://www.mcmod.cn/class/2361.html) &#124; [Modrinth](https://modrinth.com/mod/carpet) &#124; [CurseForge](https://www.curseforge.com/minecraft/mc-mods/carpet) |
+| MixinExtras | Built-in | [MC百科](https://www.mcmod.cn/class/12750.html)                                                                                                                           |
+| Fabric API | Required | [MC百科](https://www.mcmod.cn/class/3124.html) &#124; [Official](https://fabricmc.net/)                                                                                         |
 
 ## Version Support
 
