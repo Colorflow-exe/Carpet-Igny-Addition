@@ -11,8 +11,8 @@
   "carpet.rule.WardenNeverDig.desc": "让监守者永远不会钻地",
   "carpet.rule.PlayerLevitationFreeShulkerBullet.name": "潜影贝攻击玩家没有漂浮效果",
   "carpet.rule.PlayerLevitationFreeShulkerBullet.desc": "让潜影贝攻击玩家时没有漂浮效果",
-  "carpet.rule.PlayerMiningFatigueFreeGuardian.name": "守卫者攻击玩家没有挖掘疲劳",
-  "carpet.rule.PlayerMiningFatigueFreeGuardian.desc": "让守卫者攻击玩家时没有挖掘疲劳效果",
+  "carpet.rule.PlayerMiningFatigueFreeGuardian.name": "守卫者锁定玩家没有挖掘疲劳",
+  "carpet.rule.PlayerMiningFatigueFreeGuardian.desc": "让守卫者锁定玩家时没有挖掘疲劳效果",
   "carpet.rule.ShowRuleChangeHistory.name": "显示规则变更历史",
   "carpet.rule.ShowRuleChangeHistory.desc": "在规则详情中显示最近的操作记录",
   "carpet.rule.FakePlayerCanPush.name": "假玩家可以被推动",
@@ -33,7 +33,7 @@
   "carpet.rule.FloatingIceWater.name": "悬空冰破坏产生水",
   "carpet.rule.FloatingIceWater.desc": "冰在任何位置融化都会变成水，即使是悬在空中",
   "carpet.rule.NoZombifiedPiglinNetherPortalSpawn.name": "僵尸猪灵不会自然生成在下界传送门",
-  "carpet.rule.NoZombifiedPiglinNetherPortalSpawn.desc": "当难度不为和平时，僵尸猪灵将不能自然生成在主世界的下界传送门中",
+  "carpet.rule.NoZombifiedPiglinNetherPortalSpawn.desc": "当主世界的下界传送门接收到随机刻时，僵尸猪灵将不会自然生成在主世界的下界传送门中",
   "carpet.rule.ProjectileDuplicationReintroduced.name": "重新引入投掷物复制",
   "carpet.rule.ProjectileDuplicationReintroduced.desc": "重新引入1.21.2以下的投掷物残留刻复制行为",
   "carpet.rule.SkeletonsPickupSwordsReintroduced.name": "重新引入骷髅捡剑",
@@ -41,5 +41,7 @@
   "carpet.rule.MinecartMotionFix.name": "重新引入矿车跨纬度传递动量",
   "carpet.rule.MinecartMotionFix.desc": "重新引入1.21-1.21.1版本中矿车携带乘客跨纬度会在传送tick给予乘客矿车的动量到1.21.2以上版本",
   "carpet.rule.TntMinecartEmptyDamageSourceFix.name": "TNT矿车空伤害来源修复",
-  "carpet.rule.TntMinecartEmptyDamageSourceFix.desc": "修复TNT矿车引爆时传入的伤害来源为null，导致TNT矿车无法继承伤害来源的属性（可视作重新引入TNT矿车掠夺）"
+  "carpet.rule.TntMinecartEmptyDamageSourceFix.desc": "修复TNT矿车引爆时传入的伤害来源为null，导致TNT矿车无法继承伤害来源的属性（可视作重新引入TNT矿车掠夺）",
+  "carpet.rule.FakePlayerBoatYawFix.name": "假玩家乘船不纠正偏航角修复",
+  "carpet.rule.FakePlayerBoatYawFix.desc": "假人在骑乘船时会纠正偏航角"
 }

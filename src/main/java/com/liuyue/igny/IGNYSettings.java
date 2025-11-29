@@ -96,4 +96,10 @@ public class IGNYSettings
     )
     public static Boolean TntMinecartEmptyDamageSourceFix = false;
     //#endif
+
+    @Rule(
+            categories = {IGNY,FEATURE,BUGFIX},
+            options = {"false", "true"}
+    )
+    public static Boolean FakePlayerBoatYawFix = false;
 }

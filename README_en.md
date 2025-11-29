@@ -41,7 +41,7 @@ Players will not receive levitation effect when hit by shulker bullets.
 
 ### PlayerMiningFatigueFreeGuardian
 
-Players will not receive mining fatigue effect when attacked by guardians or elder guardians.
+When a player is locked on by a Guardian or Elder Guardian, they will not suffer from mining effect.
 
 - Type: `boolean`
 - Default value: `false`
@@ -110,7 +110,7 @@ When ice is broken without silk touch and there are no blocks beneath it, water 
 
 ### NoZombifiedPiglinNetherPortalSpawn
 
-Zombified piglins will not naturally spawn in nether portals in the Overworld when difficulty is not peaceful.
+When the Nether portal in the Overworld receives a random tick, zombified piglin will not naturally spawn in the Nether portal in the Overworld
 
 - Type: `boolean`
 - Default value: `false`
@@ -152,3 +152,12 @@ Fixed the source of empty damage in TNT minecarts.
 - Default Value: `false`
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `FEATURE`
+
+### FakePlayerBoatYawFix
+
+Fake players correct yaw when riding boats. [#2100](https://github.com/gnembon/fabric-carpet/issues/2100)
+
+- Type: `boolean`
+- Default Value: `false`
+- Suggested Options: `false`, `true`
+- Categories: `IGNY`, `FEATURE`, `BUGFIX`

@@ -41,7 +41,7 @@
 
 ### 守卫者攻击玩家没有挖掘疲劳 (PlayerMiningFatigueFreeGuardian)
 
-当玩家在被守卫者或者远古守卫者攻击的时候不会拥有挖掘疲劳效果。
+当玩家在被守卫者或者远古守卫者锁定的时候不会拥有挖掘疲劳效果。
 
 - 类型: `boolean`
 - 默认值: `false`
@@ -103,7 +103,7 @@
 
 ### 僵尸猪灵不会自然生成在下界传送门 (NoZombifiedPiglinNetherPortalSpawn)
 
-当难度不为和平时，僵尸猪灵将不能自然生成在主世界的下界传送门中。
+当主世界的下界传送门接收到随机刻时，僵尸猪灵将不会自然生成在主世界的下界传送门中。
 
 - 类型: `boolean`
 - 默认值: `false`
@@ -145,3 +145,12 @@
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `FEATURE`
+
+### 假玩家乘船不纠正偏航角修复 (FakePlayerBoatYawFix)
+
+假人在骑乘船时会纠正偏航角 [#2100](https://github.com/gnembon/fabric-carpet/issues/2100)
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `FEATURE` `BUGFIX`
