@@ -13,6 +13,13 @@
     "rule.CandlePlaceOnIncompleteBlock.CandleBlockMixin",
     "rule.FakePlayerCanPush.EntityMixin",
     "rule.FloatingIceWater.IceBlockMixin",
+    "rule.HappyGhastNoClip.BlockItemMixin",
+    "rule.HappyGhastNoClip.EntityMixin",
+    "rule.HappyGhastNoClip.HappyGhastInvoker",
+    "rule.HappyGhastNoClip.PistonMovingBlockEntityMixin",
+    "rule.HappyGhastNoClip.PlayerMixin",
+    "rule.HappyGhastNoClip.ShulkerBoxBlockEntityMixin",
+    "rule.HappyGhastNoClip.StandingAndWallBlockItemMixin",
     "rule.KillFakePlayerRemoveVehicle.EntityPlayerMPFakeMixin",
     "rule.MinecartMotionFix.EntityMixin",
     "rule.MinecartMotionFix.NetherPortalBlockMixin",
@@ -30,7 +37,9 @@
     "rule.TntMinecartEmptyDamageSourceFix.MinecartTNTMixin",
     "rule.WardenNeverDig.WardenMixin"
   ],
-  "client": [],
+  "client": [
+    "rule.HappyGhastNoClip.LevelRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

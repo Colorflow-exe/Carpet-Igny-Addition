@@ -155,7 +155,7 @@ cantrade: Remove the vehicle when there are no villagers or wandering merchants 
 
 ### CandlePlaceOnIncompleteBlock
 
-Candle can place on incomplete block
+Candle can place on incomplete block.
 
 - Type: `boolean`
 - Default Value: `false`
@@ -164,18 +164,27 @@ Candle can place on incomplete block
 
 ### Commandfixnotepitch
 
-`/fixnotepitch` permission
+`/fixnotepitch` permission.
 
 - Type: `string`
 - Default Value: `ops`
-- Suggested Options: `false`, `true`，`ops`，`0`，`1`，`2`，`3`，`4`
-- Categories: `IGNY`, `COMMAND`，`CREATIVE`,`FEATURE`
+- Suggested Options: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
+- Categories: `IGNY`, `COMMAND`, `CREATIVE`, `FEATURE`
 
 ### FixnotepitchUpdateBlock
 
-Control `CommandFixnotepitech` to sending block update
+Control `CommandFixnotepitech` to sending block update.
 
 - Type: `boolean`
 - Default Value: `false`
 - Suggeted Options: `false`, `true`
-- Categories: `IGNY`, `COMMAND`，`CREATIVE`，`FEATURE`
+- Categories: `IGNY`, `COMMAND`, `CREATIVE`, `FEATURE`
+
+### HappyGhastNoClip `MC>1.21.6`
+
+Happy Ghast has players who ride while ignoring block collisions and can pass through blocks.
+
+- Type: `boolean`
+- Default Value: `false`
+- Suggeted Options: `false`, `true`
+- Categories: `IGNY`, `SURIVIAL`, `FEATURE`

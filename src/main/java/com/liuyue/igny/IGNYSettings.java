@@ -126,4 +126,12 @@ public class IGNYSettings
             options = {"false", "true"}
     )
     public static Boolean FixnotepitchUpdateBlock = false;
+
+    //#if MC >= 12106
+    //$$ @Rule(
+    //$$        categories = {IGNY,SURVIVAL,FEATURE},
+    //$$        options = {"false", "true"}
+    //$$ )
+    //$$ public static Boolean HappyGhastNoClip = false;
+    //#endif
 }

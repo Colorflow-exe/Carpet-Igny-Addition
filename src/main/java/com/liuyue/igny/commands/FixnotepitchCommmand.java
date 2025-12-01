@@ -24,10 +24,17 @@ public class FixnotepitchCommmand {
                         .requires(source -> PlayerCommandPermissions.canUseCommand(source, IGNYSettings.CommandFixnotepitch))
                         .then(Commands.argument("pos1", BlockPosArgument.blockPos())
                                 .then(Commands.argument("pos2", BlockPosArgument.blockPos())
-                                        .executes(context -> executeCommand(context, 0)) // 默认音高为0
+                                        .executes(context -> executeCommand(context, 0))
                                         .then(Commands.argument("pitch", IntegerArgumentType.integer(0, 24))
-                                                .executes(context -> executeCommand(context, IntegerArgumentType.getInteger(context, "pitch"))))
-                                )));
+                                                .executes(context ->
+                                                        executeCommand(
+                                                                context, IntegerArgumentType.getInteger(context, "pitch")
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+        );
     }
 
     private static int executeCommand(CommandContext<CommandSourceStack> context, int targetPitch) throws CommandSyntaxException {

@@ -1,6 +1,5 @@
 package com.liuyue.igny.mixins.rule.CandlePlaceOnIncompleteBlock;
 
-import com.liuyue.igny.IGNYServer;
 import com.liuyue.igny.IGNYSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelReader;
