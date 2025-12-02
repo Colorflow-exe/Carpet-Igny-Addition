@@ -190,3 +190,12 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他与
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `FEATURE`
+
+### 没有凋零效果 (NoWitherEffect)
+
+凋零、凋零骷髅、凋零玫瑰不能给予玩家凋零效果。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `FEATURE`

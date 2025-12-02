@@ -140,4 +140,10 @@ public class IGNYSettings
             options = {"false", "true"}
     )
     public static Boolean OnlyPlayerCreateNetherPortal = false;
+
+    @Rule(
+            categories = {IGNY, FEATURE},
+            options = {"false", "true"}
+    )
+    public static Boolean NoWitherEffect = false;
 }

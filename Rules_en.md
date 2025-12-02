@@ -197,3 +197,12 @@ Only players can create nether portal.
 - Default Value: `false`
 - Suggeted Options: `false`, `true`
 - Categories: `IGNY`, `FEATURE`
+
+### NoWitherEffect
+
+Wither, Wither Skeleton, and Wither Rose cannot grant players the Wither effect.
+
+- Type: `boolean`
+- Default Value: `false`
+- Suggeted Options: `false`, `true`
+- Categories: `IGNY`, `FEATURE`
