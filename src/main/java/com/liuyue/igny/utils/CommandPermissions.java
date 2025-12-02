@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Locale;
 
-public class PlayerCommandPermissions {
+public class CommandPermissions {
     public static boolean canDropEnderChest(CommandSourceStack source, ServerPlayer targetPlayer) {
         if (source == null) {
             return true;

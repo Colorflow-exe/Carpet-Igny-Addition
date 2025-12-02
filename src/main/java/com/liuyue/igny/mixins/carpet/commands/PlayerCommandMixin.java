@@ -2,7 +2,7 @@ package com.liuyue.igny.mixins.carpet.commands;
 
 import carpet.commands.PlayerCommand;
 import carpet.helpers.EntityPlayerActionPack;
-import com.liuyue.igny.utils.PlayerCommandPermissions;
+import com.liuyue.igny.utils.CommandPermissions;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -54,7 +54,7 @@ public abstract class PlayerCommandMixin {
             ServerPlayer targetPlayer = getPlayer(context);
             if (targetPlayer == null) return 0;
 
-            boolean canDropEnderChest = PlayerCommandPermissions.canDropEnderChest(context.getSource(), targetPlayer);
+            boolean canDropEnderChest = CommandPermissions.canDropEnderChest(context.getSource(), targetPlayer);
             int slot = canDropEnderChest ? -2 : -3;
 
             if (!canDropEnderChest && !(targetPlayer instanceof EntityPlayerMPFake)) {
@@ -70,12 +70,12 @@ public abstract class PlayerCommandMixin {
         command.then(literal("inventory").executes(manipulation(ap -> ap.drop(-3, dropAll))));
 
         command.then(literal("enderchest")
-                .requires(PlayerCommandPermissions::canDropEnderChest)
+                .requires(CommandPermissions::canDropEnderChest)
                 .executes(context -> {
                     ServerPlayer targetPlayer = getPlayer(context);
                     if (targetPlayer == null) return 0;
 
-                    if (!PlayerCommandPermissions.canDropEnderChest(context.getSource(), targetPlayer)) {
+                    if (!CommandPermissions.canDropEnderChest(context.getSource(), targetPlayer)) {
                         Component message;
                         if (!(targetPlayer instanceof EntityPlayerMPFake)) {
                             message = Component.translatable("igny.command.enderchest.real_player_op_only");
@@ -99,7 +99,7 @@ public abstract class PlayerCommandMixin {
                             if (targetPlayer == null) return 0;
 
                             if (slot >= 200 && slot <= 226) {
-                                if (!PlayerCommandPermissions.canDropEnderChest(context.getSource(), targetPlayer)) {
+                                if (!CommandPermissions.canDropEnderChest(context.getSource(), targetPlayer)) {
                                     Component message;
                                     if (!(targetPlayer instanceof EntityPlayerMPFake)) {
                                         message = Component.translatable("igny.command.enderchest.real_player_op_only");
