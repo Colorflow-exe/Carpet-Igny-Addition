@@ -9,6 +9,7 @@
     "carpet.accessors.EntityPlayerActionPackAccessor",
     "carpet.commands.EntityPlayerActionPackMixin",
     "carpet.commands.PlayerCommandMixin",
+    "carpet.features.SetDefaultArgument.SettingsManagerMixin",
     "carpet.fix.FakePlayerBoatYawFix.EntityPlayerMPFakeMixin",
     "rule.CandlePlaceOnIncompleteBlock.CandleBlockMixin",
     "rule.FakePlayerCanPush.EntityMixin",

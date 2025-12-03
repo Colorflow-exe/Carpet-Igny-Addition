@@ -36,7 +36,7 @@
 - 类型: `boolean`
 - 默认值: `false`
 - 参考选项: `false`, `true`
-- 分类: `IGNY`, `FEATURE`
+- 分类: `IGNY`, `COMMAND`, `FEATURE`
 
 ### 假玩家可以被推动 (FakePlayerCanPush)
 

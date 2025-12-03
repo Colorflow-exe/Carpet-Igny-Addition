@@ -24,7 +24,7 @@ public class IGNYSettings
     public static boolean PlayerMiningFatigueFreeGuardian = false;
 
     @Rule(
-            categories = {IGNY,FEATURE},
+            categories = {IGNY,COMMAND,FEATURE},
             options = {"true", "false"}
     )
     public static boolean ShowRuleChangeHistory = false;

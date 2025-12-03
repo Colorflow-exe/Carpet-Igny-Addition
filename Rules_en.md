@@ -36,7 +36,7 @@ Records and displays rule change history including operator, timestamp, and orig
 - Type: `boolean`
 - Default value: `false`
 - Suggested options: `false`, `true`
-- Categories: `IGNY`, `FEATURE`
+- Categories: `IGNY`, `COMMAND`, `FEATURE`
 
 ### FakePlayerCanPush
 
