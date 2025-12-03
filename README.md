@@ -4,13 +4,14 @@
 
 **中文** | [English](README_en.md)
 
-## 前置模组
+## 依赖
 
 | 名称          | 类型 | 链接                                                                                                                                                                       |
 |-------------|----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Carpet      | 必须 | [MC百科](https://www.mcmod.cn/class/2361.html) &#124; [Modrinth](https://modrinth.com/mod/carpet) &#124; [CurseForge](https://www.curseforge.com/minecraft/mc-mods/carpet) |
 | MixinExtras | 内置 | [MC百科](https://www.mcmod.cn/class/12750.html)                                                                                                                            |
 | Fabric API  | 必须 | [MC百科](https://www.mcmod.cn/class/3124.html) &#124; [官方](https://fabricmc.net/)                                                                                          |
+| SQLite JDBC | 内置 | [Github](https://github.com/xerial/sqlite-jdbc) &#124; [Maven Repository](https://central.sonatype.com/artifact/org.xerial/sqlite-jdbc)                                |
 
 ## 版本支持
 
