@@ -8,6 +8,9 @@ import static com.liuyue.igny.utils.IGNYRuleCategory.*;
 
 public class IGNYSettings
 {
+    //假玩家生成内存泄露修复
+    public static boolean fakePlayerSpawnMemoryLeakFix = false;
+
     @Rule(
             categories = {IGNY,SURVIVAL,FEATURE}
     )

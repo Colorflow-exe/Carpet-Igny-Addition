@@ -89,8 +89,9 @@ public class VaultTask implements ITask {
         stageTickCounter = 0;
         totalTickCounter = 0;
         currentCycle = 0;
-        carpet.CarpetSettings.allowSpawningOfflinePlayers = false;
-
+        if (INSTANCE_CACHE.values().stream().noneMatch(t -> !t.isStopped())) {
+            IGNYSettings.fakePlayerSpawnMemoryLeakFix = false;
+        }
         TaskManager.unregister(this);
         INSTANCE_CACHE.remove(playerName);
     }
@@ -118,7 +119,7 @@ public class VaultTask implements ITask {
             broadcastMessage("§c[PlayerOperate] §6Vault§c: 玩家 §f" + playerName + " §c不是假人");
             return;
         }
-
+        IGNYSettings.fakePlayerSpawnMemoryLeakFix = true;
         lastPosition = originalPlayer.position();
         lastYaw = originalPlayer.getYRot();
         lastPitch = originalPlayer.getXRot();

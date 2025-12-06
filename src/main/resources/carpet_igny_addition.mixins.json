@@ -12,6 +12,8 @@
     "carpet.commands.PlayerCommandMixin",
     "carpet.features.SetDefaultArgument.SettingsManagerMixin",
     "carpet.fix.FakePlayerBoatYawFix.EntityPlayerMPFakeMixin",
+    "compat.accessor.fapi.AbstractChanneledNetworkAddonAccessor",
+    "compat.fapi.AbstractNetworkAddonMixin",
     "rule.candlePlaceOnIncompleteBlock.CandleBlockMixin",
     "rule.fakePlayerCanPush.EntityMixin",
     "rule.fakePlayerLoginLogoutNoInfo.PlayerListMixin",
