@@ -125,14 +125,14 @@ public class IGNYSettings
     public static String commandFixnotepitch = "ops";
 
     @Rule(
-            categories = {IGNY, COMMAND, CREATIVE, FEATURE},
+            categories = {IGNY, COMMAND, CREATIVE},
             options = {"false", "true"}
     )
     public static Boolean fixnotepitchUpdateBlock = false;
 
     //#if MC >= 12106
     //$$ @Rule(
-    //$$        categories = {IGNY,SURVIVAL,FEATURE},
+    //$$        categories = {IGNY, SURVIVAL, CLIENT, FEATURE},
     //$$        options = {"false", "true"}
     //$$ )
     //$$ public static Boolean happyGhastNoClip = false;

@@ -180,7 +180,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 类型: `boolean`
 - 默认值: `false`
 - 参考选项: `false`, `true`
-- 分类: `IGNY`, `SURVIVAL`, `FEATURE`
+- 分类: `IGNY`, `SURVIVAL`, `CLIENT`, `FEATURE`
 
 ### 只有玩家实体创建下界传送门 (onlyPlayerCreateNetherPortal)
 

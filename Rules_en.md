@@ -187,7 +187,7 @@ Happy Ghast has players who ride while ignoring block collisions and can pass th
 - Type: `boolean`
 - Default Value: `false`
 - Suggested Options: `false`, `true`
-- Categories: `IGNY`, `SURIVIAL`, `FEATURE`
+- Categories: `IGNY`, `SURVIVAL`, `CLIENT`, `FEATURE`
 
 ### onlyPlayerCreateNetherPortal
 
