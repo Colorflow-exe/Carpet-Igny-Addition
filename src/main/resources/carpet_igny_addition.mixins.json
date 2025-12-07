@@ -12,7 +12,7 @@
     "carpet.commands.PlayerCommandMixin",
     "carpet.features.SetDefaultArgument.SettingsManagerMixin",
     "carpet.fix.FakePlayerBoatYawFix.EntityMixin",
-    "commands.ThreadedLevelLightEngineAccessor",
+    "commands.clearLightQueue.ThreadedLevelLightEngineAccessor",
     "compat.accessor.fapi.AbstractChanneledNetworkAddonAccessor",
     "compat.fapi.AbstractNetworkAddonMixin",
     "rule.candlePlaceOnIncompleteBlock.CandleBlockMixin",

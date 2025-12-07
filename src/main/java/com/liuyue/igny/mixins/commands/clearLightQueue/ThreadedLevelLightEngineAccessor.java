@@ -1,4 +1,4 @@
-package com.liuyue.igny.mixins.commands;
+package com.liuyue.igny.mixins.commands.clearLightQueue;
 
 import net.minecraft.server.level.ThreadedLevelLightEngine;
 import org.spongepowered.asm.mixin.Mixin;

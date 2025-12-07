@@ -204,7 +204,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 
 在`/carpet <rule> <value> <setDefault>`指令中，控制`setDefault`参数的指令权限，用于让规则直接设为默认。
 
-- 类型: `boolean`
+- 类型: `string`
 - 默认值: `false`
 - 参考选项: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
 - 分类: `IGNY`, `COMMAND`, `FEATURE`
@@ -240,11 +240,20 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `COMMAND`, `FEATURE`
 
-### 玩家动作指令权限 (commandPlayerOperate)
+### 玩家动作指令 (commandPlayerOperate)
 
 使用/playerManager命令来控制玩家动作。
 
-- 类型: `boolean`
+- 类型: `string`
+- 默认值: `ops`
+- 参考选项: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
+- 分类: `IGNY`, `COMMAND`, `FEATURE`
+
+### 清除光照队列指令 (commandClearLightQueue)
+
+使用/clearlightqueue命令来清除光照队列。
+
+- 类型: `string`
 - 默认值: `ops`
 - 参考选项: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
 - 分类: `IGNY`, `COMMAND`, `FEATURE`

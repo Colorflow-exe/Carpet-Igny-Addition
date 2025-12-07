@@ -211,7 +211,7 @@ Wither, Wither Skeleton, and Wither Rose cannot grant players the Wither effect.
 
 In command`/carpet <rule> <value> <setDefault>`, the command permission for the `<setDefault>` argument is controlled, allowing the rule to be directly set as the default.
 
-- Type: `boolean`
+- Type: `string`
 - Default Value: `false`
 - Suggested Options: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
 - Categories: `IGNY`, `COMMAND`, `FEATURE`
@@ -251,7 +251,16 @@ When a fake player logs in and logs out, the prompt of login and logout will not
 
 Use the /playerOperate command to manage player actions.
 
-- Type: `boolean`
+- Type: `string`
+- Default Value: `ops`
+- Suggested Options: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
+- Categories: `IGNY`, `COMMAND`, `FEATURE`
+
+### commandClearLightQueue
+
+Clears the light queue of the world.
+
+- Type: `string`
 - Default Value: `ops`
 - Suggested Options: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
 - Categories: `IGNY`, `COMMAND`, `FEATURE`
