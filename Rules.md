@@ -245,6 +245,6 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 使用/playerManager命令来控制玩家动作。
 
 - 类型: `boolean`
-- 默认值: `false`
+- 默认值: `ops`
 - 参考选项: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
 - 分类: `IGNY`, `COMMAND`, `FEATURE`
