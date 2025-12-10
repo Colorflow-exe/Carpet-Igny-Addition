@@ -331,6 +331,8 @@ Enable optimization when the number of cramming wardens reaches the rule value. 
 
 Enables per-tick operation rate limiting for both real and fake players. This master switch controls whether the following four limit rules take effect.
 
+From [Plusls Carpet Addition](https://github.com/Nyan-Work/plusls-carpet-addition)
+
 - Type: `boolean`
 - Default value: `false`
 - Suggested options: `false`, `true`

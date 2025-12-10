@@ -324,6 +324,8 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 
 为真实玩家和假玩家启用每游戏刻（tick）的操作频率限制功能。此开关控制以下四项限制规则是否生效。
 
+移植自[Plusls Carpet Addition](https://github.com/Nyan-Work/plusls-carpet-addition)
+
 - 类型: `boolean`
 - 默认值: `false`
 - 参考选项: `false`, `true`
