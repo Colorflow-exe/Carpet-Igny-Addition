@@ -3,6 +3,7 @@ package com.liuyue.igny.utils;
 import com.liuyue.igny.IGNYSettings;
 import net.minecraft.commands.CommandSourceStack;
 import carpet.patches.EntityPlayerMPFake;
+import net.minecraft.commands.Commands;
 import net.minecraft.server.level.ServerPlayer;
 
 import java.util.Locale;
@@ -14,7 +15,11 @@ public class CommandPermissions {
         }
 
         if (!(targetPlayer instanceof EntityPlayerMPFake)) {
+            //#if MC>=12111
+            //$$ return Commands.LEVEL_GAMEMASTERS.check(source.permissions());
+            //#else
             return source.hasPermission(2);
+            //#endif
         }
 
         String ruleValue = IGNYSettings.commandPlayerEnderChestDrop;
@@ -22,11 +27,19 @@ public class CommandPermissions {
         return switch (ruleValue.toLowerCase()) {
             case "true" -> true;
             case "false" -> false;
+            //#if MC>=12111
+            //$$ case "0" -> Commands.LEVEL_ALL.check(source.permissions());
+            //$$ case "1" -> Commands.LEVEL_MODERATORS.check(source.permissions());
+            //$$ case "3" -> Commands.LEVEL_ADMINS.check(source.permissions());
+            //$$ case "4" -> Commands.LEVEL_OWNERS.check(source.permissions());
+            //$$ default -> Commands.LEVEL_GAMEMASTERS.check(source.permissions());
+            //#else
             case "0" -> source.hasPermission(0);
             case "1" -> source.hasPermission(1);
             case "3" -> source.hasPermission(3);
             case "4" -> source.hasPermission(4);
             default -> source.hasPermission(2);
+            //#endif
         };
     }
     public static boolean canUseCommand(CommandSourceStack source, Object commandLevel) {
@@ -55,10 +68,25 @@ public class CommandPermissions {
     }
 
     public static boolean hasPermissionLevel(CommandSourceStack source, int level) {
+        //#if MC>=12111
+        //$$ return switch (level) {
+        //$$     case 0 -> Commands.LEVEL_ALL.check(source.permissions());
+        //$$     case 1 -> Commands.LEVEL_MODERATORS.check(source.permissions());
+        //$$     case 2 -> Commands.LEVEL_GAMEMASTERS.check(source.permissions());
+        //$$     case 3 -> Commands.LEVEL_ADMINS.check(source.permissions());
+        //$$     case 4 -> Commands.LEVEL_OWNERS.check(source.permissions());
+        //$$     default -> false;
+        //$$  };
+        //#else
         return source.hasPermission(level);
+        //#endif
     }
 
     public static boolean canDropEnderChest(CommandSourceStack source) {
+        //#if MC>=12111
+        //$$ return source == null || Commands.LEVEL_GAMEMASTERS.check(source.permissions());
+        //#else
         return source == null || source.hasPermission(2);
+        //#endif
     }
 }

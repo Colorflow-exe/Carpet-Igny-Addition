@@ -1,16 +1,20 @@
 package com.liuyue.igny.mixins.carpet.fix.FakePlayerBoatYawFix;
 
+//#if MC<12111
 import carpet.patches.EntityPlayerMPFake;
 import com.liuyue.igny.IGNYSettings;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.vehicle.Boat;
-import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+//#endif
+
+import org.spongepowered.asm.mixin.Mixin;
+import net.minecraft.world.entity.Entity;
 
 @Mixin(Entity.class)
 public class EntityMixin {
+    //#if MC<12111
     @Inject(method = "startRiding(Lnet/minecraft/world/entity/Entity;Z)Z",at= @At(value = "RETURN"))
     private void startRiding(Entity entity, boolean bl, CallbackInfoReturnable<Boolean> cir) {
         if (IGNYSettings.fakePlayerBoatYawFix && cir.getReturnValueZ()) {
@@ -21,5 +25,6 @@ public class EntityMixin {
                 self.setYHeadRot(entity.getYRot());
             }
         }
-}
+    }
+    //#endif
 }

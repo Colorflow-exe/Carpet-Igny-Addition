@@ -18,7 +18,7 @@ public class IceBlockMixin {
     @Inject(method = "playerDestroy",at = @At(value = "TAIL"))
     private void spawnWater(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
         if (IGNYSettings.floatingIceWater) {
-            if (!level.dimensionType().ultraWarm()) {
+            if (!(level.dimension() == Level.NETHER)) {
                     level.setBlockAndUpdate(blockPos, IceBlock.meltsInto());
             }
         }
