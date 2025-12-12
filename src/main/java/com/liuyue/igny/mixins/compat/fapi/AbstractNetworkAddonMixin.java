@@ -6,28 +6,33 @@ import carpet.patches.FakeClientConnection;
 import com.liuyue.igny.IGNYServerMod;
 import com.liuyue.igny.IGNYSettings;
 import com.liuyue.igny.mixins.compat.accessor.fapi.AbstractChanneledNetworkAddonAccessor;
-import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import net.fabricmc.fabric.impl.networking.AbstractChanneledNetworkAddon;
 import net.fabricmc.fabric.impl.networking.AbstractNetworkAddon;
-import net.fabricmc.fabric.impl.networking.GlobalReceiverRegistry;
 import net.minecraft.network.Connection;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @SuppressWarnings("UnstableApiUsage")
 @Mixin(value = AbstractNetworkAddon.class, priority = 999, remap = false)
 public abstract class AbstractNetworkAddonMixin {
-    @SuppressWarnings("RedundantIfStatement")
-    @WrapWithCondition(method = "lateInit", at = @At(value = "INVOKE", target = "Lnet/fabricmc/fabric/impl/networking/GlobalReceiverRegistry;startSession(Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;)V"))
-    private boolean notStartSession_ifFakeClientConnection(GlobalReceiverRegistry<?> instance, AbstractNetworkAddon<?> addon) {
+
+    @Shadow
+    protected abstract void invokeInitEvent();
+
+    @Inject(method = "lateInit",at = @At(value = "INVOKE", target = "Lnet/fabricmc/fabric/impl/networking/GlobalReceiverRegistry;startSession(Lnet/fabricmc/fabric/impl/networking/AbstractNetworkAddon;)V"), cancellable = true)
+    private void notEndSession_ifFakeClientConnection2(CallbackInfo ci) {
+        AbstractNetworkAddon addon = (AbstractNetworkAddon) (Object) this;
         if ((getCarpetOrgAdditionSetting()||IGNYSettings.fakePlayerSpawnMemoryLeakFix) && addon instanceof AbstractChanneledNetworkAddon<?>) {
             Connection connection = ((AbstractChanneledNetworkAddonAccessor) addon).getConnection();
             if (connection instanceof FakeClientConnection) {
-                return false;
+                invokeInitEvent();
+                ci.cancel();
             }
         }
-        return true;
     }
 
     @Unique

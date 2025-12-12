@@ -263,7 +263,7 @@ public class IGNYSettings
 
     @Rule(
             categories = {IGNY, FEATURE},
-            options = {"false", "survival", "creative"}
+            options = {"false", "true"}
     )
-    public static String generateNetherPortal = "false";
+    public static Boolean generateNetherPortal = false;
 }

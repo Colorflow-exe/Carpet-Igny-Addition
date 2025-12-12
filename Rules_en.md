@@ -373,13 +373,15 @@ Maximum number of blocks a fake player can place per game tick. Set to 0 to disa
 
 ### generateNetherPortal `🐛Beta`
 
-Using flint and steel or fire charges, you can directly place a 1x1-sized Nether portal on obsidian.
+In the Overworld and Nether dimensions, using flint and steel or fire charges on obsidian and nether portal blocks allows you to place a nether portal perpendicular to the clicked block face.
 
-creative: In Creative mode, based on the survival option, Nether portals can also be generated in the End dimension.
+If right-clicking the top or bottom face of an obsidian block, the generated nether portal will face the player's direction.
 
-survival: In Survival mode, in the Overworld and the Nether dimensions, crouch and aim at obsidian or Nether portal blocks with flint and steel or fire charges to place a Nether portal perpendicular to the right-clicked block face.
+If right-clicking a nether portal block, placement is only allowed on its four side faces.
 
-- Type: `string`
+If the player is in creative mode, this rule can also be used in the End dimension.
+
+- Type: `boolean`
 - Default Value: `false`
-- Suggested Options: `false`, `survival`, `creative`
+- Suggested Options: `false`, `true`
 - Categories: `IGNY`, `FEATURE`

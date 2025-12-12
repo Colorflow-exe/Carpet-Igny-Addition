@@ -111,7 +111,8 @@
   "carpet.rule.realPlayerPlaceLimitPerTick.desc": "Maximum number of blocks a real player can place per tick. Set to 0 to disable,Requires playerOperationLimiter to be enabled.",
   "carpet.rule.fakePlayerBreakLimitPerTick.desc": "Maximum number of blocks a fake player can break per tick. Set to 0 to disable,Requires playerOperationLimiter to be enabled.",
   "carpet.rule.fakePlayerPlaceLimitPerTick.desc": "Maximum number of blocks a fake player can place per tick. Set to 0 to disable,Requires playerOperationLimiter to be enabled.",
-  "carpet.rule.generateNetherPortal.desc": "Using flint and steel or fire charges, you can directly place a 1x1-sized Nether portal on obsidian.",
-  "carpet.rule.generateNetherPortal.extra.0": "creative: In Creative mode, based on the survival option, Nether portals can also be generated in the End dimension.",
-  "carpet.rule.generateNetherPortal.extra.1": "survival: In Survival mode, in the Overworld and the Nether dimensions, crouch and aim at obsidian or Nether portal blocks with flint and steel or fire charges to place a Nether portal perpendicular to the right-clicked block face."
+  "carpet.rule.generateNetherPortal.desc": "In the Overworld and Nether dimensions, using flint and steel or fire charges on obsidian and nether portal blocks allows you to place a nether portal perpendicular to the clicked block face",
+  "carpet.rule.generateNetherPortal.extra.0": "If right-clicking the top or bottom face of an obsidian block, the generated nether portal will face the player's direction",
+  "carpet.rule.generateNetherPortal.extra.1": "If right-clicking a nether portal block, placement is only allowed on its four side faces",
+  "carpet.rule.generateNetherPortal.extra.2": "If the player is in creative mode, this rule can also be used in the End dimension"
 }

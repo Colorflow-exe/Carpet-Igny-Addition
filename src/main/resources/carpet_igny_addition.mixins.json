@@ -23,6 +23,7 @@
     "rule.fakePlayerLoginLogoutNoChatInfo.PlayerListMixin",
     "rule.fakePlayerLoginLogoutNoChatInfo.ServerGamePacketListenerImplMixin",
     "rule.floatingIceWater.IceBlockMixin",
+    "rule.generateNetherPortal.BaseFireBlockInvoker",
     "rule.generateNetherPortal.FireChargeItemMixin",
     "rule.generateNetherPortal.FlintAndSteelItemMixin",
     "rule.happyGhastNoClip.BlockItemMixin",
