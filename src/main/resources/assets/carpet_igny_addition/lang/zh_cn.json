@@ -153,7 +153,8 @@
   "carpet.rule.fakePlayerPlaceLimitPerTick.desc": "假人每游戏刻最多可放置的方块数量。设为 0 表示不限制，需开启playerOperationLimiter规则",
   "carpet.rule.generateNetherPortal.name": "生成下界传送门",
   "carpet.rule.generateNetherPortal.desc": "在主世界和下界维度，对准黑曜石方块和下界传送门方块使用打火石和火焰弹，可以在右键的方块面上放置一个垂直于右键方块的下界传送门方块",
-  "carpet.rule.generateNetherPortal.extra.0": "若右键黑曜石方块的上或下方块面，那么生成的下界传送门方块面向玩家",
-  "carpet.rule.generateNetherPortal.extra.0": "若右键下界传送门方块，则只能在它的4个边放置下界传送门方块",
-  "carpet.rule.generateNetherPortal.extra.1": "若玩家为创造模式，那么末地维度可用该规则"
+  "carpet.rule.generateNetherPortal.extra.0": "潜行点击时使用原版逻辑",
+  "carpet.rule.generateNetherPortal.extra.1": "若右键黑曜石方块的上或下方块面，那么生成的下界传送门方块面向玩家",
+  "carpet.rule.generateNetherPortal.extra.2": "若右键下界传送门方块，则只能在它的4个边放置下界传送门方块",
+  "carpet.rule.generateNetherPortal.extra.3": "若玩家为创造模式，那么末地维度可用该规则"
 }

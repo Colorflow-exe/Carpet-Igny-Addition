@@ -375,6 +375,8 @@ Maximum number of blocks a fake player can place per game tick. Set to 0 to disa
 
 In the Overworld and Nether dimensions, using flint and steel or fire charges on obsidian and nether portal blocks allows you to place a nether portal perpendicular to the clicked block face.
 
+Use the vanilla logic when sneaking and clicking.
+
 If right-clicking the top or bottom face of an obsidian block, the generated nether portal will face the player's direction.
 
 If right-clicking a nether portal block, placement is only allowed on its four side faces.
