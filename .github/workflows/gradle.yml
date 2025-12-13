@@ -44,10 +44,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Construct nightly.link URL
+      - name: Construct download URL
         id: link
         run: |
-          URL="https://nightly.link/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/artifacts/${{ steps.get-artifact.outputs.artifact_id }}.zip"
+          URL="https://github.com/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/runs/${{ github.run_id }}/artifacts/${{ steps.get-artifact.outputs.artifact_id }}"
           echo "download_url=$URL" >> $GITHUB_OUTPUT
 
       - name: Replace GitHub Action link in READMEs
