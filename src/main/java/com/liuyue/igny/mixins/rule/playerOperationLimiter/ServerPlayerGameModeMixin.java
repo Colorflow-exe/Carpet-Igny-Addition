@@ -24,6 +24,10 @@ public abstract class ServerPlayerGameModeMixin {
     @Shadow
     protected ServerLevel level;
 
+    @Shadow
+    protected abstract void debugLogging(BlockPos blockPos, boolean bl, int i, String string);
+    private static final String igny$instaMineReason = "insta mine";
+
     @Inject(
             method = "destroyAndAck",
             at = @At(
@@ -35,14 +39,15 @@ public abstract class ServerPlayerGameModeMixin {
     )
 
     private void checkOperationLimit(BlockPos pos, int sequence, String reason, CallbackInfo ci) {
-        if (!IGNYSettings.playerOperationLimiter) {
+        if (!IGNYSettings.playerOperationLimiter || !reason.equals(igny$instaMineReason)) {
             return;
         }
         SafeServerPlayerEntity safe = (SafeServerPlayerEntity) this.player;
-        safe.igny$addBreakCountPerTick();
 
         if (!safe.igny$canBreak(player)) {
+            safe.igny$addBreakCountPerTick();
             this.player.connection.send(new ClientboundBlockUpdatePacket(pos, this.level.getBlockState(pos)));
+            this.debugLogging(pos, false, sequence, reason);
             ci.cancel();
         }
     }

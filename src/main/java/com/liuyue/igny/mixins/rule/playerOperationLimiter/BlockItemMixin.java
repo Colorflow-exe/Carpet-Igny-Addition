@@ -40,8 +40,8 @@ public abstract class BlockItemMixin extends Item {
             BlockPlaceContext updated = this.updatePlacementContext(context);
             if (updated != null && this.getPlacementState(updated) != null) {
                 SafeServerPlayerEntity safe = (SafeServerPlayerEntity) serverPlayer;
-                safe.igny$addPlaceCountPerTick();
                 if (!safe.igny$canPlace(serverPlayer)) {
+                    safe.igny$addPlaceCountPerTick();
                     cir.setReturnValue(InteractionResult.FAIL);
                 }
             }
