@@ -7,7 +7,9 @@ import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
 
 import com.liuyue.igny.commands.FixnotepitchCommmand;
-import com.liuyue.igny.tracker.RuleChangeTracker;
+import com.liuyue.igny.commands.PlayerOperateCommand;
+import com.liuyue.igny.task.ITask;
+import com.liuyue.igny.task.TaskManager;
 import com.liuyue.igny.utils.ComponentTranslate;
 import com.liuyue.igny.utils.CountRulesUtil;
 
@@ -15,7 +17,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,7 +27,7 @@ public class IGNYServer implements CarpetExtension {
     public static final int ruleCount = CountRulesUtil.countRules();
     public static final String fancyName = "Carpet IGNY Addition";
     public static final String MOD_ID = IGNYServerMod.getModId();
-    public static final String compactName = MOD_ID.replace("-", "");
+//    public static final String compactName = MOD_ID.replace("-", "");
     public static final Logger LOGGER = LogManager.getLogger(fancyName);
     private static MinecraftServer minecraftServer;
     public static SettingsManager settingsManager;
@@ -48,7 +49,6 @@ public class IGNYServer implements CarpetExtension {
     public void onGameStarted() {
         settingsManager = new SettingsManager(IGNYServer.getInstance().version(), MOD_ID, "IGNY");
         CarpetServer.settingsManager.parseSettingsClass(IGNYSettings.class);
-
     }
 
     @Override
@@ -56,6 +56,7 @@ public class IGNYServer implements CarpetExtension {
             CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext
     ) {
         FixnotepitchCommmand.register(dispatcher);
+        PlayerOperateCommand.register(dispatcher);
     }
 
     @Override
@@ -73,5 +74,10 @@ public class IGNYServer implements CarpetExtension {
     @Override
     public Map<String, String> canHasTranslations(String lang) {
         return ComponentTranslate.getTranslationFromResourcePath(lang);
+    }
+
+    @Override
+    public void onTick(MinecraftServer server) {
+        TaskManager.getAllActiveTasks().forEach(ITask::tick);
     }
 }

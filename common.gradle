@@ -22,13 +22,19 @@ configurations {
 }
 
 dependencies {
-	// loom
+    // Minecraft
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    // Mojmap
 	mappings loom.officialMojangMappings()
+    // mixin extras
 	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
+    // fabric
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    // carpet
 	modImplementation "carpet:fabric-carpet:${project.carpet_core_version}"
+    // SQLite JDBC
+    modImplementation("maven.modrinth:minecraft-sqlite-jdbc:UAFoGR0O")
 }
 
 String MIXIN_CONFIG_PATH = 'carpet_igny_addition.mixins.json'
@@ -47,6 +53,7 @@ loom {
 		vmArgs commonVmArgs
 	}
 }
+
 
 String modVersionSuffix = ''
 String artifactVersion = project.mod_version

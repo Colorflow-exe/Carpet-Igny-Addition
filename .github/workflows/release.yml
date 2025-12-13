@@ -168,9 +168,8 @@ jobs:
       - name: Publish Minecraft Mods
         uses: Kira-NT/mc-publish@v3.3
         with:
-          # https://modrinth.com/settings/pats
-          #          modrinth-id: fo0Bar
-          #          modrinth-token: ${{ secrets.MODRINTH_API_TOKEN }}
+          modrinth-id: 7PCm6yD1
+          modrinth-token: ${{ secrets.MODRINTH_API_TOKEN }}
 
           # https://legacy.curseforge.com/account/api-tokens
           #          curseforge-id: 314159
@@ -188,8 +187,11 @@ jobs:
           loaders: fabric
           game-versions: ${{ steps.properties_v.outputs.game_versions }}
           game-version-filter: any
-          dependencies: ''  # declare the dependencies explicitly, so mc-publish won't try to load from fabric.mod.json
-
+          dependencies: |
+            [
+              {"project_id": "P7dR8mSH", "dependency_type": "required"},
+              {"project_id": "TQTTVgYE", "dependency_type": "required"}
+            ]
           github-changelog: ${{ steps.get_release.outputs.body }}
           modrinth-changelog: ${{ steps.changelog.outputs.result }}
           curseforge-changelog: ${{ steps.changelog.outputs.result }}

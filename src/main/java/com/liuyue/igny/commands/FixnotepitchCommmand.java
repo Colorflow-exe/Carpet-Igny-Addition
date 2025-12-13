@@ -1,7 +1,7 @@
 package com.liuyue.igny.commands;
 
 import com.liuyue.igny.IGNYSettings;
-import com.liuyue.igny.utils.PlayerCommandPermissions;
+import com.liuyue.igny.utils.CommandPermissions;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
@@ -21,13 +21,20 @@ public class FixnotepitchCommmand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(
                 Commands.literal("fixnotepitch")
-                        .requires(source -> PlayerCommandPermissions.canUseCommand(source, IGNYSettings.CommandFixnotepitch))
+                        .requires(source -> CommandPermissions.canUseCommand(source, IGNYSettings.commandFixnotepitch))
                         .then(Commands.argument("pos1", BlockPosArgument.blockPos())
                                 .then(Commands.argument("pos2", BlockPosArgument.blockPos())
-                                        .executes(context -> executeCommand(context, 0)) // 默认音高为0
+                                        .executes(context -> executeCommand(context, 0))
                                         .then(Commands.argument("pitch", IntegerArgumentType.integer(0, 24))
-                                                .executes(context -> executeCommand(context, IntegerArgumentType.getInteger(context, "pitch"))))
-                                )));
+                                                .executes(context ->
+                                                        executeCommand(
+                                                                context, IntegerArgumentType.getInteger(context, "pitch")
+                                                        )
+                                                )
+                                        )
+                                )
+                        )
+        );
     }
 
     private static int executeCommand(CommandContext<CommandSourceStack> context, int targetPitch) throws CommandSyntaxException {
@@ -45,7 +52,10 @@ public class FixnotepitchCommmand {
 
         final int changedCount = calculateNoteBlockChanges(level, minX, minY, minZ, maxX, maxY, maxZ, targetPitch);
 
-        source.sendSuccess(() ->
+        source.sendSuccess(
+                //#if MC > 11904
+                () ->
+                //#endif
                         Component.translatable("igny.command.fixnotepitch.success", changedCount, targetPitch),
                 true
         );
@@ -66,7 +76,7 @@ public class FixnotepitchCommmand {
                             int currentNote = state.getValue(BlockStateProperties.NOTE);
                             if (currentNote != targetPitch) {
                                 BlockState newState = state.setValue(BlockStateProperties.NOTE, targetPitch);
-                                if (IGNYSettings.FixnotepitchUpdateBlock) {
+                                if (IGNYSettings.fixnotepitchUpdateBlock) {
                                     level.setBlock(pos, newState, 3);
                                 } else {
                                     level.setBlock(pos, newState, 2 | 16);

@@ -1,6 +1,5 @@
 package com.liuyue.igny.mixins.carpet;
 
-import carpet.CarpetServer;
 import carpet.api.settings.CarpetRule;
 import carpet.api.settings.SettingsManager;
 import carpet.utils.Messenger;
@@ -18,10 +17,11 @@ import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
+
 import carpet.utils.Translations;
 
 @Mixin(SettingsManager.class)
-public class SettingsManagerMixin {
+public abstract class SettingsManagerMixin {
 
     @Unique
     private static final ThreadLocal<carpet.api.settings.CarpetRule<?>> CURRENT_RULE = new ThreadLocal<>();
@@ -43,6 +43,7 @@ public class SettingsManagerMixin {
 
     @Unique
     private static final String RAW_VALUE = "igny.settings.record.raw_value";
+
     @Inject(
             method = "displayRuleMenu",
             at = @At(
@@ -54,7 +55,7 @@ public class SettingsManagerMixin {
     )
     private void addOperationInfoAfterCurrentValue(
             CommandSourceStack source, CarpetRule<?> rule, CallbackInfoReturnable<Integer> cir) {
-        if (!IGNYSettings.ShowRuleChangeHistory) {
+        if (!IGNYSettings.showRuleChangeHistory) {
             return;
         }
 
@@ -67,11 +68,11 @@ public class SettingsManagerMixin {
                 RuleChangeDataManager.RuleChangeRecord record = lastChange.get();
 
                 if (record.isValid()) {
-                    carpet.utils.Messenger.m(source, new Object[]{
+                    carpet.utils.Messenger.m(source,
                             "g  "+Translations.tr(RECORD_OPERATOR,"Operator")+": ", "w " + record.sourceName,
                             "g  "+Translations.tr(CHANGE_TIME,"ChangeTime")+": ", "w " + record.formattedTime,
                             "g  "+Translations.tr(RAW_VALUE,"RawValue")+": ", "w " + objectToString(record.rawValue)
-                    });
+                    );
                 }
             }
         }
@@ -84,9 +85,19 @@ public class SettingsManagerMixin {
         if (obj instanceof Boolean) return (Boolean) obj ? "true" : "false";
         return obj.toString();
     }
+
     @Inject(method = "setRule",at= @At(value = "INVOKE", target = "Lcarpet/api/settings/CarpetRule;set(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)V"))
-    private void onRuleChanged(CommandSourceStack source, CarpetRule<?> rule, String newValue, CallbackInfoReturnable<Integer> cir){
-        RuleChangeTracker.ruleChanged(source, rule, newValue);
+    private void onRuleChanged(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
+        if(IGNYSettings.showRuleChangeHistory) {
+            RuleChangeTracker.ruleChanged(source, rule, stringValue);
+        }
+    }
+
+    @Inject(method="setDefault",at= @At(value = "INVOKE", target = "Lcarpet/api/settings/CarpetRule;set(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)V"))
+    private void onDefaultChanged(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
+        if(IGNYSettings.showRuleChangeHistory) {
+            RuleChangeTracker.ruleChanged(source, rule, stringValue);
+        }
     }
 
     @Unique
@@ -112,7 +123,6 @@ public class SettingsManagerMixin {
             remap = false
     )
     private void printVersion(CommandSourceStack source, CallbackInfoReturnable<Integer> cir) {
-        if ((Object)this == CarpetServer.settingsManager) {
             Messenger.m(
                     source,
                     Messenger.c(
@@ -122,7 +132,7 @@ public class SettingsManagerMixin {
                             String.format("g (%s: %d)", Translations.tr(TOTAL_RULES_TRANSLATION_KEY, "total rules"), IGNYServer.ruleCount)
                     )
             );
-        }
+
     }
 
 }
