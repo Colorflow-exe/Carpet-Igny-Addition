@@ -126,6 +126,6 @@
   "carpet.rule.allowRectangularEndPortal.desc": "Allows rectangular End portals (each side must be at least 3 blocks long). Only effective when maxEndPortalSize is not -1.",
   "carpet.rule.instantVaultSpawnLoot.desc": "When generating loot from the vault, skip the animation and directly generate all loot",
   "carpet.rule.trialSpawnerLootMultiplier.desc": "The loot multiplier after the trial spawner generates rewards",
-  "carpet.rule.trialSpawnerDropKeyProbability.desc": "The probability of a Trial Key dropping as a loot from a Trial Spawner",
+  "carpet.rule.trialSpawnerDropKeyProbability.desc": "The probability of a Trial Key dropping as a loot from a Trial Spawner, Set to -1 to use vanilla behavior",
   "carpet.rule.instantTrialSpawnerSpawnLoot.desc": "Skip the animation when the trial spawner generates loot, and directly spawn all the spoils"
 }

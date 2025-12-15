@@ -176,7 +176,7 @@
   "carpet.rule.trialSpawnerLootMultiplier.name": "试炼刷怪笼战利品倍率",
   "carpet.rule.trialSpawnerLootMultiplier.desc": "试炼刷怪笼的战利品倍率",
   "carpet.rule.trialSpawnerDropKeyProbability.name": "试炼刷怪笼掉落钥匙概率",
-  "carpet.rule.trialSpawnerDropKeyProbability.desc": "试炼刷怪笼的战利品掉落试炼钥匙的概率",
+  "carpet.rule.trialSpawnerDropKeyProbability.desc": "试炼刷怪笼的战利品掉落试炼钥匙的概率，设置为-1表示遵循原版逻辑",
   "carpet.rule.instantTrialSpawnerSpawnLoot.name": "瞬时试炼刷怪笼生成战利品",
   "carpet.rule.instantTrialSpawnerSpawnLoot.desc": "试炼刷怪笼生成奖励时跳过动画，直接生成所有战利品"
 }

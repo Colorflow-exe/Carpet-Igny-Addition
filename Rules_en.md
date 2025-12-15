@@ -456,18 +456,16 @@ When generating loot from the vault, skip the animation and directly generate al
 
 The loot multiplier after the trial spawner generates rewards.
 
-- Type: `boolean`
-- Default value: `false`
-- Suggested options: `false`, `true`
+- Type: `int`
+- Default value: `1`
 - Categories: `IGNY`, `FEATURE`
 
 ## trialSpawnerDropKeyProbability `🐛Beta` `MC>=1.20.5`
 
-The probability of a Trial Key dropping as a loot from a Trial Spawner.
+The probability of a Trial Key dropping as a loot from a Trial Spawner, Set to -1 to use vanilla behavior.
 
-- Type: `boolean`
-- Default value: `false`
-- Suggested options: `false`, `true`
+- Type: `int`
+- Default value: `-1`
 - Categories: `IGNY`, `FEATURE`
 
 ## instantTrialSpawnerSpawnLoot `🐛Beta` `MC>=1.20.5`
