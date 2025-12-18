@@ -1,5 +1,8 @@
 package com.liuyue.igny.utils;
 
+import carpet.CarpetServer;
+import carpet.api.settings.CarpetRule;
+import com.liuyue.igny.IGNYServerMod;
 import com.liuyue.igny.IGNYSettings;
 
 import java.util.Objects;
@@ -20,4 +23,16 @@ public class RuleUtils {
         return Objects.equals(IGNYSettings.simpleSoundSuppression.toLowerCase(), name.toLowerCase());
     }
     //#endif
+
+    public static Object getCarpetBooleanRules(String modName, String ruleName) {
+        if(IGNYServerMod.CARPET_ADDITION_MOD_IDS.contains(modName)){
+            CarpetRule<?> carpetRule = CarpetServer.settingsManager.getCarpetRule(ruleName);
+            if (carpetRule == null) {
+                return false;
+            }
+            return carpetRule.value() == null ? false : carpetRule.value();
+        }
+        return false;
+    }
+
 }

@@ -4,6 +4,7 @@ import carpet.CarpetServer;
 import carpet.api.settings.CarpetRule;
 import com.liuyue.igny.IGNYServerMod;
 import com.liuyue.igny.IGNYSettings;
+import com.liuyue.igny.utils.RuleUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -104,14 +105,14 @@ public abstract class EndDragonFightMixin {
                     crystal.discard();
                 }
             }
-            if (!getCarpetAMSAdditionSetting().equals("true")) {
+            if (!RuleUtils.getCarpetBooleanRules("carpet-ams-addition", "preventEndSpikeRespawn").equals("true")) {
                 List<SpikeFeature.EndSpike> spikes = SpikeFeature.getSpikesForLevel(this.level);
-                if (getCarpetAMSAdditionSetting().equals("keepEndCrystal")) {
+                if (RuleUtils.getCarpetBooleanRules("carpet-ams-addition", "preventEndSpikeRespawn").equals("keepEndCrystal")) {
                     for (SpikeFeature.EndSpike spike : spikes) {
                         EndCrystal crystal = getEndCrystal(spike);
                         this.level.addFreshEntity(crystal);
                     }
-                } else if (getCarpetAMSAdditionSetting().equals("false")) {
+                } else if (RuleUtils.getCarpetBooleanRules("carpet-ams-addition", "preventEndSpikeRespawn").equals("false")) {
                     RandomSource random = RandomSource.create();
                     for (SpikeFeature.EndSpike spike : spikes) {
                         for (BlockPos pos : BlockPos.betweenClosed(
@@ -152,17 +153,5 @@ public abstract class EndDragonFightMixin {
         crystal.setShowBottom(false);
         crystal.setBeamTarget(new BlockPos(0, 128, 0));
         return crystal;
-    }
-
-    @Unique
-    private static String getCarpetAMSAdditionSetting() {
-        if(IGNYServerMod.CARPET_ADDITION_MOD_IDS.contains("carpet-ams-addition")){
-            CarpetRule<?> carpetRule = CarpetServer.settingsManager.getCarpetRule("preventEndSpikeRespawn");
-            if (carpetRule == null) {
-                return "false";
-            }
-            return carpetRule.value() == null ? "false" : carpetRule.value().toString();
-        }
-        return "false";
     }
 }
