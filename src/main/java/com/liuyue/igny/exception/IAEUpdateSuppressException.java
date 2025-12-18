@@ -18,7 +18,13 @@ public class IAEUpdateSuppressException extends IllegalArgumentException{
 
     public void onCatch(ServerPlayer player, Packet<ServerGamePacketListener> packet) {
         StringBuilder builder = new StringBuilder();
-        builder.append(player.getGameProfile().getName()).append("在");
+        builder.append(player.getGameProfile()
+                //#if MC >= 12110
+                //$$ .name()
+                //#else
+                .getName()
+                //#endif
+        ).append("在");
         if (packet instanceof ServerboundPlayerActionPacket actionC2SPacket) {
             switch (actionC2SPacket.getAction()) {
                 case START_DESTROY_BLOCK, ABORT_DESTROY_BLOCK, STOP_DESTROY_BLOCK -> builder.append("破坏方块");
