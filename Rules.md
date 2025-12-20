@@ -82,15 +82,6 @@
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `SURVIVAL`, `FEATURE`
 
-## 僵尸猪灵不会自然生成在下界传送门 (noZombifiedPiglinNetherPortalSpawn)
-
-当主世界的下界传送门接收到随机刻时，僵尸猪灵将不会自然生成在主世界的下界传送门中。
-
-- 类型: `boolean`
-- 默认值: `false`
-- 参考选项: `false`, `true`
-- 分类: `IGNY`, `SURVIVAL`, `FEATURE`
-
 ## 重新引入投掷物复制 (projectileDuplicationReintroduced) `MC>=1.21.2`
 
 重新引入1.21.2以下的投掷物残留刻复制行为（可视作恢复药水、鸡蛋、雪球等复制行为）。
@@ -200,16 +191,6 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `FEATURE`
-
-## 设置默认参数权限 (setDefaultArgument)
-
-在`/carpet <rule> <value> <setDefault>`指令中，控制`setDefault`参数的指令权限，用于让规则直接设为默认。
-注意，如果指令无法正常执行可尝试给参数添加引号
-
-- 类型: `string`
-- 默认值: `false`
-- 参考选项: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
-- 分类: `IGNY`, `COMMAND`, `FEATURE`
 
 ## 重新引入僵尸猪灵在愤怒时掉落战利品 (zombifiedPiglinDropLootIfAngryReintroduced) `MC>=1.21.5`
 
@@ -492,3 +473,12 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `FEATURE`
+
+## 两次更改规则值设置默认 (twoChangedRuleValueSetDefault) `🐛Beta`
+
+当使用/carpet指令更改规则值时，与更改前的值相同就设为默认。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `COMMAND`, `FEATURE`

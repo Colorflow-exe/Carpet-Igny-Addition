@@ -11,7 +11,7 @@
     "carpet.commands.EntityPlayerActionPackMixin",
     "carpet.commands.PlayerCommandMixin",
     "carpet.features.fakePlayerNoMiningCoolDown.EntityPlayerActionPackMixin",
-    "carpet.features.SetDefaultArgument.SettingsManagerMixin",
+    "carpet.features.twoChangedRuleValueSetDefault.SettingsManagerMixin",
     "carpet.fix.FakePlayerBoatYawFix.EntityMixin",
     "commands.clearLightQueue.ThreadedLevelLightEngineAccessor",
     "compat.accessor.fapi.AbstractChanneledNetworkAddonAccessor",
@@ -75,8 +75,7 @@
     "rule.trialSpawnerCoolDown.TrialSpawnerMixin",
     "rule.TrialSpawnerLoot.TrialSpawnerMixin",
     "rule.wardenNeverDig.WardenMixin",
-    "rule.wetSpongeCanAbsorbLava.BlockBehaviourNeighborChangedMixin",
-    "rule.zombifiedPiglinDropLootIfAngryReintroduced.ZombifiedPiglinEntityMixin"
+    "rule.wetSpongeCanAbsorbLava.BlockBehaviourNeighborChangedMixin"
   ],
   "client": [
     "rule.happyGhastNoClip.LevelRendererMixin"

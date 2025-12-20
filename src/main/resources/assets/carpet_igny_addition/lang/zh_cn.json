@@ -112,10 +112,6 @@
   "carpet.rule.onlyPlayerCreateNetherPortal.desc": "只有玩家实体可以创建下界传送门",
   "carpet.rule.noWitherEffect.name": "没有凋零效果",
   "carpet.rule.noWitherEffect.desc": "凋零、凋零骷髅、凋零玫瑰不能给予玩家凋零效果",
-  "carpet.rule.setDefaultArgument.name": "设置默认参数权限",
-  "carpet.rule.setDefaultArgument.desc": "在/carpet <rule> <value> <setDefault>中，控制<setDefault>参数的指令权限，用于让规则直接设为默认",
-  "carpet.rule.zombifiedPiglinDropLootIfAngryReintroduced.name": "重新引入僵尸猪灵在愤怒时掉落战利品",
-  "carpet.rule.zombifiedPiglinDropLootIfAngryReintroduced.desc": "开启后，僵尸猪灵在愤怒、设置玩家为攻击目标的100gt内死亡，将可掉落如被玩家击杀一样的掉落物和经验球",
   "carpet.rule.zombifiedPiglinDropLootIfAngryReintroduced.extra.0": "它将相关表现还原回了 MC < 25w02a（1.21.5 的快照）的表现，撤销了 MC-56653 的修复",
   "carpet.rule.locatorBarNoFakePlayer.name": "定位栏无假玩家",
   "carpet.rule.locatorBarNoFakePlayer.desc": "定位栏不显示假玩家",
@@ -185,5 +181,7 @@
   "carpet.rule.simpleSoundSuppression.extra.1": "规则值为true时，命名为“声音抑制器”或“soundSuppression”的校频幽匿感测体可以用来制作声音抑制器",
   "carpet.rule.simpleSoundSuppression.extra.2": "规则值为其它字符串时，命名为该字符串的校频幽匿感测体可以用来制作声音抑制器",
   "carpet.rule.safeSoundSuppression.name": "安全声音抑制器",
-  "carpet.rule.safeSoundSuppression.desc": "当声音抑制器没有红石信号输入时，没有任何效果"
+  "carpet.rule.safeSoundSuppression.desc": "当声音抑制器没有红石信号输入时，没有任何效果",
+  "carpet.rule.twoChangedRuleValueSetDefault.name": "两次更改规则值设置默认",
+  "carpet.rule.twoChangedRuleValueSetDefault.desc": "当使用/carpet指令更改规则值时，与更改前的值相同就设为默认"
 }

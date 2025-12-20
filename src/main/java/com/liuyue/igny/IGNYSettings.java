@@ -154,20 +154,6 @@ public class IGNYSettings
     )
     public static Boolean noWitherEffect = false;
 
-    @Rule(
-            categories = {IGNY, COMMAND, FEATURE},
-            options = {"false", "true", "ops", "0", "1", "2", "3", "4"}
-    )
-    public static String setDefaultArgument = "ops";
-
-    //#if MC>=12105
-    //$$ @Rule(
-    //$$        categories = {IGNY, FEATURE},
-    //$$        options = {"false", "true"}
-    //$$ )
-    //$$ public static Boolean zombifiedPiglinDropLootIfAngryReintroduced = false;
-    //#endif
-
     //#if MC>=12106
     //$$ @Rule(
     //$$        categories = {IGNY, FEATURE},
@@ -338,4 +324,10 @@ public class IGNYSettings
             options = {"false", "true"}
     )
     public static Boolean safeSoundSuppression = false;
+
+    @Rule(
+            categories = {IGNY, COMMAND, FEATURE},
+            options = {"false", "true"}
+    )
+    public static Boolean twoChangedRuleValueSetDefault = false;
 }

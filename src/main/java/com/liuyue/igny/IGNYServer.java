@@ -2,17 +2,11 @@ package com.liuyue.igny;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-
-
 import carpet.api.settings.SettingsManager;
-
 import com.liuyue.igny.commands.FixnotepitchCommmand;
 import com.liuyue.igny.commands.PlayerOperateCommand;
-import com.liuyue.igny.task.ITask;
-import com.liuyue.igny.task.TaskManager;
 import com.liuyue.igny.utils.ComponentTranslate;
 import com.liuyue.igny.utils.CountRulesUtil;
-
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -74,10 +68,5 @@ public class IGNYServer implements CarpetExtension {
     @Override
     public Map<String, String> canHasTranslations(String lang) {
         return ComponentTranslate.getTranslationFromResourcePath(lang);
-    }
-
-    @Override
-    public void onTick(MinecraftServer server) {
-        TaskManager.getAllActiveTasks().forEach(ITask::tick);
     }
 }

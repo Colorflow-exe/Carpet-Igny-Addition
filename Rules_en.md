@@ -208,29 +208,6 @@ Wither, Wither Skeleton, and Wither Rose cannot grant players the Wither effect.
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `FEATURE`
 
-## setDefaultArgument
-
-In command`/carpet <rule> <value> <setDefault>`, the command permission for the `<setDefault>` argument is controlled, allowing the rule to be directly set as the default.
-Note, if the command cannot be executed normally, try adding quotation marks to the parameters.
-
-- Type: `string`
-- Default Value: `false`
-- Suggested Options: `false`, `true`, `ops`, `0`, `1`, `2`, `3`, `4`
-- Categories: `IGNY`, `COMMAND`, `FEATURE`
-
-## zombifiedPiglinDropLootIfAngryReintroduced `MC>=1.21.5`
-
-When enabled, zombified piglins that die within 100 game ticks of becoming angry or targeting a player will drop loot and xp orbs as if killed by a player
-
-It reverts the behavior back to mc < 25w02a (1.21.5 snapshot) and unfixes [MC-56653](https://bugs.mojang.com/browse/MC-56653)
-
-This feature comes from Carpet Tis Addition, which backports the zombifiedPiglinDropLootIfAngryReintroduced rule from game version 1.21.9+ to game version 1.21.5+
-
-- Type: `boolean`
-- Default value: `false`
-- Suggested options: `false`, `true`
-- Categories: `IGNY`, `FEATURE`
-
 ## locatorBarNoFakePlayer `MC>=1.21.6`
 
 The locator bar does not show fake players.
@@ -499,3 +476,12 @@ When the sound suppressor has no redstone signal input, it has no effect.
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `IGNY`, `FEATURE`
+
+## twoChangedRuleValueSetDefault `🐛Beta`
+
+When changing a rule value with the /carpet command, if the new value is the same as the previous one, reset it to the default.
+
+- Type: `boolean`
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `IGNY`, `COMMAND`, `FEATURE`

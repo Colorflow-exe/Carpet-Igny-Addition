@@ -90,9 +90,6 @@
   "carpet.rule.happyGhastNoClip.desc":"Happy Ghast has players who ride while ignoring block collisions",
   "carpet.rule.onlyPlayerCreateNetherPortal.desc": "Only players can create nether portal",
   "carpet.rule.noWitherEffect.desc": "Wither, Wither Skeleton, and Wither Rose cannot grant players the Wither effect",
-  "carpet.rule.setDefaultArgument.desc": "In `/carpet <rule> <value> <setDefault>`, the command permission for the `<setDefault>` argument is controlled, allowing the rule to be directly set as the default",
-  "carpet.rule.zombifiedPiglinDropLootIfAngryReintroduced.desc": "When enabled, zombified piglins that die within 100 game ticks of becoming angry or targeting a player will drop loot and xp orbs as if killed by a player",
-  "carpet.rule.zombifiedPiglinDropLootIfAngryReintroduced.extra.0": "It reverts the behavior back to mc < 25w02a (1.21.5 snapshot) and unfixes MC-56653",
   "carpet.rule.locatorBarNoFakePlayer.desc": "The locator bar does not show fake players",
   "carpet.rule.fakePlayerLoginLogoutNoChatInfo.desc": "Fake players do not send login/logout messages to the chat",
   "carpet.rule.commandPlayerOperate.desc": "Use the /playerOperate command to manage player actions",
@@ -132,5 +129,6 @@
   "carpet.rule.simpleSoundSuppression.extra.0": "When the rule value is false, the rule is inactive.",
   "carpet.rule.simpleSoundSuppression.extra.1": "When the rule value is true, Calibrated Sculk Sensors named '声音抑制器' or 'soundSuppression' can be used to create sound suppressors.",
   "carpet.rule.simpleSoundSuppression.extra.2": "When the rule value is any other string, Calibrated Sculk Sensors named that string can be used to create sound suppressors.",
-  "carpet.rule.safeSoundSuppression.desc": "When the sound suppressor has no redstone signal input, it has no effect."
+  "carpet.rule.safeSoundSuppression.desc": "When the sound suppressor has no redstone signal input, it has no effect.",
+  "carpet.rule.twoChangedRuleValueSetDefault.desc": "When changing a rule value with the /carpet command, if the new value is the same as the previous one, reset it to the default."
 }

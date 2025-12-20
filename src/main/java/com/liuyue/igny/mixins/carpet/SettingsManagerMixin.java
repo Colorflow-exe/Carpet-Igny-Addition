@@ -1,5 +1,6 @@
 package com.liuyue.igny.mixins.carpet;
 
+import carpet.CarpetServer;
 import carpet.api.settings.CarpetRule;
 import carpet.api.settings.SettingsManager;
 import carpet.utils.Messenger;
@@ -53,8 +54,7 @@ public abstract class SettingsManagerMixin {
                     shift = At.Shift.AFTER
             )
     )
-    private void addOperationInfoAfterCurrentValue(
-            CommandSourceStack source, CarpetRule<?> rule, CallbackInfoReturnable<Integer> cir) {
+    private void addOperationInfoAfterCurrentValue(CommandSourceStack source, CarpetRule<?> rule, CallbackInfoReturnable<Integer> cir) {
         if (!IGNYSettings.showRuleChangeHistory) {
             return;
         }
@@ -87,14 +87,14 @@ public abstract class SettingsManagerMixin {
     }
 
     @Inject(method = "setRule",at= @At(value = "INVOKE", target = "Lcarpet/api/settings/CarpetRule;set(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)V"))
-    private void onRuleChanged(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
+    private void onSetRuleValue(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
         if(IGNYSettings.showRuleChangeHistory) {
             RuleChangeTracker.ruleChanged(source, rule, stringValue);
         }
     }
 
     @Inject(method="setDefault",at= @At(value = "INVOKE", target = "Lcarpet/api/settings/CarpetRule;set(Lnet/minecraft/commands/CommandSourceStack;Ljava/lang/String;)V"))
-    private void onDefaultChanged(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
+    private void onSetRuleDefaultValue(CommandSourceStack source, CarpetRule<?> rule, String stringValue, CallbackInfoReturnable<Integer> cir){
         if(IGNYSettings.showRuleChangeHistory) {
             RuleChangeTracker.ruleChanged(source, rule, stringValue);
         }
@@ -123,6 +123,8 @@ public abstract class SettingsManagerMixin {
             remap = false
     )
     private void printVersion(CommandSourceStack source, CallbackInfoReturnable<Integer> cir) {
+        SettingsManager settingsManager = (SettingsManager) (Object) this;
+        if (settingsManager == CarpetServer.settingsManager) {
             Messenger.m(
                     source,
                     Messenger.c(
@@ -132,7 +134,7 @@ public abstract class SettingsManagerMixin {
                             String.format("g (%s: %d)", Translations.tr(TOTAL_RULES_TRANSLATION_KEY, "total rules"), IGNYServer.ruleCount)
                     )
             );
-
+        }
     }
 
 }
