@@ -267,7 +267,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `36000`
 - 分类: `IGNY`, `FEATURE`
 
-## 优化猪灵 (optimizedPiglin)
+## 优化猪灵 (optimizedPiglin) `🐛Beta删除`
 
 优化堆叠的猪灵实体，它关闭了大部分移动和挤压的计算，使其性能更好。
 
@@ -278,7 +278,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## 优化猪灵限制 (optimizedPiglinLimit)
+## 优化猪灵限制 (optimizedPiglinLimit) `🐛Beta删除`
 
 当堆叠的猪灵个数达到规则设置的值时启用优化，需开启optimizedPiglin规则。
 
@@ -286,7 +286,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `100`
 - 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## 优化监守者 (optimizedWarden)
+## 优化监守者 (optimizedWarden) `🐛Beta删除`
 
 优化堆叠的监守者实体，它关闭了大部分移动和挤压的计算，使其性能更好。
 
@@ -295,7 +295,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## 优化监守者限制 (optimizedWardenLimit)
+## 优化监守者限制 (optimizedWardenLimit) `🐛Beta删除`
 
 当堆叠的监守者个数达到规则设置的值时启用优化，需开启`optimizedWarden`规则。
 
@@ -482,3 +482,22 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `COMMAND`, `FEATURE`
+
+## 实体优化列表 (optimizedEntityList) `🐛Beta`
+
+优化堆叠的生物实体，每个实体以','分割，设为'#none'则不启用。
+
+它关闭了生物实体大部分移动和挤压的计算，使其性能更好。
+
+- 类型: `string`
+- 默认值: `#none`
+- 参考选项: `#none`, `minecraft:warden`, `minecraft:piglin`, `minecraft:warden`, `minecraft:piglin`
+- 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`
+
+## 实体优化限制 (optimizedEntityLimit) `🐛Beta`
+
+当堆叠的实体个数达到规则设置的值时启用优化，optimizedEntityList规则需包含这个实体。
+
+- 类型: `int`
+- 默认值: `100`
+- 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`

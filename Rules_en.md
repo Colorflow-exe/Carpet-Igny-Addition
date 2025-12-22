@@ -270,7 +270,7 @@ Customize the monster spawning cooldown after the trial spawner generates reward
 - Default Value: `36000`
 - Categories: `IGNY`, `FEATURE`
 
-## optimizedPiglin
+## optimizedPiglin `🐛Beta Delete`
 
 Optimize the cramming of piglin entities.
 
@@ -281,7 +281,7 @@ From [ROF-Carpet-Addition](https://github.com/Melationin/ROF-Carpet-Addition)
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## optimizedPiglinLimit
+## optimizedPiglinLimit `🐛Beta Delete`
 
 Enable optimization when the number of cramming piglins reaches the rule value. Requires `optimizedPiglin` to be enabled.
 
@@ -289,7 +289,7 @@ Enable optimization when the number of cramming piglins reaches the rule value. 
 - Default Value: `100`
 - Categories: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## optimizedWarden
+## optimizedWarden `🐛Beta Delete`
 
 Optimize the cramming of warden entities.
 
@@ -298,7 +298,7 @@ Optimize the cramming of warden entities.
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## optimizedWardenLimit
+## optimizedWardenLimit `🐛Beta Delete`
 
 Enable optimization when the number of cramming wardens reaches the rule value. Requires `optimizedWarden` to be enabled.
 
@@ -485,3 +485,22 @@ When changing a rule value with the /carpet command, if the new value is the sam
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `IGNY`, `COMMAND`, `FEATURE`
+
+## optimizedEntityList `🐛Beta`
+
+Optimizes stacked living entities; separate each entity with a comma ',', set it to '#none' to disable it.
+
+It disables most movement and squeezing calculations for these entities, improving performance.
+
+- Type: `string`
+- Default value: `#none`
+- Suggested options: `#none`, `minecraft:warden`, `minecraft:piglin`, `minecraft:warden`, `minecraft:piglin`
+- Categories: `IGNY`, `OPTIMIZATION`, `FEATURE`
+
+## optimizedEntityLimit `🐛Beta`
+
+Enables optimization when the number of stacked entities reaches the value set by this rule. The entity must be included in the optimizedEntityList rule.
+
+- Type: `int`
+- Default value: `100`
+- Categories: `IGNY`, `OPTIMIZATION`, `FEATURE`
