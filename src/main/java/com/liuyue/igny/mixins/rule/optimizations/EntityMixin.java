@@ -5,8 +5,10 @@ import com.liuyue.igny.accessors.optimizations.IEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.Shadow;
@@ -51,6 +53,13 @@ public abstract class EntityMixin implements IEntity {
         }
         if ((this.tickCount + this.getId()) % 100 == 0) {
             this.carpet_Igny_Addition$setCrammingCount(this.level.getEntities(this.getType(), this.getBoundingBox(), entity -> true).size());
+        }
+    }
+
+    @Inject(method = "move", at = @At(value = "HEAD"), cancellable = true)
+    private void move(MoverType moverType, Vec3 vec3, CallbackInfo ci){
+        if (this.carpet_Igny_Addition$crammingCount >= IGNYSettings.optimizedEntityLimit){
+            ci.cancel();
         }
     }
 }

@@ -14,7 +14,7 @@ public class LivingEntityMixin {
     @Inject(method = "travel",at = @At(value = "HEAD"),cancellable = true)
     private void travel(Vec3 vec3, CallbackInfo ci){
         LivingEntity self = (LivingEntity) (Object) this;
-        if (((IEntity)self).carpet_Igny_Addition$getCrammingCount() > IGNYSettings.optimizedEntityLimit){
+        if (((IEntity)self).carpet_Igny_Addition$getCrammingCount() >= IGNYSettings.optimizedEntityLimit){
             ci.cancel();
         }
     }
@@ -22,7 +22,7 @@ public class LivingEntityMixin {
     @Inject(method = "pushEntities",at = @At(value = "HEAD"), cancellable = true)
     private void pushEntities(CallbackInfo ci){
         LivingEntity self = (LivingEntity) (Object) this;
-        if (((IEntity)self).carpet_Igny_Addition$getCrammingCount() > IGNYSettings.optimizedEntityLimit){
+        if (((IEntity)self).carpet_Igny_Addition$getCrammingCount() >= IGNYSettings.optimizedEntityLimit){
             ci.cancel();
         }
     }

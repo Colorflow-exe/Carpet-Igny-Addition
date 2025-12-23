@@ -54,6 +54,8 @@
     "rule.optimizations.EntityMixin",
     "rule.optimizations.LivingEntityMixin",
     "rule.optimizations.PiglinAiMixin",
+    "rule.optimizations.SetEntityLookTargetMixin",
+    "rule.optimizations.SetLookAndInteractMixin",
     "rule.placeComposterCompost.BlockItemMixin",
     "rule.playerLevitationFreeShulkerBullet.ShulkerBulletMixin",
     "rule.playerMiningFatigueFreeGuardian.GuardianAttackGoalMixin",
