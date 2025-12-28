@@ -502,7 +502,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 默认值: `100`
 - 分类: `IGNY`, `OPTIMIZATION`, `FEATURE`
 
-## optimizedTNT错误作用域修复 (optimizedTNTErrorScopeFix)
+## optimizedTNT错误作用域修复 (optimizedTNTErrorScopeFix) `🐛Beta`
 
 修复optimizedTNT规则启用时，错误优化风弹等实体爆炸的问题。 [#1928](https://github.com/gnembon/fabric-carpet/issues/1928)。
 
@@ -511,7 +511,7 @@ cantrade：当载具上没有村民或者流浪商人时移除载具，其他实
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `BUGFIX`
 
-## 熔炉含不可燃烧物高亮 (furnaceHasIncombustibleHighlight)
+## 熔炉含不可燃烧物高亮 (furnaceHasIncombustibleHighlight) `🐛Beta`
 
 当熔炉的原料槽中含有不可燃烧的物品时，自身颜色变为淡红色，可透过方块显示。
 
