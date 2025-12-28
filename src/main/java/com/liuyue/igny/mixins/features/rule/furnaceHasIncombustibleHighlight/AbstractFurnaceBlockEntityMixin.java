@@ -69,7 +69,7 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
             BlockPos blockPos, BlockState blockState, AbstractFurnaceBlockEntity blockEntity, CallbackInfo ci) {
         if (IGNYSettings.furnaceHasIncombustibleHighlight) {
             AbstractFurnaceBlockEntityMixin self = (AbstractFurnaceBlockEntityMixin) (Object) blockEntity;
-            if (level != null && !level.isClientSide() && level.getGameTime() % 5 == 0) {
+            if (level != null && !level.isClientSide()) {
                 ItemStack itemStack = blockEntity.getItem(0);
                 if (!itemStack.isEmpty() && self.quickCheck.getRecipeFor(
                         //#if MC <= 12006
@@ -112,7 +112,7 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
                             ServerPlayNetworking.send(
                                     (ServerPlayer) player,
                                     //#if MC >= 12005
-                                    new HighlightPayload(pos, color, 10)
+                                    new HighlightPayload(pos, color, 5)
                                     //#else
                                     //$$ IGNYServer.HIGHLIGHT_PACKET_ID,
                                     //$$ buf

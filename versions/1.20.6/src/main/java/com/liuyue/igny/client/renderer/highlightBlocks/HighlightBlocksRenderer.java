@@ -51,14 +51,14 @@ public class HighlightBlocksRenderer {
         Vec3 cameraPos = context.camera().getPosition();
         Tesselator tesselator = Tesselator.getInstance();
         BufferBuilder bufferBuilder = tesselator.getBuilder();
-        int renderDistance = mc.options.renderDistance().get() * 16;
-        double renderDistanceSq = renderDistance * renderDistance;
-        Vec3 playerPos = mc.player.position();
 
         for (var entry : HIGHLIGHTS.entrySet()) {
             BlockPos pos = entry.getKey();
             HighlightEntry data = entry.getValue();
-            if (!isWithinRenderDistance(pos, playerPos, renderDistanceSq)) return;
+            Vec3 offset = Vec3.atCenterOf(pos).subtract(cameraPos);
+            int renderDistance = mc.options.renderDistance().get() * 16;
+            Vec3 correction = new Vec3(offset.x(), offset.y(), offset.z());
+            if (correction.length() > renderDistance) continue;
 
             float a = ((data.color >> 24) & 0xFF) / 255.0f;
             float r = ((data.color >> 16) & 0xFF) / 255.0f;
@@ -85,14 +85,6 @@ public class HighlightBlocksRenderer {
         RenderSystem.enableDepthTest();
         RenderSystem.disableBlend();
         RenderSystem.enableCull();
-    }
-
-    private static boolean isWithinRenderDistance(BlockPos pos, Vec3 playerPos, double renderDistanceSq) {
-        double dx = pos.getX() + 0.5 - playerPos.x;
-        double dy = pos.getY() + 0.5 - playerPos.y;
-        double dz = pos.getZ() + 0.5 - playerPos.z;
-        double distanceSq = dx * dx + dy * dy + dz * dz;
-        return !(distanceSq > renderDistanceSq);
     }
 
     //#if MC < 12005
