@@ -1,7 +1,6 @@
 
 package com.liuyue.igny.mixins.features.rule;
 
-
 import com.liuyue.igny.IGNYServer;
 import com.liuyue.igny.tracker.RuleChangeTracker;
 import net.minecraft.server.MinecraftServer;

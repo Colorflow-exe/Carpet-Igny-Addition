@@ -81,6 +81,7 @@ public class HighlightBlocksRenderer {
     public static void removeHighlight(BlockPos pos){
         HIGHLIGHTS.remove(pos.immutable());
     }
+    public static void clearHighlight() {HIGHLIGHTS.clear();}
 
     private static void onWorldRender(WorldRenderContext context) {
         if (HIGHLIGHTS.isEmpty()) return;
