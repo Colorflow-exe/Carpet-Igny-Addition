@@ -130,5 +130,6 @@
   "carpet.rule.twoChangedRuleValueSetDefault.desc": "When changing a rule value with the /carpet command, if the new value is the same as the previous one, reset it to the default.",
   "carpet.rule.optimizedTNTErrorScopeFix.desc": "Fixes an issue where entities like Wind Charges have their explosions incorrectly optimized when optimizedTNT Rule is enabled.",
   "carpet.rule.furnaceHasIncombustibleHighlight.desc": "When the input slot of a furnace contains non-smeltable items, the furnace itself turns light red and becomes visible through blocks (X-ray highlight).",
-  "carpet.rule.furnaceHasIncombustibleHighlight.extra.0": "Requires this mod to be installed on the client side as well."
+  "carpet.rule.furnaceHasIncombustibleHighlight.extra.0": "Highlighting is not effective. The chunk where the furnace is located needs to be reloaded.",
+  "carpet.rule.furnaceHasIncombustibleHighlight.extra.1": "Requires this mod to be installed on the client side as well."
 }

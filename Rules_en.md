@@ -518,6 +518,8 @@ Fixes an issue where entities like Wind Charges have their explosions incorrectl
 
 When the input slot of a furnace contains non-smeltable items, the furnace itself turns light red and becomes visible through blocks (X-ray highlight).
 
+Highlighting is not effective. The chunk where the furnace is located needs to be reloaded.
+
 Requires this mod to be installed on the client side as well.
 
 - Type: `boolean`

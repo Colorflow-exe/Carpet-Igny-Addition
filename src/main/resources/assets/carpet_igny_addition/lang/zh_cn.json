@@ -181,5 +181,6 @@
   "carpet.rule.optimizedTNTErrorScopeFix.desc": "修复optimizedTNT规则启用时，错误优化风弹等实体爆炸的问题",
   "carpet.rule.furnaceHasIncombustibleHighlight.name": "熔炉含不可燃烧物高亮",
   "carpet.rule.furnaceHasIncombustibleHighlight.desc": "当熔炉的原料槽中含有不可燃烧的物品时，自身颜色变为淡红色，可透过方块显示",
-  "carpet.rule.furnaceHasIncombustibleHighlight.extra.0": "需要客户端同时安装有此MOD"
+  "carpet.rule.furnaceHasIncombustibleHighlight.extra.0": "高亮未生效需重新加载熔炉所在区块",
+  "carpet.rule.furnaceHasIncombustibleHighlight.extra.1": "需要客户端同时安装有此MOD"
 }
