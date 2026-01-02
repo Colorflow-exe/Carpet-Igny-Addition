@@ -2,6 +2,7 @@ package com.liuyue.igny.mixins.features.rule.simpleSoundSuppression;
 
 import com.liuyue.igny.exception.IAEUpdateSuppressException;
 import com.liuyue.igny.utils.RuleUtils;
+import com.liuyue.igny.utils.compat.CarpetTISCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
@@ -33,7 +34,13 @@ public class CalibratedSculkSensorVibrationUserMixin {
         if (component != null) {
             if (RuleUtils.canSoundSuppression(component.getString()) && cir.getReturnValueZ()) {
                 if (serverLevel.isClientSide()) return;
-                throw new IAEUpdateSuppressException("Sound Suppression Update Suppress triggered on " + serverLevel.dimension().location() + "[" + blockPos.getX() + "," + blockPos.getY() + "," + blockPos.getZ() + "]");
+                IAEUpdateSuppressException original = new IAEUpdateSuppressException(
+                        "Sound Suppression Update Suppress triggered on " +
+                                serverLevel.dimension().location() + "[" +
+                                blockPos.getX() + "," + blockPos.getY() + "," + blockPos.getZ() + "]"
+                );
+                Throwable wrapped = CarpetTISCompat.wrapIfNeeded(original, serverLevel, blockPos);
+                throw (RuntimeException) wrapped;
             }
         }
     }
