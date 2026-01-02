@@ -19,6 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+
 package com.liuyue.igny.mixins.features.commands.customItemMaxStackSize;
 
 import com.liuyue.igny.IGNYSettings;
@@ -52,17 +53,20 @@ public class ItemStackMixin {
         }
     }
 
+    //#if MC >= 12005
     @Inject(method = "limitSize", at = @At("HEAD"), cancellable = true)
     private void limitSize(int maxCount, CallbackInfo ci) {
         if ((CustomItemMaxStackSizeDataManager.hasCustomStack(thisStack.getItem()) || ShulkerBoxStackableRuleEnabled()) && !IGNYSettings.itemStackCountChanged.get()) {
             ci.cancel();
         }
     }
+    //#endif
 
     @Unique
     private boolean ShulkerBoxStackableRuleEnabled() {
+        boolean nbtStackable = CustomItemMaxStackSizeDataManager.hasCustomStack(thisStack.getItem());
         return Boolean.TRUE.equals(RuleUtils.getCarpetRulesValue("carpet-org-addition", "shulkerBoxStackable"))
                 && InventoryUtils.isShulkerBoxItem(thisStack)
-                && InventoryUtils.isEmptyShulkerBox(thisStack);
+                && (nbtStackable || InventoryUtils.isEmptyShulkerBox(thisStack));
     }
 }

@@ -28,7 +28,7 @@ import net.minecraft.world.entity.vehicle.MinecartHopper;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(value = MinecartHopper.class, priority = 1100)
-public class HopperMinecartEntityMixin {
+public class MinecartHopperMixin {
     @WrapMethod(method = "tick")
     private void tick(Operation<Void> original) {
         RuleUtils.itemStackableWrap(original::call);

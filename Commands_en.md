@@ -75,7 +75,7 @@
             - `remove <item>` Remove an item from the list.
             - `clear` Clear all filtered items for the current player.
 
-## Custom Item Max Stack Size (`/customItemMaxStackSize`)
+## Custom Item Max Stack Size (`/customItemMaxStackSize`) `🐛Beta`
 
 ### Syntax
 - `/customItemMaxStackSize`
@@ -92,4 +92,4 @@
     - `...remove <item>` Removes the custom stack size setting for a specified item.
     - `...clear` Clears all configured custom stack size rules.
     - `...list` Lists all currently active custom stack size settings.
-        - Hover over the item name to view its full ResourceLocation (Namespace ID).
+        - Cursor hover over the item name to view its full ResourceLocation (Namespace ID).

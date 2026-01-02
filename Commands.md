@@ -76,7 +76,7 @@
             - `remove <item>` 从列表中移除一个物品。
             - `clear` 清空当前玩家的所有过滤物品设置。
 
-## 自定义物品堆叠上限 (`/customItemMaxStackSize`)
+## 自定义物品堆叠上限 (`/customItemMaxStackSize`) `🐛Beta`
 
 ### 语法
 - `/customItemMaxStackSize`
@@ -93,4 +93,4 @@
     - `...remove <item>` 移除指定物品的自定义堆叠设置。
     - `...clear` 清空所有已设置的自定义物品堆叠规则。
     - `...list` 列出当前所有已生效的自定义堆叠设置。
-        - 悬浮在物品名称上可查看其完整物品ID。
+        - 鼠标指针悬浮在物品名称上可查看其完整物品ID。

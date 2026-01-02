@@ -41,7 +41,6 @@ import net.minecraft.world.level.block.CrafterBlock;
 //#else
 //$$ @Mixin(DummyClass.class)
 //#endif
-
 public class CrafterBlockMixin {
     @WrapOperation(method = "dispenseItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/entity/HopperBlockEntity;addItem(Lnet/minecraft/world/Container;Lnet/minecraft/world/Container;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/core/Direction;)Lnet/minecraft/world/item/ItemStack;"))
     private ItemStack dispenseItem(Container from, Container to, ItemStack stack, Direction side, Operation<ItemStack> original) {
