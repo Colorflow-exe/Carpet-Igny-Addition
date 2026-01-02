@@ -29,7 +29,8 @@ public abstract class CalibratedSculkSensorVibrationUserMixin {
     protected abstract int getBackSignal(Level level, BlockPos blockPos, BlockState blockState);
 
     @Unique
-    private boolean shouldThrow;
+    private static ThreadLocal<Boolean> shouldThrow = ThreadLocal.withInitial(() -> false);
+
     @Unique
     private CalibratedSculkSensorBlockEntity igny$blockEntity;
 
@@ -44,7 +45,7 @@ public abstract class CalibratedSculkSensorVibrationUserMixin {
         Component component = this.igny$blockEntity.components().get(DataComponents.CUSTOM_NAME);
         if (component != null) {
             if (RuleUtils.canSoundSuppression(component.getString()) && cir.getReturnValueZ() && !serverLevel.isClientSide()) {
-                shouldThrow = true;
+                shouldThrow.set(true);
                 this.getBackSignal(serverLevel, this.igny$blockEntity.getBlockPos(), this.igny$blockEntity.getBlockState());
             }
         }
@@ -52,9 +53,9 @@ public abstract class CalibratedSculkSensorVibrationUserMixin {
 
     @WrapOperation(method = "getBackSignal", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;getValue(Lnet/minecraft/world/level/block/state/properties/Property;)Ljava/lang/Comparable;"))
     private Comparable<?> getBackSignal(BlockState instance, Property<?> property, Operation<Comparable<?>> original, @Local(argsOnly = true) Level level, @Local(argsOnly = true) BlockPos blockPos) {
-        if (shouldThrow){
-            shouldThrow = false;
-            throw new IAEUpdateSuppressException(
+        if (shouldThrow.get()){
+            shouldThrow.set(false);
+            throw new IAEUpdateSuppressException(blockPos,
                     "Sound Suppression Update Suppress triggered on " +
                             level.dimension().location() + "[" +
                             blockPos.getX() + "," + blockPos.getY() + "," + blockPos.getZ() + "]"
