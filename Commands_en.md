@@ -79,17 +79,21 @@
 
 ### Syntax
 - `/customItemMaxStackSize`
-    - `...set <item> <count>`
-    - `...remove <item>`
+    - `...set`
+        - `<item>`
+        - `<count>`
+    - `...remove`
+        - `<item>`
     - `...clear`
     - `...list`
 
 ### Effect
 - `/customItemMaxStackSize` Modifies the maximum stack size for specific items.
-    - `...set <item> <count>` Sets the custom max stack size for a specified item.
+    - `...set` Sets the custom max stack size for a specified item.
         - `<item>`: The target item ID.
         - `<count>`: The stack size to set, ranging from 1 to 99.
-    - `...remove <item>` Removes the custom stack size setting for a specified item.
+    - `...remove` Removes the custom stack size setting for a specified item.
+        - `<item>`: The target item ID.
     - `...clear` Clears all configured custom stack size rules.
     - `...list` Lists all currently active custom stack size settings.
         - Cursor hover over the item name to view its full ResourceLocation (Namespace ID).

@@ -80,17 +80,21 @@
 
 ### 语法
 - `/customItemMaxStackSize`
-    - `...set <item> <count>`
-    - `...remove <item>`
+    - `...set`
+        - `<item>`
+        - `<count>`
+    - `...remove`
+        - `<item>` 
     - `...clear`
     - `...list`
 
 ### 效果
 - `/customItemMaxStackSize` 修改指定物品在游戏中的最大堆叠数量。
-    - `...set <item> <count>` 设置指定物品的最大堆叠上限。
+    - `...set` 设置指定物品的最大堆叠上限。
         - `<item>`: 目标物品 ID。
         - `<count>`: 设置的堆叠值，取值范围为 1~99。
-    - `...remove <item>` 移除指定物品的自定义堆叠设置。
+    - `...remove` 移除指定物品的自定义堆叠设置。
+        - `<item>`: 目标物品 ID。
     - `...clear` 清空所有已设置的自定义物品堆叠规则。
     - `...list` 列出当前所有已生效的自定义堆叠设置。
         - 鼠标指针悬浮在物品名称上可查看其完整物品ID。
