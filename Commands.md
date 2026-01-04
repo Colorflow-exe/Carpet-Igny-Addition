@@ -48,7 +48,7 @@
 ### 效果
 - 直接清空待处理的光照队列。
 
-## 自定义玩家拾取物品 (`/customPlayerPickupItem`) `🐛Beta`
+## 自定义玩家拾取物品 (`/customPlayerPickupItem`)
 
 ### 语法
 - `/customPlayerPickupItem`
@@ -76,7 +76,7 @@
             - `remove <item>` 从列表中移除一个物品。
             - `clear` 清空当前玩家的所有过滤物品设置。
 
-## 自定义物品堆叠上限 (`/customItemMaxStackSize`) `🐛Beta`
+## 自定义物品堆叠上限 (`/customItemMaxStackSize`)
 
 ### 语法
 - `/customItemMaxStackSize`
