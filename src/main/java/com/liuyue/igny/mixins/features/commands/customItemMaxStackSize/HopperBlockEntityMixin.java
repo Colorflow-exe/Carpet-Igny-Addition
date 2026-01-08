@@ -303,7 +303,7 @@ public abstract class HopperBlockEntityMixin extends BlockEntity {
         if (IGNYSettings.itemStackCountChanged.get()) {
             return original.call(from, to, stack, side);
         }
-        if (CustomItemMaxStackSizeDataManager.hasCustomStack(stack.getItem()) {
+        if (CustomItemMaxStackSizeDataManager.hasCustomStack(stack.getItem())) {
             ItemStack split = stack.split(stack.getMaxStackSize());
             int count = split.getCount();
             ItemStack result = original.call(from, to, split.copy(), side);
