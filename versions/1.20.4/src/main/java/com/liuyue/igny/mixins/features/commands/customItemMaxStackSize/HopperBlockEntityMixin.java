@@ -217,7 +217,7 @@ import java.util.stream.IntStream;
  */
 
 @SuppressWarnings("JavadocLinkAsPlainText")
-@Mixin(value = HopperBlockEntity.class, priority = 1100)
+@Mixin(value = HopperBlockEntity.class, priority = 900)
 public abstract class HopperBlockEntityMixin extends BlockEntity {
 
     public HopperBlockEntityMixin(BlockEntityType<?> type, BlockPos pos, BlockState state) {
