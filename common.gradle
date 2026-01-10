@@ -49,9 +49,6 @@ dependencies {
 
     // Carpet
     autoImplementation "carpet:fabric-carpet:${project.carpet_core_version}"
-
-    // SQLite JDBC
-    autoImplementation("maven.modrinth:minecraft-sqlite-jdbc:UAFoGR0O")
 }
 
 String MIXIN_CONFIG_PATH = 'carpet_igny_addition.mixins.json'

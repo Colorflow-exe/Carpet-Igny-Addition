@@ -385,7 +385,7 @@ public abstract class HopperBlockEntityMixin extends BlockEntity {
             ItemStack itemStack = blockEntity.getItem(i);
             if (!itemStack.isEmpty()) {
                 int prevCount = itemStack.getCount();
-                ItemStack itemStack2 = addItem(blockEntity, inventory, blockEntity.removeItem(i, itemStack.getItem().getDefaultMaxStackSize()), direction);
+                ItemStack itemStack2 = addItem(blockEntity, inventory, blockEntity.removeItem(i, 1), direction);
                 if (itemStack2.isEmpty()) {
                     inventory.setChanged();
                     hopperNoItemCost(world, pos, blockEntity, i, itemStack, prevCount);
