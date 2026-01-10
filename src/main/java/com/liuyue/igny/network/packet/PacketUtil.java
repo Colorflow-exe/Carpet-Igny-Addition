@@ -4,13 +4,18 @@ package com.liuyue.igny.network.packet;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 //#endif
-
 import net.minecraft.server.level.ServerPlayer;
-import java.util.Map;
 import com.liuyue.igny.IGNYServer;
 import com.liuyue.igny.data.CustomItemMaxStackSizeDataManager;
 import com.liuyue.igny.network.packet.config.SyncCustomStackSizePayload;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+//#if MC < 12005
+//$$ import net.minecraft.network.FriendlyByteBuf;
+//$$ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+//$$ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+//#endif
+
+import java.util.Map;
 
 public class PacketUtil {
     //#if MC >= 12005

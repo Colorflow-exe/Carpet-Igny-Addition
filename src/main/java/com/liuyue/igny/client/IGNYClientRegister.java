@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 //#if MC < 12005
 //$$ import com.liuyue.igny.IGNYServer;
 //$$ import net.minecraft.core.BlockPos;
+//$$ import java.util.Map;
 //#else
 //$$ import com.liuyue.igny.network.packet.block.HighlightPayload;
 //#endif
