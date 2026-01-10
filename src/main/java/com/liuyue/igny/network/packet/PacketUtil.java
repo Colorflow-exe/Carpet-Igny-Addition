@@ -1,10 +1,16 @@
 package com.liuyue.igny.network.packet;
 
 //#if MC >= 12005
-import com.liuyue.igny.IGNYServer;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 //#endif
+
+import net.minecraft.server.level.ServerPlayer;
+import java.util.Map;
+import com.liuyue.igny.IGNYServer;
+import com.liuyue.igny.data.CustomItemMaxStackSizeDataManager;
+import com.liuyue.igny.network.packet.config.SyncCustomStackSizePayload;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 public class PacketUtil {
     //#if MC >= 12005
@@ -18,4 +24,36 @@ public class PacketUtil {
         return new CustomPacketPayload.Type<>(identifier);
     }
     //#endif
+
+    public static void sendCustomStackSizeToClient(ServerPlayer player) {
+        Map<String, Integer> data = CustomItemMaxStackSizeDataManager.getCustomStacks();
+        if (data.isEmpty()) return;
+
+        if (ServerPlayNetworking.canSend(player,
+                //#if MC >= 12005
+                SyncCustomStackSizePayload.TYPE
+                //#else
+                //$$ IGNYServer.SYNC_STACK_SIZE_PACKET_ID
+                //#endif
+        )) {
+            //#if MC < 12005
+            //$$ FriendlyByteBuf buf = PacketByteBufs.create();
+            //$$ buf.writeVarInt(data.size());
+            //$$ data.forEach((id, count) -> {
+            //$$     buf.writeUtf(id);
+            //$$     buf.writeVarInt(count);
+            //$$ });
+            //#endif
+
+            ServerPlayNetworking.send(
+                    player,
+                    //#if MC >= 12005
+                    new SyncCustomStackSizePayload(data)
+                    //#else
+                    //$$ IGNYServer.SYNC_STACK_SIZE_PACKET_ID,
+                    //$$ buf
+                    //#endif
+            );
+        }
+    }
 }

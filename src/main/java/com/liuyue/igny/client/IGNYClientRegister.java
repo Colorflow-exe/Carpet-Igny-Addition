@@ -1,8 +1,10 @@
 package com.liuyue.igny.client;
 
 import com.liuyue.igny.client.renderer.highlightBlocks.HighlightBlocksRenderer;
+import com.liuyue.igny.data.CustomItemMaxStackSizeDataManager;
 import com.liuyue.igny.network.packet.block.HighlightPayload;
 import com.liuyue.igny.network.packet.block.RemoveHighlightPayload;
+import com.liuyue.igny.network.packet.config.SyncCustomStackSizePayload;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 //#if MC < 12005
 //$$ import com.liuyue.igny.IGNYServer;
@@ -51,6 +53,27 @@ public class IGNYClientRegister {
                 //#else
                 (payload, context) -> context.client().execute(() ->
                         HighlightBlocksRenderer.removeHighlight(payload.pos())
+                )
+                //#endif
+        );
+        ClientPlayNetworking.registerGlobalReceiver(
+                //#if MC < 12005
+                //$$ IGNYServer.SYNC_STACK_SIZE_PACKET_ID,
+                //#else
+                SyncCustomStackSizePayload.TYPE,
+                //#endif
+                //#if MC < 12005
+                //$$ (client, handler, buf, responseSender) -> {
+                //$$     int size = buf.readVarInt();
+                //$$     Map<String, Integer> map = new java.util.HashMap<>(size);
+                //$$     for (int i = 0; i < size; i++) {
+                //$$         map.put(buf.readUtf(), buf.readVarInt());
+                //$$     }
+                //$$     client.execute(() -> CustomItemMaxStackSizeDataManager.clientUpdateData(map));
+                //$$ }
+                //#else
+                (payload, context) -> context.client().execute(() ->
+                        CustomItemMaxStackSizeDataManager.clientUpdateData(payload.customStacks())
                 )
                 //#endif
         );

@@ -4,12 +4,14 @@ import carpet.CarpetExtension;
 import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
 import com.liuyue.igny.commands.*;
+import com.liuyue.igny.network.packet.PacketUtil;
 import com.liuyue.igny.utils.ComponentTranslate;
 import com.liuyue.igny.utils.CountRulesUtil;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 //#if MC < 12005
@@ -76,5 +78,10 @@ public class IGNYServer implements CarpetExtension {
     @Override
     public Map<String, String> canHasTranslations(String lang) {
         return ComponentTranslate.getTranslationFromResourcePath(lang);
+    }
+
+    @Override
+    public void onPlayerLoggedIn(ServerPlayer player) {
+        PacketUtil.sendCustomStackSizeToClient(player);
     }
 }

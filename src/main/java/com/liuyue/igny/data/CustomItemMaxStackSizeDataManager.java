@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.liuyue.igny.IGNYServer;
+import com.liuyue.igny.network.packet.PacketUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
@@ -62,7 +63,11 @@ public class CustomItemMaxStackSizeDataManager {
     public static void set(Item item, int count) {
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
         customStacks.put(id.toString(), count);
-        save();
+        currentServer.getPlayerList().getPlayers().forEach(PacketUtil::sendCustomStackSizeToClient);
+    }
+
+    public static void clientUpdateData(Map<String, Integer> newData) {
+        customStacks = new HashMap<>(newData);
     }
 
     public static void remove(Item item) {
