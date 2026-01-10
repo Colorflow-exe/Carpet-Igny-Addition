@@ -15,7 +15,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 
 //#if MC < 12005
 //$$ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
@@ -50,7 +51,7 @@ public abstract class LevelMixin {
             level.players().stream()
                     .filter(player -> player instanceof ServerPlayer)
                     .forEach(player -> {
-                        if (ServerPlayNetworking.canSend((ServerPlayer) player,
+                        if (ServerPlayNetworking.canSend(player,
                                 //#if MC >= 12005
                                 RemoveHighlightPayload.TYPE
                                 //#else
@@ -59,7 +60,7 @@ public abstract class LevelMixin {
 
                         )) {
                             ServerPlayNetworking.send(
-                                    (ServerPlayer) player,
+                                    player,
                                     //#if MC >= 12005
                                     new RemoveHighlightPayload(pos)
                                     //#else

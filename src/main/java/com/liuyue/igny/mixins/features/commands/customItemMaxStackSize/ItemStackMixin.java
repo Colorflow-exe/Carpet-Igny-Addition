@@ -61,9 +61,8 @@ public class ItemStackMixin {
 
     @Unique
     private boolean ShulkerBoxStackableRuleEnabled() {
-        boolean nbtStackable = CustomItemMaxStackSizeDataManager.hasCustomStack(thisStack.getItem());
         return Boolean.TRUE.equals(RuleUtils.getCarpetRulesValue("carpet-org-addition", "shulkerBoxStackable"))
                 && InventoryUtils.isShulkerBoxItem(thisStack)
-                && (nbtStackable || InventoryUtils.isEmptyShulkerBox(thisStack));
+                && InventoryUtils.isEmptyShulkerBox(thisStack);
     }
 }

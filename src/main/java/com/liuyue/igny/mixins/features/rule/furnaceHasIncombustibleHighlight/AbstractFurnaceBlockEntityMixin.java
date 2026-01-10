@@ -1,6 +1,7 @@
 package com.liuyue.igny.mixins.features.rule.furnaceHasIncombustibleHighlight;
 
 
+import com.liuyue.igny.IGNYServerMod;
 import com.liuyue.igny.IGNYSettings;
 import com.liuyue.igny.network.packet.block.HighlightPayload;
 
@@ -12,9 +13,8 @@ import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -29,16 +29,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-//#if MC >= 12102
-//$$ import net.minecraft.server.level.ServerLevel;
-//#else
 import net.minecraft.world.level.Level;
-//#endif
 
 //#if MC <= 12006
 //$$ import net.minecraft.world.Container;
-//#else
-import net.minecraft.world.item.crafting.SingleRecipeInput;
 //#endif
 
 //#if MC < 12005
@@ -47,7 +41,9 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 //$$ import com.liuyue.igny.IGNYServer;
 //#endif
 
-@Mixin(AbstractFurnaceBlockEntity.class)
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(value = AbstractFurnaceBlockEntity.class, priority = 990)
 public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
     @Shadow
     @Final
@@ -59,23 +55,32 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
     RecipeManager.CachedCheck<SingleRecipeInput, ? extends AbstractCookingRecipe> quickCheck;
     //#endif
 
+    //#if MC >= 12110
+    //$$ @Shadow int cookingTimer;
+    //#else
+    @Shadow int cookingProgress;
+    //#endif
+
+    @Shadow
+    protected abstract boolean isLit();
+
     @Unique
     public int highlightColor = 0x32FF0000;
 
 
     @Unique private static int counter = 0;
-    @Unique
-    public int id = 0;
+    @Unique public int id = 0;
+
+    @Unique private static ThreadLocal<Boolean> hookedIsLit = ThreadLocal.withInitial(() -> false);
 
     public AbstractFurnaceBlockEntityMixin(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState) {
         super(blockEntityType, blockPos, blockState);
     }
 
-    @Inject(method = "<init>", at = @At("TAIL"))
+    @Inject(method = "<init>", at = @At("RETURN"))
     private void onInit(BlockEntityType<?> blockEntityType, BlockPos blockPos, BlockState blockState, RecipeType<?> recipeType, CallbackInfo ci) {
         this.id = counter++;
     }
-
 
     @Inject(method = "setItem", at = @At("HEAD"))
     private void onSetItem(int slot, ItemStack itemStack, CallbackInfo ci) {
@@ -92,17 +97,15 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
                         //#endif
                         ,
                         serverLevel).isEmpty()) {
-                    this.sendHighlightToClient(
-                            serverLevel, this.worldPosition, this.highlightColor, true);
-                } else {
-                    this.removeHighlightToClient(
-                            serverLevel, this.worldPosition);
+                    this.sendHighlightToClient(serverLevel, this.worldPosition, this.highlightColor, true);
+                    return;
                 }
+                this.removeHighlightToClient(serverLevel, this.worldPosition);
             }
         }
     }
 
-    @Inject(method = "serverTick", at = @At("HEAD"))
+    @Inject(method = "serverTick", at = @At("HEAD"), cancellable = true)
     private static void onTick(
             //#if MC >= 12102
             //$$ ServerLevel level,
@@ -110,30 +113,60 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
             Level level,
             //#endif
             BlockPos blockPos, BlockState blockState, AbstractFurnaceBlockEntity blockEntity, CallbackInfo ci) {
+        if (blockEntity == null) return;
+        AbstractFurnaceBlockEntityMixin self = (AbstractFurnaceBlockEntityMixin) (Object) blockEntity;
+        ItemStack itemStack = blockEntity.getItem(0);
+        boolean hasRecipe = self.quickCheck.getRecipeFor(
+                //#if MC <= 12006
+                //$$ blockEntity
+                //#else
+                new SingleRecipeInput(itemStack)
+                //#endif
+                , level).isPresent();
         if (IGNYSettings.furnaceHasIncombustibleHighlight) {
-            if (blockEntity == null) return;
             if (level instanceof ServerLevel) {
-                AbstractFurnaceBlockEntityMixin self = (AbstractFurnaceBlockEntityMixin) (Object) blockEntity;
                 if (level != null && !level.isClientSide() && (level.getGameTime() + self.id) % 60 == 0) {
-                    ItemStack itemStack = blockEntity.getItem(0);
-                    if (!itemStack.isEmpty() && self.quickCheck.getRecipeFor(
-                            //#if MC <= 12006
-                            //$$ blockEntity
-                            //#else
-                            new SingleRecipeInput(itemStack)
-                            //#endif
-                            , level).isEmpty()) {
+                    if (!itemStack.isEmpty() && !hasRecipe) {
                         self.sendHighlightToClient(level, blockPos, self.highlightColor, false);
                     }
                 }
             }
+        }
+        if (IGNYServerMod.LITHIUM) {
+            if (!hasRecipe && self.igny$shouldSleep(blockState)) ci.cancel();
+        }
+    }
+
+    @Unique
+    private boolean igny$shouldSleep(BlockState state) {
+        return this.level != null && !this.isLit() &&
+                //#if MC >= 12110
+                //$$ this.cookingTimer == 0
+                //#else
+                this.cookingProgress == 0
+                //#endif
+                && (state.is(Blocks.FURNACE) || state.is(Blocks.BLAST_FURNACE) || state.is(Blocks.SMOKER));
+    }
+
+    @Inject(method = "serverTick", at = @At("RETURN"))
+    private static void onTick2(Level level, BlockPos blockPos, BlockState blockState, AbstractFurnaceBlockEntity abstractFurnaceBlockEntity, CallbackInfo ci){
+        if (IGNYServerMod.LITHIUM) {
+            hookedIsLit.set(true);
+        }
+    }
+
+    @Inject(method = "isLit", at = @At("RETURN"), cancellable = true)
+    private static void onIsLit(CallbackInfoReturnable<Boolean> cir){
+        if (IGNYServerMod.LITHIUM && hookedIsLit.get()){
+            cir.setReturnValue(true);
+            hookedIsLit.set(false);
         }
     }
 
     @Unique
     public void sendHighlightToClient(
             //#if MC >= 12102
-            //$$ ServerLevel world,
+            //$$ ServerLevel level,
             //#else
             Level level,
             //#endif
@@ -177,7 +210,7 @@ public abstract class AbstractFurnaceBlockEntityMixin extends BlockEntity {
     @Unique
     private void removeHighlightToClient(
             //#if MC >= 12102
-            //$$ ServerLevel world,
+            //$$ ServerLevel level,
             //#else
             Level level,
             //#endif
