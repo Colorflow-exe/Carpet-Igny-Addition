@@ -403,6 +403,11 @@ public abstract class HopperBlockEntityMixin extends BlockEntity {
         return false;
     }
 
+    /**
+     * 漏斗计数器相关逻辑
+     *
+     * @see <a href="https://github.com/gnembon/fabric-carpet/blob/master/src/main/java/carpet/mixins/HopperBlockEntity_counterMixin.java">漏斗计数器</a>
+     */
     @Unique
     private static boolean hopperCounters(Level world, BlockPos blockPos) {
         if (CarpetSettings.hopperCounters) {
