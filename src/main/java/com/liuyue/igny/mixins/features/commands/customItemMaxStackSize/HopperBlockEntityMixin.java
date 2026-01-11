@@ -1,6 +1,7 @@
 package com.liuyue.igny.mixins.features.commands.customItemMaxStackSize;
 
 import carpet.CarpetSettings;
+import carpet.helpers.HopperCounter;
 import carpet.utils.WoolTool;
 import com.liuyue.igny.IGNYServer;
 import com.liuyue.igny.IGNYServerMod;
@@ -371,8 +372,10 @@ public abstract class HopperBlockEntityMixin extends BlockEntity {
         return false;
     }
 
+
     @Unique
     private static boolean tryInsert(Level world, BlockPos pos, HopperBlockEntity blockEntity) {
+        if (hopperCounters(world, pos)) return true;
         Container inventory = getAttachedContainer(world, pos, blockEntity);
         if (inventory == null) {
             return false;
@@ -395,6 +398,32 @@ public abstract class HopperBlockEntityMixin extends BlockEntity {
                 if (prevCount == 1) {
                     blockEntity.setItem(i, itemStack);
                 }
+            }
+        }
+        return false;
+    }
+
+    @Unique
+    private static boolean hopperCounters(Level world, BlockPos blockPos) {
+        if (CarpetSettings.hopperCounters) {
+            Direction hopperFacing = world.getBlockState(blockPos).getValue(HopperBlock.FACING);
+            DyeColor woolColor = WoolTool.getWoolColorAtPosition(
+                    world,
+                    blockPos.relative(hopperFacing));
+            if (woolColor != null)
+            {
+                Container inventory = HopperBlockEntity.getContainerAt(world, blockPos);
+                if (inventory == null) return false;
+                for (int i = 0; i < inventory.getContainerSize(); ++i)
+                {
+                    if (!inventory.getItem(i).isEmpty())
+                    {
+                        ItemStack itemstack = inventory.getItem(i);//.copy();
+                        HopperCounter.getCounter(woolColor).add(world.getServer(), itemstack);
+                        inventory.setItem(i, ItemStack.EMPTY);
+                    }
+                }
+                return true;
             }
         }
         return false;
