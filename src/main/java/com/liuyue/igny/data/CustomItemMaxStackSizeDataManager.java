@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CustomItemMaxStackSizeDataManager {
+    //#if MC >= 12006
     public static final String JSON_FILE_NAME = "custom_item_max_stack_size.json";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static Map<String, Integer> customStacks = new HashMap<>();
@@ -88,4 +89,5 @@ public class CustomItemMaxStackSizeDataManager {
     public static int getCustomStackSize(Item item) {
         return customStacks.getOrDefault(BuiltInRegistries.ITEM.getKey(item).toString(), item.getDefaultMaxStackSize());
     }
+    //#endif
 }

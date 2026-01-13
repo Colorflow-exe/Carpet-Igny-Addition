@@ -13,24 +13,14 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-//#if MC >= 12111
-//$$ import net.minecraft.world.attribute.EnvironmentAttributes;
-//#endif
 
 @Mixin(IceBlock.class)
 public class IceBlockMixin {
-    @Inject(method = "playerDestroy",at = @At(value = "TAIL"))
+    @Inject(method = "playerDestroy",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;"), cancellable = true)
     private void spawnWater(Level level, Player player, BlockPos blockPos, BlockState blockState, BlockEntity blockEntity, ItemStack itemStack, CallbackInfo ci) {
         if (IGNYSettings.floatingIceWater) {
-            if (
-                    //#if MC >= 12111
-                    //$$ !(Boolean)level.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, blockPos)
-                    //#else
-                    !level.dimensionType().ultraWarm()
-                    //#endif
-            ) {
-                level.setBlockAndUpdate(blockPos, Blocks.WATER.defaultBlockState());
-            }
+            level.setBlockAndUpdate(blockPos, Blocks.WATER.defaultBlockState());
+            ci.cancel();
         }
     }
 }

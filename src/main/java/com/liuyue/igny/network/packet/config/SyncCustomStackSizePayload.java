@@ -1,6 +1,6 @@
 package com.liuyue.igny.network.packet.config;
 
-//#if MC >= 12005
+//#if MC >= 12006
 import com.liuyue.igny.network.packet.PacketUtil;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -12,11 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public record SyncCustomStackSizePayload(Map<String, Integer> customStacks)
-        //#if MC >= 12005
+        //#if MC >= 12006
         implements CustomPacketPayload
         //#endif
 {
-    //#if MC >= 12005
+    //#if MC >= 12006
     public static final Type<SyncCustomStackSizePayload> TYPE = PacketUtil.createId("sync_custom_stack_size");
 
     @Override

@@ -388,9 +388,11 @@ public class IGNYSettings
     )
     public static String commandCustomPlayerPickupItem = "false";
 
+    //#if MC >= 12006
     @Rule(
             categories = {IGNY, COMMAND, CREATIVE, FEATURE},
             options = {"false", "true", "ops", "0", "1", "2", "3", "4"}
     )
     public static String commandCustomItemMaxStackSize = "false";
+    //#endif
 }

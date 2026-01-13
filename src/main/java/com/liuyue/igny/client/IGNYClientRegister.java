@@ -57,6 +57,7 @@ public class IGNYClientRegister {
                 )
                 //#endif
         );
+        //#if MC >= 12006
         ClientPlayNetworking.registerGlobalReceiver(
                 //#if MC < 12005
                 //$$ IGNYServer.SYNC_STACK_SIZE_PACKET_ID,
@@ -78,5 +79,6 @@ public class IGNYClientRegister {
                 )
                 //#endif
         );
+        //#endif
     }
 }

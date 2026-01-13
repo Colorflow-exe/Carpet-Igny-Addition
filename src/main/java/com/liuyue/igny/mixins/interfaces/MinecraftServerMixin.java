@@ -20,7 +20,9 @@ public abstract class MinecraftServerMixin {
         if (server != null && server.isRunning()) {
             RuleChangeTracker.init(server);
             CustomPickupDataManager.setServer(server);
+            //#if MC >= 12006
             CustomItemMaxStackSizeDataManager.setServer(server);
+            //#endif
         }
     }
 }

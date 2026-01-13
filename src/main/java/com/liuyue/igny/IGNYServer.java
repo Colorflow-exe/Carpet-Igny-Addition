@@ -81,8 +81,10 @@ public class IGNYServer implements CarpetExtension {
         return ComponentTranslate.getTranslationFromResourcePath(lang);
     }
 
+    //#if MC >= 12006
     @Override
     public void onPlayerLoggedIn(ServerPlayer player) {
         PacketUtil.sendCustomStackSizeToClient(player);
     }
+    //#endif
 }

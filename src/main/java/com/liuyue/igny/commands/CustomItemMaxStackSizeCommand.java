@@ -22,6 +22,7 @@ import java.util.Map;
 
 public class CustomItemMaxStackSizeCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext) {
+        //#if MC >= 12006
         dispatcher.register(Commands.literal("customItemMaxStackSize")
                 .requires(source -> CommandPermissions.canUseCommand(source, IGNYSettings.commandCustomItemMaxStackSize))
                 .then(Commands.literal("set")
@@ -118,5 +119,6 @@ public class CustomItemMaxStackSizeCommand {
                             return 1;
                         }))
         );
+        //#endif
     }
 }
