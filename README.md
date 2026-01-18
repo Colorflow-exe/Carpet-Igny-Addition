@@ -25,13 +25,9 @@
 
 ## 文档（规则与指令旁边带有`🐛Beta`的标识即测试功能，只能在GitHub Action的最新构建里和下面的下载链接下载使用！！！）
 
-### 规则
-
-[所有规则](Rules.md)
-
-### 命令
-
-[所有命令](Commands.md)
+- [规则](docs/rules.md)
+- [命令](docs/commands.md)
+- [记录器](docs/log.md)
 
 ## 下载
 
