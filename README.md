@@ -27,7 +27,7 @@
 
 - [规则](docs/rules.md)
 - [命令](docs/commands.md)
-- [记录器](docs/log.md)
+- [记录器](docs/loggers.md)
 
 ## 下载
 

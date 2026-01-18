@@ -25,7 +25,7 @@
 
 - [Rules](docs/rules_en.md)
 - [Commands](docs/commands_en.md)
-- [Loggers](docs/log.md)
+- [Loggers](docs/loggers.md)
 
 ## Download
 
