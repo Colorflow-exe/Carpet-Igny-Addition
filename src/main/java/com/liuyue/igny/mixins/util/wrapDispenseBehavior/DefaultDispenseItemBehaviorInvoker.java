@@ -1,4 +1,4 @@
-package com.liuyue.igny.mixins.rule.disableTntDispense;
+package com.liuyue.igny.mixins.util.wrapDispenseBehavior;
 
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;

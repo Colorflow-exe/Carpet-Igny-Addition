@@ -1,6 +1,6 @@
 package com.liuyue.igny.helper;
 
-import com.liuyue.igny.mixins.rule.disableTntDispense.DefaultDispenseItemBehaviorInvoker;
+import com.liuyue.igny.mixins.util.wrapDispenseBehavior.DefaultDispenseItemBehaviorInvoker;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.world.item.ItemStack;
@@ -24,6 +24,8 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
 
     private final BiFunction<BlockSource, ItemStack, ItemStack> resultProcessor;
 
+    private final BiFunction<BlockSource, ItemStack, ItemStack> itemTransformer;
+
     public WrapDispenseItemBehavior(@NotNull DefaultDispenseItemBehavior originalBehavior) {
         this.originalBehavior = originalBehavior;
         this.beforeExecute = (source, stack) -> true;
@@ -31,6 +33,7 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
         this.preProcess = (source, stack) -> {};
         this.postProcess = (source, stack) -> {};
         this.resultProcessor = (source, stack) -> stack;
+        this.itemTransformer = (source, stack) -> stack;
     }
 
     private WrapDispenseItemBehavior(
@@ -39,13 +42,16 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
             BiFunction<BlockSource, ItemStack, ItemStack> beforeExecutor,
             BiConsumer<BlockSource, ItemStack> preProcess,
             BiConsumer<BlockSource, ItemStack> postProcess,
-            BiFunction<BlockSource, ItemStack, ItemStack> resultProcessor) {
+            BiFunction<BlockSource, ItemStack, ItemStack> resultProcessor,
+            BiFunction<BlockSource, ItemStack, ItemStack> itemTransformer
+            ) {
         this.originalBehavior = originalBehavior;
         this.beforeExecute = beforeExecute != null ? beforeExecute : (source, stack) -> true;
         this.beforeExecutor = beforeExecutor;
         this.preProcess = preProcess != null ? preProcess : (source, stack) -> {};
         this.postProcess = postProcess != null ? postProcess : (source, stack) -> {};
         this.resultProcessor = resultProcessor != null ? resultProcessor : (source, stack) -> stack;
+        this.itemTransformer = itemTransformer != null ? itemTransformer : (source, stack) -> stack;
     }
 
     @Override
@@ -59,8 +65,9 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
                 return beforeResult;
             }
         }
-        preProcess.accept(blockSource, item);
-        ItemStack result = ((DefaultDispenseItemBehaviorInvoker) originalBehavior).invokerExecute(blockSource, item);
+        ItemStack transformed = itemTransformer.apply(blockSource, item);
+        preProcess.accept(blockSource, transformed);
+        ItemStack result = ((DefaultDispenseItemBehaviorInvoker) originalBehavior).invokerExecute(blockSource, transformed);
         postProcess.accept(blockSource, result);
         return resultProcessor.apply(blockSource, result);
     }
@@ -76,6 +83,7 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
         private BiConsumer<BlockSource, ItemStack> preProcess;
         private BiConsumer<BlockSource, ItemStack> postProcess;
         private BiFunction<BlockSource, ItemStack, ItemStack> resultProcessor;
+        private BiFunction<BlockSource, ItemStack, ItemStack> itemTransformer;
 
         public Builder(@NotNull DefaultDispenseItemBehavior originalBehavior) {
             this.originalBehavior = originalBehavior;
@@ -106,6 +114,11 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
             return this;
         }
 
+        public Builder itemTransformer(BiFunction<BlockSource, ItemStack, ItemStack> transformer) {
+            this.itemTransformer = transformer;
+            return this;
+        }
+
         public WrapDispenseItemBehavior build() {
             return new WrapDispenseItemBehavior(
                     originalBehavior,
@@ -113,7 +126,8 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
                     beforeExecutor,
                     preProcess,
                     postProcess,
-                    resultProcessor
+                    resultProcessor,
+                    itemTransformer
             );
         }
     }
@@ -149,6 +163,14 @@ public class WrapDispenseItemBehavior extends DefaultDispenseItemBehavior {
             BiFunction<BlockSource, ItemStack, ItemStack> processor) {
         return new Builder(original)
                 .resultProcessor(processor)
+                .build();
+    }
+
+    public static WrapDispenseItemBehavior withItemTransformer(
+            @NotNull DefaultDispenseItemBehavior original,
+            BiFunction<BlockSource, ItemStack, ItemStack> processor) {
+        return new Builder(original)
+                .itemTransformer(processor)
                 .build();
     }
 }

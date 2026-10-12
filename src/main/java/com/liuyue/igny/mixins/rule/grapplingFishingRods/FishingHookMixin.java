@@ -198,8 +198,9 @@ public abstract class FishingHookMixin {
         }
         player.addDeltaMovement(pull.normalize().scale(3.0).add(0.0, 0.4, 0.0));
 
+
         if (player instanceof GrappleFallGuard guard) {
-            guard.igny$startGrappleImpulse(target);
+            guard.igny$startGrappleImpulse(new Vec3(target.x(), Math.min(target.y(), player.position().y()), target.z()));
         }
 
         //#if < 1.21.11

@@ -118,11 +118,11 @@ public abstract class TitleScreenMixin extends Screen {
 
     @Inject(method = "render", at = @At("HEAD")) //#replace >= 26.1 ? @Inject(method = "extractRenderState", at = @At("HEAD"))
     //#if >= 26.1
-    //$$ private void applyPclPhysics(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci)
+    //$$ private void applyPhysics(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci)
     //#elseif > 1.19.4
-    private void applyPclPhysics(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci)
+    private void applyPhysics(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick, CallbackInfo ci)
     //#else
-    //$$ private void applyPclPhysics(PoseStack poseStack, int mouseX, int mouseY, float partialTick, CallbackInfo ci)
+    //$$ private void applyPhysics(PoseStack poseStack, int mouseX, int mouseY, float partialTick, CallbackInfo ci)
     //#endif
     {
         if (!isAprilFoolsActive || !EasterEggDataManager.INSTANCE.isAprilFoolsActive()) return;

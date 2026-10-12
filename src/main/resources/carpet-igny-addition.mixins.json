@@ -119,7 +119,6 @@
     "rule.disableChunkBan.PacketEncoderMixin",
     "rule.disableChunkBan.Varint21LengthFieldPrependerMixin",
     "rule.disableSculkVeinGrowth.SculkSpreaderMixin",
-    "rule.disableTntDispense.DefaultDispenseItemBehaviorInvoker",
     "rule.disableTntDispense.DispenseItemBehaviorMixin",
     "rule.disableTripwireGenerateInstantScheduledTick.TripwireBlockMixin",
     "rule.disableWatchDog.ServerWatchdogMixin",
@@ -351,7 +350,6 @@
     "rule.teleportInheritMinecartsMotionReintroduced.EndPortalBlockMixin",
     "rule.teleportInheritMinecartsMotionReintroduced.EntityMixin",
     "rule.teleportInheritMinecartsMotionReintroduced.NetherPortalBlockMixin",
-    "rule.tridentMultipleDamageReintroduced.AbstractArrowMixin",
     "rule.theEndCanCreateNetherPortal.BaseFireBlockMixin",
     "rule.theEndTerrainMissingReintroduced.EndIslandDensityFunctionMixin",
     "rule.tntMinecartEmptyDamageSourceFix.EntityInvoker",
@@ -365,6 +363,7 @@
     "rule.trialSpawnerCoolDown.TrialSpawnerDataMixin",
     "rule.trialSpawnerCoolDown.TrialSpawnerMixin",
     "rule.trialSpawnerLoot.TrialSpawnerMixin",
+    "rule.tridentMultipleDamageReintroduced.AbstractArrowMixin",
     "rule.tripwireHookDupeReintroduced.TripWireHookBlockMixin",
     "rule.uncraftingTable.CrafterBlockEntityMixin",
     "rule.uncraftingTable.CrafterBlockMixin",
@@ -382,7 +381,8 @@
     "rule.windChargeNoBlockStateChange.ExplosionMixin",
     "rule.windChargeNoBlockStateChange.ServerExplosionMixin",
     "util.virtualDisplay.ChunkMapMixin",
-    "util.virtualDisplay.TrackedEntityMixin"
+    "util.virtualDisplay.TrackedEntityMixin",
+    "util.wrapDispenseBehavior.DefaultDispenseItemBehaviorInvoker"
   ],
   "client": [
     "easterEgg.ScreenAccessor",
