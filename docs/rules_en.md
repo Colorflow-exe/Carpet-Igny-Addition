@@ -1753,7 +1753,7 @@ Allows brittle ice to be generated where water meets blue ice.
 
 ## preventKickOnPacketError `🐛Beta` `MC>=26.4`
 
-Stops the server from kicking a player when a packet fails to be handled.
+Prevents the server from kicking a player after a packet handling exception is thrown and caught.
 
 - Type: `boolean`
 - Default Value: `false`

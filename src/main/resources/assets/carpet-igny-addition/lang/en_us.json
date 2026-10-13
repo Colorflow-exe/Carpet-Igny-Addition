@@ -394,5 +394,5 @@
   "carpet.rule.doubleAirDragReintroduced.desc": "Reintroduces double-precision air drag, reverting the changes made in 26.2-snapshot-6",
   "carpet.rule.allowBrittleIceGenerated.desc": "Allows brittle ice to be generated where water meets blue ice",
   "carpet.rule.allowBrittleIceGenerated.extra.0": "The exposed value generates it only in the open air, meaning nothing blocks the sky above that position",
-  "carpet.rule.preventKickOnPacketError.desc": "Stops the server from kicking a player when a packet fails to be handled"
+  "carpet.rule.preventKickOnPacketError.desc": "Prevents the server from kicking a player after a packet handling exception is thrown and caught"
 }

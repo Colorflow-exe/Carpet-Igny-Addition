@@ -577,6 +577,6 @@
   "carpet.rule.allowBrittleIceGenerated.name": "允许生成脆冰",
   "carpet.rule.allowBrittleIceGenerated.desc": "水与蓝冰接触时允许生成脆冰",
   "carpet.rule.allowBrittleIceGenerated.extra.0": "exposed表示只在露天条件下生成，即该位置上方没有被方块遮挡",
-  "carpet.rule.preventKickOnPacketError.name": "数据包错误不踢出玩家",
-  "carpet.rule.preventKickOnPacketError.desc": "数据包处理出错时不再把玩家踢出服务器"
+  "carpet.rule.preventKickOnPacketError.name": "网络数据包错误不踢出玩家",
+  "carpet.rule.preventKickOnPacketError.desc": "服务器在网络数据包处理中抛出并捕获异常后，不再将玩家踢出服务器"
 }
