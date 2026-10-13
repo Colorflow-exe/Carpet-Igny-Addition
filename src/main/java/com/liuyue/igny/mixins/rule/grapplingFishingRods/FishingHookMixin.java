@@ -143,8 +143,8 @@ public abstract class FishingHookMixin {
             return;
         }
 
-        double cx = Mth.clamp(next.x, border.getMinX(), border.getMaxX());
-        double cz = Mth.clamp(next.z, border.getMinZ(), border.getMaxZ());
+        double cx = Mth.clamp(next.x, border.getMinX(), border.getMaxX()); //#replace >= 26.4 ? double cx = Mth.clampedLerp(next.x, border.getMinX(), border.getMaxX());
+        double cz = Mth.clamp(next.z, border.getMinZ(), border.getMaxZ()); //#replace >= 26.4 ? double cz = Mth.clampedLerp(next.z, border.getMinZ(), border.getMaxZ());
         if (level.noCollision(self, self.getBoundingBox().move(cx - next.x, 0.0, cz - next.z))) {
             self.setPos(cx, next.y, cz);
         }

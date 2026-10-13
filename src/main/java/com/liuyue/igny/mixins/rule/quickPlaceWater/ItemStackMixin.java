@@ -45,7 +45,11 @@ public class ItemStackMixin {
         BlockState clickedState = level.getBlockState(clickedPos);
 
         BlockPos targetPos;
-        if (clickedState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(player, level, clickedPos, clickedState, Fluids.WATER)) //#replace <= 1.20.1 ? if (clickedState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(level, clickedPos, clickedState, Fluids.WATER))
+        //#case
+        //? >= 26.4 ? if (clickedState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(player, level, clickedPos, clickedState, Fluids.WATER.defaultFluidState()))
+        if (clickedState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(player, level, clickedPos, clickedState, Fluids.WATER)) //? >= 1.20.2
+        //?else if (clickedState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(level, clickedPos, clickedState, Fluids.WATER))
+        //#endcase
         {
             targetPos = clickedPos;
         } else {
@@ -53,7 +57,11 @@ public class ItemStackMixin {
         }
 
         BlockState targetState = level.getBlockState(targetPos);
-        boolean canPlaceInContainer = targetState.getBlock() instanceof LiquidBlockContainer lc && lc.canPlaceLiquid(player, level, targetPos, targetState, Fluids.WATER); //#replace <= 1.20.1 ? boolean canPlaceInContainer = targetState.getBlock() instanceof LiquidBlockContainer lc && lc.canPlaceLiquid(level, targetPos, targetState, Fluids.WATER);
+        //#case
+        //? >= 26.4 ? boolean canPlaceInContainer = targetState.getBlock() instanceof LiquidBlockContainer lc && lc.canPlaceLiquid(player, level, targetPos, targetState, Fluids.WATER.defaultFluidState());
+        boolean canPlaceInContainer = targetState.getBlock() instanceof LiquidBlockContainer lc && lc.canPlaceLiquid(player, level, targetPos, targetState, Fluids.WATER); //? >= 1.20.2
+        //?else boolean canPlaceInContainer = targetState.getBlock() instanceof LiquidBlockContainer lc && lc.canPlaceLiquid(level, targetPos, targetState, Fluids.WATER);
+        //#endcase
         boolean canReplace = targetState.canBeReplaced(Fluids.WATER);
 
         if (!targetState.isAir() && !canPlaceInContainer && !canReplace) {

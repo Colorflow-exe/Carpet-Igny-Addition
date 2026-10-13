@@ -4,11 +4,11 @@ import com.liuyue.igny.IGNYSettings;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +36,7 @@ public class FlowingFluidMixin {
         }
         FluidState currentFluid = level.getBlockState(pos).getFluidState();
         FluidState newFluid = state.getFluidState();
-        return (currentFluid.is(FluidTags.LAVA) && newFluid.is(FluidTags.WATER))
-                || (currentFluid.is(FluidTags.WATER) && newFluid.is(FluidTags.LAVA));
+        return (currentFluid.is(Fluids.LAVA) && newFluid.is(Fluids.WATER))
+                || (currentFluid.is(Fluids.WATER) && newFluid.is(Fluids.LAVA));
     }
 }

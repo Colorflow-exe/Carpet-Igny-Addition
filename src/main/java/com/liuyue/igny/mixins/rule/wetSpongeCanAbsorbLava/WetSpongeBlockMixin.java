@@ -4,12 +4,12 @@ import com.liuyue.igny.IGNYSettings;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 //?>= 1.21.2 ? import net.minecraft.world.level.redstone.Orientation;
@@ -155,6 +155,6 @@ public abstract class WetSpongeBlockMixin extends Block {
 
     @Unique
     private boolean shouldAbsorb(FluidState fluidState) {
-        return fluidState.is(FluidTags.LAVA) && IGNYSettings.WET_SPONGE_CAN_ABSORB_LAVA.value();
+        return fluidState.is(Fluids.LAVA) && IGNYSettings.WET_SPONGE_CAN_ABSORB_LAVA.value();
     }
 }
