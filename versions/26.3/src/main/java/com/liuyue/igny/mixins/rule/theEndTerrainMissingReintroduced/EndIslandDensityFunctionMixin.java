@@ -13,7 +13,7 @@ public class EndIslandDensityFunctionMixin {
     private static float modifyDoffs(float value, @Local(ordinal = 0, argsOnly = true) int sectionX, @Local(ordinal = 1, argsOnly = true) int sectionZ) {
         if (IGNYSettings.THE_END_TERRAIN_MISSING_REINTRODUCED.value()) {
             float doffs = 100.0F - Mth.sqrt(sectionX * sectionX + sectionZ * sectionZ) * 8.0F;
-            return Mth.clamp(doffs, -100.0F, 80.0F);
+            return Mth.clamp(doffs, -100.0F, 80.0F); //#replace >= 26.4 ? return Mth.clampedLerp(doffs, -100.0F, 80.0F);
         }
         return value;
     }
