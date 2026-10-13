@@ -573,5 +573,10 @@
   "carpet.rule.legacyBounceReintroduced.name": "重新引入低版本弹射",
   "carpet.rule.legacyBounceReintroduced.desc": "把可弹跳方块的弹射动量还原为低版本的纯反射公式，并恢复水平碰撞时清零被撞方向速度的行为，回退了26.2-snapshot-1的更改",
   "carpet.rule.doubleAirDragReintroduced.name": "重新引入双精度空气阻力",
-  "carpet.rule.doubleAirDragReintroduced.desc": "把空气阻力从float还原为double精度，回退了26.2-snapshot-6的更改"
+  "carpet.rule.doubleAirDragReintroduced.desc": "把空气阻力从float还原为double精度，回退了26.2-snapshot-6的更改",
+  "carpet.rule.allowBrittleIceGenerated.name": "允许生成脆冰",
+  "carpet.rule.allowBrittleIceGenerated.desc": "水与蓝冰接触时允许生成脆冰",
+  "carpet.rule.allowBrittleIceGenerated.extra.0": "exposed表示只在露天条件下生成，即该位置上方没有被方块遮挡",
+  "carpet.rule.preventKickOnPacketError.name": "数据包错误不踢出玩家",
+  "carpet.rule.preventKickOnPacketError.desc": "数据包处理出错时不再把玩家踢出服务器"
 }

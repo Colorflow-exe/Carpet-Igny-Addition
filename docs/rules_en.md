@@ -1740,3 +1740,22 @@ Reintroduces double-precision air drag, reverting the changes made in 26.2-snaps
 - Default Value: `false`
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
+
+## allowBrittleIceGenerated `🐛Beta` `MC>=26.4`
+
+Allows brittle ice to be generated where water meets blue ice.  
+`exposed` generates it only in the open air, meaning nothing blocks the sky above that position
+
+- Type: `String`
+- Default Value: `true`
+- Suggested Options: `false`, `true`, `exposed`
+- Categories: `IGNY`, `FEATURE`
+
+## preventKickOnPacketError `🐛Beta` `MC>=26.4`
+
+Stops the server from kicking a player when a packet fails to be handled.
+
+- Type: `boolean`
+- Default Value: `false`
+- Suggested Options: `false`, `true`
+- Categories: `IGNY`, `PORTING`, `FEATURE`

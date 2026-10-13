@@ -1742,3 +1742,22 @@ true: 物品展示框内含物品时将会隐形。
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
+
+## 允许生成脆冰 (allowBrittleIceGenerated) `🐛Beta` `MC>=26.4`
+
+水与蓝冰接触时允许生成脆冰。  
+`exposed`：只在露天条件下生成，即该位置上方没有被方块遮挡
+
+- 类型: `String`
+- 默认值: `true`
+- 参考选项: `false`, `true`, `exposed`
+- 分类: `IGNY`, `FEATURE`
+
+## 数据包错误不踢出玩家 (preventKickOnPacketError) `🐛Beta` `MC>=26.4`
+
+数据包处理出错时不再把玩家踢出服务器。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `PORTING`, `FEATURE`

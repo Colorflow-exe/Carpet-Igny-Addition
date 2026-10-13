@@ -1349,4 +1349,21 @@ public class IGNYSettings {
                     .build()
     );$$*/
     //#endif
+
+    //#if >= 26.4
+    /*$$public static final RuleAccessor<String> ALLOW_BRITTLE_ICE_GENERATED = register(
+            RuleFactory.of("allowBrittleIceGenerated", "true")
+                    .addCategories(FEATURE)
+                    .addOptions("false", "true", "exposed")
+                    .build()
+    );$$*/
+    //#endif
+
+    //#if >= 26.4
+    /*$$public static final RuleAccessor<Boolean> PREVENT_KICK_ON_PACKET_ERROR = register(
+            RuleFactory.of("preventKickOnPacketError", false)
+                    .addCategories(PORTING, FEATURE)
+                    .build()
+    );$$*/
+    //#endif
 }
