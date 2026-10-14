@@ -43,7 +43,7 @@ public class PointedDripstoneBlockMixin {
     @WrapOperation(method = "method_33280", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PointedDripstoneBlock;spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;)V")) //?else
     //#endcase
     //#case
-    //? >= 26.4 ? private static void spawnDripParticle(PointedDripstoneBlock instance, Level level, BlockPos pos, BlockState state, BlockPos pos2, Fluid fluid, Operation<Void> original, @Local(argsOnly = true, name = "fluidAbove") PointedDripstoneBlock.FluidInfo optional)
+    //? >= 26.4 ? private static void spawnDripParticle(PointedDripstoneBlock instance, Level level, BlockPos pos, BlockState state, BlockPos pos2, Fluid fluid, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional)
     //? >= 1.21.11 ? private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, BlockPos pos2, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional)
     private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional) //?else
     //#endcase

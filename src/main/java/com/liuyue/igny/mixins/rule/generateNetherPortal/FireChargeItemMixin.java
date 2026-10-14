@@ -22,8 +22,15 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(FireChargeItem.class)
 public abstract class FireChargeItemMixin {
     @Unique boolean flag;
+    //#if >= 26.4
+    /*$$@Shadow
+    protected static void playSound(Level level, BlockPos blockPos) {
+        throw new AssertionError();
+    }$$*/
+    //#else
     @Shadow
     protected abstract void playSound(Level level, BlockPos blockPos);
+    //#endif
 
     @WrapOperation(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/BaseFireBlock;canBePlacedAt(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/Direction;)Z"))
     private boolean onUseOn(Level level, BlockPos pos, Direction forwardDirection, Operation<Boolean> original, @Local(argsOnly = true) UseOnContext context) {
@@ -57,7 +64,7 @@ public abstract class FireChargeItemMixin {
                 .setValue(NetherPortalBlock.AXIS, portalAxis);
 
         level.setBlock(targetPos, portalState, 2);
-        this.playSound(level, targetPos);
+        this.playSound(level, targetPos); //#replace >= 26.4 ? playSound(level, targetPos);
 
         flag = true;
         return false;

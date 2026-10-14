@@ -60,10 +60,10 @@ public class PortalForcerMixin {
             method = "createPortal",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/util/Mth;clamp(III)I"
+                    target = "Lnet/minecraft/util/Mth;clamp(III)I" //#replace >= 26.4 ? target = "Ljava/lang/Math;clamp(JII)I"
             )
     )
-    private int wrapClamp(int value, int min, int max, Operation<Integer> original) {
+    private int wrapClamp(int value, int min, int max, Operation<Integer> original) { //#replace >= 26.4 ? private int wrapClamp(long value, int min, int max, Operation<Integer> original) {
         if (this.shouldForceRoof()) {
             int newMin = Math.max(min, ROOF_Y);
             if (newMin > max) {

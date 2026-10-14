@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(MobEffectInstance.class)
 public class MobEffectInstanceMixin {
     //#if >= 1.20.5
-    @WrapOperation(method = "<init>(Lnet/minecraft/core/Holder;IIZZZLnet/minecraft/world/effect/MobEffectInstance;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(III)I"))
-    private int init(int value, int min, int max, Operation<Integer> original, @Local(ordinal = 1, argsOnly = true) int amplifier) {
+    @WrapOperation(method = "<init>(Lnet/minecraft/core/Holder;IIZZZLnet/minecraft/world/effect/MobEffectInstance;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(III)I")) //#replace >= 26.4 ? @WrapOperation(method = "<init>(Lnet/minecraft/core/Holder;IIZZZLnet/minecraft/world/effect/MobEffectInstance;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Math;clamp(JII)I"))
+    private int init(int value, int min, int max, Operation<Integer> original, @Local(ordinal = 1, argsOnly = true) int amplifier) { //#replace >= 26.4 ? private int init(long value, int min, int max, Operation<Integer> original, @Local(ordinal = 1, argsOnly = true) int amplifier) {
         if (IGNYSettings.SUPER_EFFECT_LEVEL.value()) {
             return amplifier;
         }
