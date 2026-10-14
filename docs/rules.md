@@ -1175,7 +1175,7 @@ true: 物品展示框内含物品时将会隐形。
 
 ## 旁观者点击传送门传送 (spectatorClickPortalTeleport) `MC<26.3`
 
-玩家处于旁观者模式下点击下界传送门或末地传送门将会被传送到对应的维度。
+玩家处于旁观者模式下点击下界传送门或末地传送门将会被传送到对应的维度，移植自Minecraft 26.3-snapshot-4
 
 - 类型: `boolean`
 - 默认值: `false`
@@ -1761,3 +1761,21 @@ true: 物品展示框内含物品时将会隐形。
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
+
+## 唱片机播放列表 (jukeboxPlaylist) `🐛Beta` `MC<26.4`
+
+唱片机上方存在容器时，当前唱片播放结束后自动播放容器中的下一张唱片，移植自Minecraft 26.4-snapshot-4。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `PORTING`, `FEATURE`
+
+## 蜂蜜块可支撑方块 (honeyBlockSupportsBlocks) `🐛Beta` `MC<26.4`
+
+修复蜂蜜块无法像粘液块一样支撑方块的问题，移植自Minecraft 26.4-snapshot-4。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `PORTING`, `BUGFIX`

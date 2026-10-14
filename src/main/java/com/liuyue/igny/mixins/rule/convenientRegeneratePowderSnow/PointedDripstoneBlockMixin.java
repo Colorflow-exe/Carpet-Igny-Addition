@@ -15,6 +15,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+//#if >= 26.4
+/*$$import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import net.minecraft.core.particles.ParticleType;
+import org.spongepowered.asm.mixin.injection.Inject;$$*/
+//#endif
 
 @Mixin(PointedDripstoneBlock.class)
 public class PointedDripstoneBlockMixin {
@@ -32,19 +37,42 @@ public class PointedDripstoneBlockMixin {
     }
 
     //#case
+    //? >= 26.4 ? @WrapOperation(method = "lambda$spawnDripParticle$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PointedDripstoneBlock;spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/material/Fluid;)V"))
     //? >= 26.1 ? @WrapOperation(method = "lambda$spawnDripParticle$0", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PointedDripstoneBlock;spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)V"))
     //? >= 1.21.11 ? @WrapOperation(method = "method_33280", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PointedDripstoneBlock;spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)V"))
     @WrapOperation(method = "method_33280", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/PointedDripstoneBlock;spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;)V")) //?else
     //#endcase
-    private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional) //#replace >= 1.21.11 ? private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, BlockPos pos2, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional)
+    //#case
+    //? >= 26.4 ? private static void spawnDripParticle(PointedDripstoneBlock instance, Level level, BlockPos pos, BlockState state, BlockPos pos2, Fluid fluid, Operation<Void> original, @Local(argsOnly = true, name = "fluidAbove") PointedDripstoneBlock.FluidInfo optional)
+    //? >= 1.21.11 ? private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, BlockPos pos2, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional)
+    private static void spawnDripParticle(Level level, BlockPos pos, BlockState state, Fluid fluid, Operation<Void> original, @Local(argsOnly = true) PointedDripstoneBlock.FluidInfo optional) //?else
+    //#endcase
     {
         if (IGNYSettings.CONVENIENT_REGENERATE_POWDER_SNOW.value() && optional.sourceState().is(Blocks.POWDER_SNOW)) {
-            original.call(level, pos, optional.sourceState(), fluid); //#replace >= 1.21.11 ? original.call(level, pos, optional.sourceState(), fluid, pos2);
+            //#case
+            //? >= 26.4 ? original.call(instance, level, pos, optional.sourceState(), pos2, fluid);
+            //? >= 1.21.11 ? original.call(level, pos, optional.sourceState(), fluid, pos2);
+            original.call(level, pos, optional.sourceState(), fluid); //?else
+            //#endcase
             return;
         }
-        original.call(level, pos, state, fluid); //#replace >= 1.21.11 ? original.call(level, pos, state, fluid, pos2);
+        //#case
+        //? >= 26.4 ? original.call(instance, level, pos, state, pos2, fluid);
+        //? >= 1.21.11 ? original.call(level, pos, state, fluid, pos2);
+        original.call(level, pos, state, fluid); //?else
+        //#endcase
     }
 
+    //#if >= 26.4
+    /*$$@Inject(method = "getDripParticle", at = @At(value = "HEAD"), cancellable = true)
+    private void getDripParticle(Level level, Fluid fluid, BlockPos pos, CallbackInfoReturnable<ParticleType<?>> cir) {
+        if (IGNYSettings.CONVENIENT_REGENERATE_POWDER_SNOW.value() && level.getBlockState(pos).is(Blocks.POWDER_SNOW)) {
+            cir.setReturnValue(ParticleTypes.SNOWFLAKE);
+        }
+    }$$*/
+    //#endif
+
+    //#if <= 26.3
     @WrapOperation(method = "spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V")) //#replace >= 1.21.11 ? @WrapOperation(method = "spawnDripParticle(Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/material/Fluid;Lnet/minecraft/core/BlockPos;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     private static void addParticle(Level instance, ParticleOptions particle, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed, Operation<Void> original, @Local(argsOnly = true) BlockState blockState) {
         if (IGNYSettings.CONVENIENT_REGENERATE_POWDER_SNOW.value() && blockState.is(Blocks.POWDER_SNOW)) {
@@ -53,4 +81,5 @@ public class PointedDripstoneBlockMixin {
         }
         original.call(instance, particle, x, y, z, xSpeed, ySpeed, zSpeed);
     }
+    //#endif
 }

@@ -125,6 +125,7 @@
   "igny.prerequisite_rule": "rule needs to be enabled",
   "igny.syncmatica_not_permission": "No Permission",
   "igny.rule.confirm.pending": "Run the same command with the same value again within 60 seconds to apply %s = %s",
+  "igny.rule.record.playingNext": "Playing Next",
 
   "carpet.category.porting": "porting",
   "carpet.category.entertainment": "entertainment",
@@ -318,7 +319,7 @@
   "carpet.rule.scalableLuxCompatible.desc": "Prevents ScalableLux (StarLight) from recalculating lighting when loading chunks, and ensures compatibility with Carpet-TIS-Addition's lightUpdates rule",
   "carpet.rule.lightQueueBlockedCanLoadLightedChunk.desc": "Allows loading chunks whose lighting calculation has already been completed without waiting for the light queue to finish processing",
   "carpet.rule.playersKillDirectlyEnterXp.desc": "When a player kills a mob, the experience will be directly given to the player instead of being dropped as orbs",
-  "carpet.rule.spectatorClickPortalTeleport.desc": "While in spectator mode, clicking on a Nether portal or End portal will teleport the player to the corresponding dimension",
+  "carpet.rule.spectatorClickPortalTeleport.desc": "While in spectator mode, clicking on a Nether portal or End portal will teleport the player to the corresponding dimension, ported from Minecraft 26.3-snapshot-4",
   "carpet.rule.copperGolemDropOnlyNormal.desc": "When breaking a Copper Golem statue, only the STANDING form item will drop, other forms will not drop their specific items",
   "carpet.rule.theEndTerrainMissingReintroduced.desc": "Reintroduces the large gaps in distant End terrain generation, reverting the changes of 26.3-snapshot-6",
   "carpet.rule.spectatorKeepLeashConnectionReintroduced.desc": "Reintroduces keeping leash connections between players and entities when switching to spectator mode, reverting the changes of 25w33a",
@@ -394,5 +395,7 @@
   "carpet.rule.doubleAirDragReintroduced.desc": "Reintroduces double-precision air drag, reverting the changes made in 26.2-snapshot-6",
   "carpet.rule.allowBrittleIceGenerated.desc": "Allows brittle ice to be generated where water meets blue ice",
   "carpet.rule.allowBrittleIceGenerated.extra.0": "The exposed value generates it only in the open air, meaning nothing blocks the sky above that position",
-  "carpet.rule.preventKickOnPacketError.desc": "Prevents the server from kicking a player after a packet handling exception is thrown and caught"
+  "carpet.rule.preventKickOnPacketError.desc": "Prevents the server from kicking a player after a packet handling exception is thrown and caught",
+  "carpet.rule.jukeboxPlaylist.desc": "Plays the next disc from the container above once the current song ends, ported from Minecraft 26.4-snapshot-4",
+  "carpet.rule.honeyBlockSupportsBlocks.desc": "Fixes honey blocks not supporting blocks that can be placed against slime blocks, ported from Minecraft 26.4-snapshot-4"
 }

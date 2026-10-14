@@ -1366,4 +1366,18 @@ public class IGNYSettings {
                     .build()
     );$$*/
     //#endif
+
+    //#if < 26.4
+    public static final RuleAccessor<Boolean> JUKEBOX_PLAYLIST = register(
+            RuleFactory.of("jukeboxPlaylist", false)
+                    .addCategories(PORTING, FEATURE)
+                    .build()
+    );
+
+    public static final RuleAccessor<Boolean> HONEY_BLOCK_SUPPORTS_BLOCKS = register(
+            RuleFactory.of("honeyBlockSupportsBlocks", false)
+                    .addCategories(PORTING, BUGFIX)
+                    .build()
+    );
+    //#endif
 }

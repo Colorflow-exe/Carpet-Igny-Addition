@@ -1172,7 +1172,7 @@ When a player kills a mob, the experience will be directly given to the player i
 
 ## spectatorClickPortalTeleport `MC<26.3`
 
-While in spectator mode, clicking on a Nether portal or End portal will teleport the player to the corresponding dimension.
+While in spectator mode, clicking on a Nether portal or End portal will teleport the player to the corresponding dimension, ported from Minecraft 26.3-snapshot-4
 
 - Type: `boolean`
 - Default value: `false`
@@ -1759,3 +1759,21 @@ Prevents the server from kicking a player after a packet handling exception is t
 - Default Value: `false`
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
+
+## jukeboxPlaylist `🐛Beta` `MC<26.4`
+
+Plays the next disc from the container above once the current song ends, ported from Minecraft 26.4-snapshot-4.
+
+- Type: `boolean`
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `IGNY`, `PORTING`, `FEATURE`
+
+## honeyBlockSupportsBlocks `🐛Beta` `MC<26.4`
+
+Fixes honey blocks not supporting blocks that can be placed against slime blocks, ported from Minecraft 26.4-snapshot-4.
+
+- Type: `boolean`
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `IGNY`, `PORTING`, `BUGFIX`

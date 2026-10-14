@@ -124,6 +124,7 @@
   "igny.prerequisite_rule": "规则未启用",
   "igny.syncmatica_not_permission": "权限不足",
   "igny.rule.confirm.pending": "请在60秒内以相同的值再次执行同一条命令，以应用 %s = %s",
+  "igny.rule.record.playingNext": "即将播放",
 
   "carpet.category.porting": "移植",
   "carpet.category.entertainment": "娱乐",
@@ -445,7 +446,7 @@
   "carpet.rule.playersKillDirectlyEnterXp.name": "玩家击杀直接获得经验",
   "carpet.rule.playersKillDirectlyEnterXp.desc": "当玩家击杀生物时将不会掉落经验而是直接给予玩家",
   "carpet.rule.spectatorClickPortalTeleport.name": "旁观者点击传送门传送",
-  "carpet.rule.spectatorClickPortalTeleport.desc": "玩家处于旁观者模式下点击下界传送门或末地传送门将会被传送到对应的维度",
+  "carpet.rule.spectatorClickPortalTeleport.desc": "玩家处于旁观者模式下点击下界传送门或末地传送门将会被传送到对应的维度，移植自Minecraft 26.3-snapshot-4",
   "carpet.rule.copperGolemDropOnlyNormal.name": "铜傀儡仅掉落正常形态",
   "carpet.rule.copperGolemDropOnlyNormal.desc": "破坏铜傀儡时只掉落正常形态(STANDING)，不会出现其他形态的掉落物",
   "carpet.rule.theEndTerrainMissingReintroduced.name": "重新引入末地缺失地形",
@@ -578,5 +579,9 @@
   "carpet.rule.allowBrittleIceGenerated.desc": "水与蓝冰接触时允许生成脆冰",
   "carpet.rule.allowBrittleIceGenerated.extra.0": "exposed表示只在露天条件下生成，即该位置上方没有被方块遮挡",
   "carpet.rule.preventKickOnPacketError.name": "网络数据包错误不踢出玩家",
-  "carpet.rule.preventKickOnPacketError.desc": "服务器在网络数据包处理中抛出并捕获异常后，不再将玩家踢出服务器"
+  "carpet.rule.preventKickOnPacketError.desc": "服务器在网络数据包处理中抛出并捕获异常后，不再将玩家踢出服务器",
+  "carpet.rule.jukeboxPlaylist.name": "唱片机播放列表",
+  "carpet.rule.jukeboxPlaylist.desc": "唱片机上方存在容器时，当前唱片播放结束后自动播放容器中的下一张唱片，移植自Minecraft 26.4-snapshot-4",
+  "carpet.rule.honeyBlockSupportsBlocks.name": "蜂蜜块可支撑方块",
+  "carpet.rule.honeyBlockSupportsBlocks.desc": "修复蜂蜜块无法像粘液块一样支撑方块的问题，移植自Minecraft 26.4-snapshot-4"
 }
