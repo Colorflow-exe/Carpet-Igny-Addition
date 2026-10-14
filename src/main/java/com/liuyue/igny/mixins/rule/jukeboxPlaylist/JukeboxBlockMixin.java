@@ -21,6 +21,10 @@ public abstract class JukeboxBlockMixin extends BaseEntityBlock {
 
     @Inject(method = "getTicker", at = @At(value = "HEAD"), cancellable = true)
     private <T extends BlockEntity> void igny$alwaysTickForPlaylist(Level level, BlockState state, BlockEntityType<T> type, CallbackInfoReturnable<BlockEntityTicker<T>> cir) {
-        cir.setReturnValue(createTickerHelper(type, BlockEntityType.JUKEBOX, JukeboxBlockEntity::tick)); //#replace >= 26.2 ? cir.setReturnValue(createTickerHelper(type, net.minecraft.world.level.block.entity.BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tick));
+        //#case
+        //? >= 26.2 ? cir.setReturnValue(createTickerHelper(type, net.minecraft.world.level.block.entity.BlockEntityTypes.JUKEBOX, JukeboxBlockEntity::tick));
+        //? < 1.21.1 ? cir.setReturnValue(createTickerHelper(type, BlockEntityType.JUKEBOX, JukeboxBlockEntity::playRecordTick));
+        cir.setReturnValue(createTickerHelper(type, BlockEntityType.JUKEBOX, JukeboxBlockEntity::tick)); //?else
+        //#endcase
     }
 }

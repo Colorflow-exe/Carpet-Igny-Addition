@@ -28,18 +28,12 @@ public abstract class JukeboxBlockEntityMixin extends BlockEntity implements Juk
         super(type, pos, blockState);
     }
 
-    //#case
-    //? >= 1.21.1 ? @Inject(method = "tick", at = @At(value = "RETURN"))
-    @Inject(method = "playRecordTick", at = @At(value = "RETURN")) //?else
-    //#endcase
+    @Inject(method = "tick", at = @At(value = "RETURN")) //#replace < 1.21.1 ? @Inject(method = "playRecordTick", at = @At(value = "RETURN"))
     private static void igny$jukeboxPlaylistTick(Level level, BlockPos pos, BlockState state, JukeboxBlockEntity jukebox, CallbackInfo ci) {
         if (level.isClientSide() || !IGNYSettings.JUKEBOX_PLAYLIST.value()) {
             return;
         }
-        //#case
-        //? >= 1.21.1 ? if (!jukebox.getSongPlayer().isPlaying()) {
-        if (!jukebox.isRecordPlaying()) { //?else
-        //#endcase
+        if (!jukebox.getSongPlayer().isPlaying()) { //#replace < 1.21.1 ? if (!jukebox.isRecordPlaying()) {
             igny$advancePlaylist(level, pos, jukebox);
         }
     }
@@ -55,6 +49,18 @@ public abstract class JukeboxBlockEntityMixin extends BlockEntity implements Juk
     @Inject(method = "loadAdditional", at = @At(value = "RETURN"))
     private void igny$loadPlaylistPosition(net.minecraft.world.level.storage.ValueInput input, CallbackInfo ci) {
         input.getInt("playlist_position").ifPresent(value -> this.igny$playlistPosition = value);
+    }$$*/
+    //#elseif >= 1.21.5
+    /*$$@Inject(method = "saveAdditional", at = @At(value = "RETURN"))
+    private void igny$savePlaylistPosition(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries, CallbackInfo ci) {
+        if (this.igny$playlistPosition >= 0) {
+            tag.putInt("playlist_position", this.igny$playlistPosition);
+        }
+    }
+
+    @Inject(method = "loadAdditional", at = @At(value = "RETURN"))
+    private void igny$loadPlaylistPosition(CompoundTag tag, net.minecraft.core.HolderLookup.Provider registries, CallbackInfo ci) {
+        tag.getInt("playlist_position").ifPresent(value -> this.igny$playlistPosition = value);
     }$$*/
     //#else
     @Inject(method = "saveAdditional", at = @At(value = "RETURN"))
@@ -109,16 +115,10 @@ public abstract class JukeboxBlockEntityMixin extends BlockEntity implements Juk
         if (slot < 0) {
             return;
         }
-        //#case
-        //? >= 1.20.4 ? ItemStack current = jukebox.getTheItem();
-        ItemStack current = jukebox.getItem(0); //?else
-        //#endcase
+        ItemStack current = jukebox.getTheItem(); //#replace < 1.20.4 ? ItemStack current = jukebox.getItem(0);
         ItemStack taken = container.getItem(slot).copy();
         container.setItem(slot, current.copy());
-        //#case
-        //? >= 1.20.4 ? jukebox.setTheItem(taken);
-        jukebox.setItem(0, taken); //?else
-        //#endcase
+        jukebox.setTheItem(taken); //#replace < 1.20.4 ? jukebox.setItem(0, taken);
         self.igny$setPlaylistPosition(slot);
         BlockState blockState = jukebox.getBlockState();
         level.sendBlockUpdated(pos, blockState, blockState, Block.UPDATE_CLIENTS);

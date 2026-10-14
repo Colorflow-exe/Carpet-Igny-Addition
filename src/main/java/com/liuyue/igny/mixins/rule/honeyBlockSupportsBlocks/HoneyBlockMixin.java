@@ -11,6 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
+@SuppressWarnings("deprecation")
 @Mixin(HoneyBlock.class)
 public abstract class HoneyBlockMixin extends HalfTransparentBlock {
     protected HoneyBlockMixin(Properties properties) {
@@ -23,7 +24,7 @@ public abstract class HoneyBlockMixin extends HalfTransparentBlock {
     }
 
     @Override
-    protected @NotNull VoxelShape getBlockSupportShape(BlockState state, BlockGetter level, BlockPos pos) {
+    public @NotNull VoxelShape getBlockSupportShape(BlockState state, BlockGetter level, BlockPos pos) {
         return IGNYSettings.HONEY_BLOCK_SUPPORTS_BLOCKS.value() ?
                 Shapes.block() : super.getBlockSupportShape(state, level, pos);
     }
