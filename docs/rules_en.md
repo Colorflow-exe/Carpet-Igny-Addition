@@ -1705,7 +1705,7 @@ Set all rules to enabled: boolean rules are set to true, string and enum rules p
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `ENTERTAINMENT`, `FEATURE`
 
-## tridentMultipleDamageReintroduced `🐛Beta`
+## tridentMultipleDamageReintroduced
 
 Reintroduces the behavior where the same thrown trident can damage multiple entities repeatedly, reverting the change made in 25w44a.
 
@@ -1714,7 +1714,7 @@ Reintroduces the behavior where the same thrown trident can damage multiple enti
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
 
-## windChargeNoBlockStateChange `🐛Beta`
+## windChargeNoBlockStateChange
 
 Wind charges and wind burst no longer change block states, and will not knock down hanging entities such as item frames as a result.
 
@@ -1723,7 +1723,7 @@ Wind charges and wind burst no longer change block states, and will not knock do
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `SURVIVAL`, `FEATURE`
 
-## legacyBounceReintroduced `🐛Beta` `MC>=26.2`
+## legacyBounceReintroduced `MC>=26.2`
 
 Reintroduces the pure-reflection bounce momentum for bouncy blocks and restores zeroing the collided axis on horizontal collision, reverting the changes made in 26.2-snapshot-1.
 
@@ -1732,7 +1732,7 @@ Reintroduces the pure-reflection bounce momentum for bouncy blocks and restores 
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
 
-## doubleAirDragReintroduced `🐛Beta` `MC>=26.2`
+## doubleAirDragReintroduced `MC>=26.2`
 
 Reintroduces double-precision air drag, reverting the changes made in 26.2-snapshot-6.
 
@@ -1741,7 +1741,7 @@ Reintroduces double-precision air drag, reverting the changes made in 26.2-snaps
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
 
-## allowBrittleIceGenerated `🐛Beta` `MC>=26.4`
+## allowBrittleIceGenerated `MC>=26.4`
 
 Allows brittle ice to be generated where water meets blue ice.  
 `exposed` generates it only in the open air, meaning nothing blocks the sky above that position
@@ -1751,7 +1751,7 @@ Allows brittle ice to be generated where water meets blue ice.
 - Suggested Options: `false`, `true`, `exposed`
 - Categories: `IGNY`, `FEATURE`
 
-## preventKickOnPacketError `🐛Beta` `MC>=26.4`
+## preventKickOnPacketError `MC>=26.4`
 
 Prevents the server from kicking a player after a packet handling exception is thrown and caught.
 
@@ -1760,7 +1760,7 @@ Prevents the server from kicking a player after a packet handling exception is t
 - Suggested Options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
 
-## jukeboxPlaylist `🐛Beta` `MC<26.4`
+## jukeboxPlaylist `MC<26.4`
 
 Plays the next disc from the container above once the current song ends, ported from Minecraft 26.4-snapshot-4.
 
@@ -1769,7 +1769,7 @@ Plays the next disc from the container above once the current song ends, ported 
 - Suggested options: `false`, `true`
 - Categories: `IGNY`, `PORTING`, `FEATURE`
 
-## honeyBlockSupportsBlocks `🐛Beta` `MC<26.4`
+## honeyBlockSupportsBlocks `MC<26.4`
 
 Fixes honey blocks not supporting blocks that can be placed against slime blocks, ported from Minecraft 26.4-snapshot-4.
 

@@ -1707,7 +1707,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `ENTERTAINMENT`, `FEATURE`
 
-## 重新引入三叉戟多次伤害实体 (tridentMultipleDamageReintroduced) `🐛Beta`
+## 重新引入三叉戟多次伤害实体 (tridentMultipleDamageReintroduced)
 
 重新引入同一把投掷的三叉戟可重复对多个实体造成伤害的行为，回退了25w44a的更改。
 
@@ -1716,7 +1716,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
 
-## 风弹不改变方块状态 (windChargeNoBlockStateChange) `🐛Beta`
+## 风弹不改变方块状态 (windChargeNoBlockStateChange)
 
 风弹和风爆附魔不再改变方块状态，也不会因此打落展示框之类的悬挂实体。
 
@@ -1725,7 +1725,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `SURVIVAL`, `FEATURE`
 
-## 重新引入低版本弹射 (legacyBounceReintroduced) `🐛Beta` `MC>=26.2`
+## 重新引入低版本弹射 (legacyBounceReintroduced) `MC>=26.2`
 
 把可弹跳方块的弹射动量还原为低版本的纯反射公式，并恢复水平碰撞时清零被撞方向速度的行为，回退了26.2-snapshot-1的更改。
 
@@ -1734,7 +1734,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
 
-## 重新引入双精度空气阻力 (doubleAirDragReintroduced) `🐛Beta` `MC>=26.2`
+## 重新引入双精度空气阻力 (doubleAirDragReintroduced) `MC>=26.2`
 
 把空气阻力从float还原为double精度，回退了26.2-snapshot-6的更改。
 
@@ -1743,7 +1743,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
 
-## 允许生成脆冰 (allowBrittleIceGenerated) `🐛Beta` `MC>=26.4`
+## 允许生成脆冰 (allowBrittleIceGenerated) `MC>=26.4`
 
 水与蓝冰接触时允许生成脆冰。  
 `exposed`：只在露天条件下生成，即该位置上方没有被方块遮挡
@@ -1753,7 +1753,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`, `exposed`
 - 分类: `IGNY`, `FEATURE`
 
-## 网络数据包错误不踢出玩家 (preventKickOnPacketError) `🐛Beta` `MC>=26.4`
+## 网络数据包错误不踢出玩家 (preventKickOnPacketError) `MC>=26.4`
 
 服务器在网络数据包处理中抛出并捕获异常后，不再将玩家踢出服务器。
 
@@ -1762,7 +1762,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
 
-## 唱片机播放列表 (jukeboxPlaylist) `🐛Beta` `MC<26.4`
+## 唱片机播放列表 (jukeboxPlaylist) `MC<26.4`
 
 唱片机上方存在容器时，当前唱片播放结束后自动播放容器中的下一张唱片，移植自Minecraft 26.4-snapshot-4。
 
@@ -1771,7 +1771,7 @@ true: 物品展示框内含物品时将会隐形。
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `PORTING`, `FEATURE`
 
-## 蜂蜜块可支撑方块 (honeyBlockSupportsBlocks) `🐛Beta` `MC<26.4`
+## 蜂蜜块可支撑方块 (honeyBlockSupportsBlocks) `MC<26.4`
 
 修复蜂蜜块无法像粘液块一样支撑方块的问题，移植自Minecraft 26.4-snapshot-4。
 
