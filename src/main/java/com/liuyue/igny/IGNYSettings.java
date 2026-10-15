@@ -1377,6 +1377,7 @@ public class IGNYSettings {
     public static final RuleAccessor<Boolean> HONEY_BLOCK_SUPPORTS_BLOCKS = register(
             RuleFactory.of("honeyBlockSupportsBlocks", false)
                     .addCategories(PORTING, BUGFIX)
+                    .setClient()
                     .build()
     );
     //#endif

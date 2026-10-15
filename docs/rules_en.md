@@ -1776,4 +1776,4 @@ Fixes honey blocks not supporting blocks that can be placed against slime blocks
 - Type: `boolean`
 - Default value: `false`
 - Suggested options: `false`, `true`
-- Categories: `IGNY`, `PORTING`, `BUGFIX`
+- Categories: `IGNY`, `CLIENT`, `PORTING`, `BUGFIX`
