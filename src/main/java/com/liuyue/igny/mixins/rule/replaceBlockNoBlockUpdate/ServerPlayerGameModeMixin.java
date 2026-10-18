@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerPlayerGameMode;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.FluidState;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,7 +33,10 @@ public class ServerPlayerGameModeMixin {
         }
         try {
             FluidState fluidState = instance.getFluidState(pos);
-            return instance.setBlock(pos, fluidState.createLegacyBlock(), Block.UPDATE_CLIENTS | Block.UPDATE_IMMEDIATE | Block.UPDATE_KNOWN_SHAPE | (b ? Block.UPDATE_MOVE_BY_PISTON : 0));
+            return instance.setBlock(pos, IGNYSettings.CREATIVE_DESTROY_WATERLOGGED_BLOCK_NO_WATER.value()
+                    ? Blocks.AIR.defaultBlockState()
+                    : fluidState.createLegacyBlock(),
+                    Block.UPDATE_CLIENTS | Block.UPDATE_IMMEDIATE | Block.UPDATE_KNOWN_SHAPE | (b ? Block.UPDATE_MOVE_BY_PISTON : 0));
         } finally {
             ReplaceBlockNoBlockUpdateHelper.markActive();
         }

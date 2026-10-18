@@ -4,12 +4,12 @@ import com.liuyue.igny.helper.inventory.LinkedContainer;
 import com.liuyue.igny.manager.LinkedContainerManager;
 import com.liuyue.igny.network.packet.config.LinkedChestContentPayload;
 import com.liuyue.igny.network.packet.config.SyncLinkedEnderChestPayload;
-import net.minecraft.core.BlockPos;
 //#if >= 1.20.5
 import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;
 import com.liuyue.igny.network.packet.replaceBlockNoBlockUpdate.StartReplacePayload;
 //#else
-/*$$import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;$$*/
+/*$$import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;
+import net.minecraft.core.BlockPos;$$*/
 //#endif
 import com.liuyue.igny.utils.interfaces.linkableEnderChest.ViewingChest;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;

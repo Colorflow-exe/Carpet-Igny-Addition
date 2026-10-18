@@ -11,6 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
 
+@SuppressWarnings("deprecation")
 @Mixin(HoneyBlock.class)
 public abstract class HoneyBlockMixin extends HalfTransparentBlock {
     protected HoneyBlockMixin(Properties properties) {
