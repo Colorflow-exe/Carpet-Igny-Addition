@@ -4,6 +4,13 @@ import com.liuyue.igny.helper.inventory.LinkedContainer;
 import com.liuyue.igny.manager.LinkedContainerManager;
 import com.liuyue.igny.network.packet.config.LinkedChestContentPayload;
 import com.liuyue.igny.network.packet.config.SyncLinkedEnderChestPayload;
+import net.minecraft.core.BlockPos;
+//#if >= 1.20.5
+import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;
+import com.liuyue.igny.network.packet.replaceBlockNoBlockUpdate.StartReplacePayload;
+//#else
+/*$$import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;$$*/
+//#endif
 import com.liuyue.igny.utils.interfaces.linkableEnderChest.ViewingChest;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,6 +29,26 @@ public class IGNYServerRegister {
         registerNetworkPackReceiver();
     }
     private static void registerNetworkPackReceiver() {
+        //#if >= 1.20.5
+        ServerPlayNetworking.registerGlobalReceiver(
+                StartReplacePayload.TYPE,
+                (payload, context) -> {
+                    if (IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()) {
+                        ReplaceBlockNoBlockUpdateHelper.recordIntent(context.player().getUUID(), payload.pos());
+                    }
+                }
+        );
+        //#else
+        /*$$ServerPlayNetworking.registerGlobalReceiver(
+                IGNYServer.START_REPLACE_PACKET_ID,
+                (server, player, impl, buf, sender) -> {
+                    BlockPos pos = buf.readBlockPos();
+                    if (IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()) {
+                        ReplaceBlockNoBlockUpdateHelper.recordIntent(player.getUUID(), pos);
+                    }
+                }
+        );$$*/
+        //#endif
         ServerPlayNetworking.registerGlobalReceiver(
                 SyncLinkedEnderChestPayload.TYPE, //#replace < 1.20.5 ? IGNYServer.SYNC_LINKED_ENDER_CHEST_PACKET_ID,
                 (payload, context) -> { //#replace < 1.20.5 ? (server, player, impl, buf, sender) -> {

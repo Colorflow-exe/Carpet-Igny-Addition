@@ -583,5 +583,8 @@
   "carpet.rule.jukeboxPlaylist.name": "唱片机播放列表",
   "carpet.rule.jukeboxPlaylist.desc": "唱片机上方存在容器时，当前唱片播放结束后自动播放容器中的下一张唱片，移植自Minecraft 26.4-snapshot-4",
   "carpet.rule.honeyBlockSupportsBlocks.name": "蜂蜜块可支撑方块",
-  "carpet.rule.honeyBlockSupportsBlocks.desc": "修复蜂蜜块无法像粘液块一样支撑方块的问题，移植自Minecraft 26.4-snapshot-4"
+  "carpet.rule.honeyBlockSupportsBlocks.desc": "修复蜂蜜块无法像粘液块一样支撑方块的问题，移植自Minecraft 26.4-snapshot-4",
+  "carpet.rule.replaceBlockNoBlockUpdate.name": "替换方块无方块更新",
+  "carpet.rule.replaceBlockNoBlockUpdate.desc": "通过基于破坏方块的同时放置方块实现的替换方块可不触发方块更新",
+  "carpet.rule.replaceBlockNoBlockUpdate.extra.0": "仅在创造模式可用"
 }

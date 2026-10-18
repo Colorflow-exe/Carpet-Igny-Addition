@@ -397,5 +397,7 @@
   "carpet.rule.allowBrittleIceGenerated.extra.0": "The exposed value generates it only in the open air, meaning nothing blocks the sky above that position",
   "carpet.rule.preventKickOnPacketError.desc": "Prevents the server from kicking a player after a packet handling exception is thrown and caught",
   "carpet.rule.jukeboxPlaylist.desc": "Plays the next disc from the container above once the current song ends, ported from Minecraft 26.4-snapshot-4",
-  "carpet.rule.honeyBlockSupportsBlocks.desc": "Fixes honey blocks not supporting blocks that can be placed against slime blocks, ported from Minecraft 26.4-snapshot-4"
+  "carpet.rule.honeyBlockSupportsBlocks.desc": "Fixes honey blocks not supporting blocks that can be placed against slime blocks, ported from Minecraft 26.4-snapshot-4",
+  "carpet.rule.replaceBlockNoBlockUpdate.desc": "Replacing blocks by placing while destroying does not trigger block updates",
+  "carpet.rule.replaceBlockNoBlockUpdate.extra.0": "Only available in creative mode"
 }

@@ -1777,3 +1777,13 @@ Fixes honey blocks not supporting blocks that can be placed against slime blocks
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `IGNY`, `CLIENT`, `PORTING`, `BUGFIX`
+
+## replaceBlockNoBlockUpdate `🐛Beta`
+
+Replacing blocks by placing while destroying does not trigger block updates.  
+Only available in creative mode.
+
+- Type: `boolean`
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `IGNY`, `CREATIVE`, `CLIENT`, `FEATURE`

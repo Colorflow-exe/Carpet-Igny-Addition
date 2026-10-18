@@ -1381,4 +1381,11 @@ public class IGNYSettings {
                     .build()
     );
     //#endif
+
+    public static final RuleAccessor<Boolean> REPLACE_BLOCK_NO_BLOCK_UPDATE = register(
+            RuleFactory.of("replaceBlockNoBlockUpdate", false)
+                    .addCategories(CREATIVE, FEATURE)
+                    .setClient()
+                    .build()
+    );
 }

@@ -1779,3 +1779,13 @@ true: 物品展示框内含物品时将会隐形。
 - 默认值: `false`
 - 参考选项: `false`, `true`
 - 分类: `IGNY`, `CLIENT`, `PORTING`, `BUGFIX`
+
+## 替换方块无方块更新 (replaceBlockNoBlockUpdate) `🐛Beta`
+
+通过基于破坏方块的同时放置方块实现的替换方块可不触发方块更新。  
+仅在创造模式可用。
+
+- 类型: `boolean`
+- 默认值: `false`
+- 参考选项: `false`, `true`
+- 分类: `IGNY`, `CREATIVE`, `CLIENT`, `FEATURE`
