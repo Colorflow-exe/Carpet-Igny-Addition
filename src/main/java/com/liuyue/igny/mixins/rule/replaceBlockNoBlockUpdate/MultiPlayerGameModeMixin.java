@@ -87,11 +87,13 @@ public abstract class MultiPlayerGameModeMixin {
     private void igny$sendBreakPacket(LocalPlayer player, InteractionHand hand, BlockHitResult result,
                                       CallbackInfoReturnable<InteractionResult> cir) {
         BlockPos pos = ReplaceBlockNoBlockUpdateHelper.takeReplacing();
-        if (pos == null || !(player.getItemInHand(hand).getItem() instanceof BlockItem blockItem)) {
+        BlockState placed = ReplaceBlockNoBlockUpdateHelper.takePlaced();
+        ReplaceBlockNoBlockUpdateHelper.clearActive();
+        if (pos == null || placed == null) {
             return;
         }
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.level == null || minecraft.level.getBlockState(pos).getBlock() != blockItem.getBlock()) {
+        if (minecraft.level == null || minecraft.level.getBlockState(pos).getBlock() != placed.getBlock()) {
             return;
         }
         igny$startPrediction(minecraft.level, sequence -> new ServerboundPlayerActionPacket(

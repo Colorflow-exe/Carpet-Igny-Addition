@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -39,9 +40,15 @@ public class BlockItemMixin {
     )
     private int igny$noBlockUpdate(int flags) {
         if (ReplaceBlockNoBlockUpdateHelper.isActive()) {
-            ReplaceBlockNoBlockUpdateHelper.clearActive();
             return Block.UPDATE_CLIENTS | Block.UPDATE_IMMEDIATE | Block.UPDATE_KNOWN_SHAPE;
         }
         return flags;
+    }
+
+    @Inject(method = "placeBlock", at = @At(value = "RETURN"))
+    private void igny$markPlaced(BlockPlaceContext context, BlockState state, CallbackInfoReturnable<Boolean> cir) {
+        if (cir.getReturnValueZ() && ReplaceBlockNoBlockUpdateHelper.isActive()) {
+            ReplaceBlockNoBlockUpdateHelper.markPlaced(state);
+        }
     }
 }
