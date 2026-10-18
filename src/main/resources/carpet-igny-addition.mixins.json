@@ -409,6 +409,7 @@
     "rule.killFakePlayerRemoveVehicle.IntegratedServerMixin",
     "rule.linkableEnderChest.compat.quickshulker.AbstractContainerScreenMixin",
     "rule.playerLowHungryValueCanSprint.LocalPlayerMixin",
+    "rule.replaceBlockNoBlockUpdate.ClientPacketListenerMixin",
     "rule.replaceBlockNoBlockUpdate.MultiPlayerGameModeMixin",
     "rule.spectatorCanOperateContainer.CrafterScreenMixin",
     "rule.spectatorCanOperateContainer.GuiMixin",

@@ -34,8 +34,7 @@ public class IGNYServerRegister {
                 StartReplacePayload.TYPE,
                 (payload, context) -> {
                     if (IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()) {
-                        ReplaceBlockNoBlockUpdateHelper.recordIntent(context.player().getUUID(), payload.pos(),
-                                context.player().serverLevel().getGameTime());
+                        ReplaceBlockNoBlockUpdateHelper.recordIntent(context.player().getUUID(), payload.pos());
                     }
                 }
         );
@@ -45,8 +44,7 @@ public class IGNYServerRegister {
                 (server, player, impl, buf, sender) -> {
                     BlockPos pos = buf.readBlockPos();
                     if (IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()) {
-                        ReplaceBlockNoBlockUpdateHelper.recordIntent(player.getUUID(), pos,
-                                player.getLevel().getGameTime());
+                        ReplaceBlockNoBlockUpdateHelper.recordIntent(player.getUUID(), pos);
                     }
                 }
         );$$*/
