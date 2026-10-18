@@ -1,6 +1,7 @@
 package com.liuyue.igny.mixins.rule.replaceBlockNoBlockUpdate;
 
 import com.liuyue.igny.IGNYSettings;
+import com.liuyue.igny.helper.replaceBlockNoBlockUpdate.ReplaceBlockNoBlockUpdateHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.MultiPlayerGameMode;
@@ -44,6 +45,8 @@ public class MultiPlayerGameModeMixin {
         buf.writeBlockPos(pos);
         ClientPlayNetworking.send(IGNYServer.START_REPLACE_PACKET_ID, buf);$$*/
         //#endif
+        ReplaceBlockNoBlockUpdateHelper.openClientWindow(minecraft.player.getUUID(), pos,
+                minecraft.level.getGameTime());
     }
 
     @Unique

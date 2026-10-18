@@ -28,7 +28,7 @@ public class ServerPlayerGameModeMixin {
     @WrapOperation(method = "destroyBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerLevel;removeBlock(Lnet/minecraft/core/BlockPos;Z)Z"))
     private boolean igny$replaceWithoutUpdate(ServerLevel instance, BlockPos pos, boolean b, Operation<Boolean> original) {
         if (!IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()
-                || !ReplaceBlockNoBlockUpdateHelper.matchesIntent(this.player.getUUID(), pos)) {
+                || !ReplaceBlockNoBlockUpdateHelper.consumeIntent(this.player.getUUID(), pos, instance.getGameTime())) {
             return original.call(instance, pos, b);
         }
         try {

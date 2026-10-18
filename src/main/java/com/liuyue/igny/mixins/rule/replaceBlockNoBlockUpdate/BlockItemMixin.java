@@ -21,7 +21,8 @@ public class BlockItemMixin {
         if (player == null || !IGNYSettings.REPLACE_BLOCK_NO_BLOCK_UPDATE.value()) {
             return;
         }
-        if (ReplaceBlockNoBlockUpdateHelper.matchesIntent(player.getUUID(), context.getClickedPos())) {
+        if (ReplaceBlockNoBlockUpdateHelper.withinWindow(player.getUUID(), context.getClickedPos(),
+                context.getLevel().getGameTime())) {
             ReplaceBlockNoBlockUpdateHelper.markActive();
         }
     }
