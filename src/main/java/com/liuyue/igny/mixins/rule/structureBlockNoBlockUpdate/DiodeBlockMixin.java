@@ -1,6 +1,7 @@
 package com.liuyue.igny.mixins.rule.structureBlockNoBlockUpdate;
 
 import com.liuyue.igny.IGNYSettings;
+import com.liuyue.igny.helper.structureBlockNoBlockUpdate.StructureNoUpdateSession;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DiodeBlock;
@@ -14,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DiodeBlockMixin {
     @Inject(method = "checkTickOnNeighbor", at = @At("HEAD"), cancellable = true)
     private void checkTickOnNeighbor(Level level, BlockPos blockPos, BlockState blockState, CallbackInfo ci) {
-        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value() && IGNYSettings.noUpdatePos.contains(blockPos)) {
+        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value() && StructureNoUpdateSession.covers(level, blockPos)) {
             ci.cancel();
         }
     }

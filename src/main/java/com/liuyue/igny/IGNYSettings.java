@@ -14,14 +14,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.liuyue.igny.utils.IGNYRuleCategory.*;
 
 public class IGNYSettings {
     public static final ThreadLocal<Boolean> CREATIVE_BREAKING = ThreadLocal.withInitial(() -> false);
     public static Set<String> CRAMMING_ENTITIES = ConcurrentHashMap.newKeySet();
-    public static List<BlockPos> noUpdatePos = new CopyOnWriteArrayList<>();
     public static final Map<String, List<String>> MOD_RULE_TREE = new ConcurrentHashMap<>();
     public static final Map<String, String> RULE_SOURCE = new ConcurrentHashMap<>();
     public static final ThreadLocal<Boolean> fakePlayerSpawnMemoryLeakFix = ThreadLocal.withInitial(() -> false);

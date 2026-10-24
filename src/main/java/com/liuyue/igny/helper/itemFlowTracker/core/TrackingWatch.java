@@ -83,6 +83,9 @@ public final class TrackingWatch {
     }
 
     public static List<PendingBlock> drainPending(ServerLevel level) {
+        if (PENDING.isEmpty()) {
+            return List.of();
+        }
         List<PendingBlock> drained = new ArrayList<>();
         Iterator<PendingBlock> it = PENDING.iterator();
 
@@ -99,6 +102,9 @@ public final class TrackingWatch {
     }
 
     public static List<TrailHop> drainTrailHops(ServerLevel level) {
+        if (PENDING_TRAILS.isEmpty()) {
+            return List.of();
+        }
         List<TrailHop> drained = new ArrayList<>();
         Iterator<TrailHop> it = PENDING_TRAILS.iterator();
 

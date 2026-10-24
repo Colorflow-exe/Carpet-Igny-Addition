@@ -224,7 +224,7 @@ public class VaultTask implements ITask {
                     currentFakePlayer.connection.onDisconnect(new DisconnectionDetails(Component.literal("Vault cleanup"))); //#replace <= 1.20.6 ? currentFakePlayer.connection.onDisconnect(Component.literal("Vault cleanup"));
                 }
             } catch (Exception e) {
-                IGNYServer.LOGGER.error(e.getStackTrace());
+                IGNYServer.LOGGER.error("Failed to clean up the fake player for {}", playerName, e);
             } finally {
                 currentFakePlayer = null;
             }
@@ -259,7 +259,7 @@ public class VaultTask implements ITask {
                     stop();
                 }
             } catch (Exception e) {
-                IGNYServer.LOGGER.error(e.getStackTrace());
+                IGNYServer.LOGGER.error("Failed to spawn the fake player for {}", playerName, e);
                 stop();
             }
         } else {
@@ -297,7 +297,7 @@ public class VaultTask implements ITask {
                     stageTickCounter = 0;
                 }
             } catch (Exception e) {
-                IGNYServer.LOGGER.error(e.getStackTrace());
+                IGNYServer.LOGGER.error("Failed to start right clicking for {}", playerName, e);
                 currentStage = Stage.LOGGING_OUT;
                 stageTickCounter = 0;
             }

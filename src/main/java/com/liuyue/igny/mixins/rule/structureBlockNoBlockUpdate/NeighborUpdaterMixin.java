@@ -1,6 +1,7 @@
 package com.liuyue.igny.mixins.rule.structureBlockNoBlockUpdate;
 
 import com.liuyue.igny.IGNYSettings;
+import com.liuyue.igny.helper.structureBlockNoBlockUpdate.StructureNoUpdateSession;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -18,14 +19,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public interface NeighborUpdaterMixin {
     @Inject(method = "executeShapeUpdate", at = @At("HEAD"), cancellable = true)
     private static void executeShapeUpdate(LevelAccessor levelAccessor, Direction direction, BlockState blockState, BlockPos blockPos, BlockPos blockPos2, int i, int j, CallbackInfo ci) { //#replace >= 1.21.2 ? private static void executeShapeUpdate(LevelAccessor levelAccessor, Direction direction, BlockPos blockPos, BlockPos blockPos2, BlockState blockState, int i, int j, CallbackInfo ci) {
-        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value() && (IGNYSettings.noUpdatePos.contains(blockPos)|| IGNYSettings.noUpdatePos.contains(blockPos2))) ci.cancel();
+        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value()
+                && (StructureNoUpdateSession.covers(levelAccessor, blockPos)
+                || StructureNoUpdateSession.covers(levelAccessor, blockPos2))) {
+            ci.cancel();
+        }
     }
 
     @SuppressWarnings("all")
     @Inject(method = "executeUpdate", at = @At("HEAD"), cancellable = true)
     private static void executeUpdate(Level level, BlockState blockState, BlockPos blockPos, Block block, BlockPos blockPos2, boolean bl, CallbackInfo ci) { //#replace >= 1.21.2 ? private static void executeUpdate(Level level, BlockState blockState, BlockPos blockPos, Block block, Orientation orientation, boolean bl, CallbackInfo ci) {
-        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value() && (IGNYSettings.noUpdatePos.contains(blockPos)
-                || IGNYSettings.noUpdatePos.contains(blockPos2) //?< 1.21.2
+        if (IGNYSettings.STRUCTURE_BLOCK_NO_BLOCK_UPDATE.value() && (StructureNoUpdateSession.covers(level, blockPos)
+                || StructureNoUpdateSession.covers(level, blockPos2) //?< 1.21.2
         )) {
             ci.cancel();
             return;

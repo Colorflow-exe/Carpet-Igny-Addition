@@ -66,9 +66,15 @@ public final class PathTrails {
     }
 
     private static void tickHops(ServerLevel level) {
+        List<TrackingWatch.TrailHop> hops = TrackingWatch.drainTrailHops(level);
+
+        if (hops.isEmpty()) {
+            return;
+        }
+
         Map<TrackMark, List<Leg>> legs = new LinkedHashMap<>();
 
-        for (TrackingWatch.TrailHop hop : TrackingWatch.drainTrailHops(level)) {
+        for (TrackingWatch.TrailHop hop : hops) {
             List<Leg> markLegs = legs.computeIfAbsent(hop.mark(), ignored -> new ArrayList<>());
             Leg previous = markLegs.isEmpty() ? null : markLegs.getLast();
 
@@ -158,6 +164,11 @@ public final class PathTrails {
                 }
 
                 markers.clear();
+                it.remove();
+                continue;
+            }
+
+            if (markers.isEmpty()) {
                 it.remove();
                 continue;
             }

@@ -23,7 +23,8 @@ public class IGNYServerMod implements ModInitializer {
         for (ModContainer modContainer : FabricLoader.getInstance().getAllMods()) {
             ModMetadata metadata = modContainer.getMetadata();
             Collection<ModDependency> dependencies = metadata.getDependencies();
-            if (dependencies.stream().map(ModDependency::getModId).toList().contains("carpet") || metadata.getId().equals("carpet")){
+            boolean dependsOnCarpet = dependencies.stream().anyMatch(dependency -> "carpet".equals(dependency.getModId()));
+            if (dependsOnCarpet || metadata.getId().equals("carpet")) {
                 mods.add(metadata.getId());
             }
         }

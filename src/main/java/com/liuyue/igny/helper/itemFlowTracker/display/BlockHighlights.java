@@ -90,11 +90,13 @@ public final class BlockHighlights {
     private static void apply(ServerLevel level, BlockPos pos, TrackMark mark) {
         ResourceKey<Level> dimension = level.dimension();
         TrackingWatch.Watch watch = TrackingWatch.blocks(dimension).get(pos);
-        BlockPos anchor = anchorOf(level, pos);
+        BlockPos other = ContainerUtil.partner(level, pos);
+        BlockPos anchor = other == null || pos.compareTo(other) <= 0 ? pos : other;
+        BlockPos mate = anchor == pos ? other : pos;
         HighlightEntry tracked = DISPLAYS.get(dimension, anchor);
 
         if (tracked != null) {
-            if (mark.equals(tracked.mark) || stillHolds(level, anchor, tracked.mark)) {
+            if (mark.equals(tracked.mark) || stillHolds(level, anchor, mate, tracked.mark)) {
                 tracked.sync();
                 move(dimension, watch, anchor);
                 return;
@@ -104,12 +106,10 @@ public final class BlockHighlights {
         HighlightEntry fresh = new HighlightEntry();
         fresh.mark = mark;
 
-        BlockPos other = ContainerUtil.partner(level, anchor);
-
         if (other == null) {
             highlight(fresh, level, anchor, mark);
         } else {
-            wide(fresh, level, anchor, other, mark);
+            wide(fresh, level, anchor, mate, mark);
         }
 
         DISPLAYS.put(dimension, anchor, fresh);
@@ -121,8 +121,8 @@ public final class BlockHighlights {
         move(dimension, watch, anchor);
     }
 
-    private static boolean stillHolds(ServerLevel level, BlockPos anchor, @Nullable TrackMark mark) {
-        Container container = containerAt(level, anchor);
+    private static boolean stillHolds(ServerLevel level, BlockPos anchor, @Nullable BlockPos mate, @Nullable TrackMark mark) {
+        Container container = containerAt(level, anchor, mate);
         return container != null && mark != null && Nesting.holds(container, mark);
     }
 
@@ -215,11 +215,14 @@ public final class BlockHighlights {
 
     @Nullable
     private static Container containerAt(ServerLevel level, BlockPos pos) {
+        return containerAt(level, pos, ContainerUtil.partner(level, pos));
+    }
+
+    @Nullable
+    private static Container containerAt(ServerLevel level, BlockPos pos, @Nullable BlockPos other) {
         if (!(level.getBlockEntity(pos) instanceof Container container)) {
             return null;
         }
-
-        BlockPos other = ContainerUtil.partner(level, pos);
 
         if (other == null || !(level.getBlockEntity(other) instanceof Container sibling)) {
             return container;

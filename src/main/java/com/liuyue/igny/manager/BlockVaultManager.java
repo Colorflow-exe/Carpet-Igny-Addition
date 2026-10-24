@@ -89,12 +89,18 @@ public class BlockVaultManager extends BaseDataManager<BlockVaultManager.VaultDa
     }
 
     public boolean has(Level level, BlockPos pos) {
-        return getCurrentData().vault.containsKey(getDictKey(level, pos));
+        VaultData current = getCurrentData();
+        if (current.vault.isEmpty()) {
+            return false;
+        }
+        return current.vault.containsKey(getDictKey(level, pos));
     }
 
     public void restoreBlock(Level level, BlockPos pos) {
-        String[] info = getCurrentData().vault.remove(getDictKey(level, pos));
-        getCurrentData().pendingRestore.remove(getDictKey(level, pos));
+        String key = getDictKey(level, pos);
+        VaultData current = getCurrentData();
+        String[] info = current.vault.remove(key);
+        current.pendingRestore.remove(key);
 
         if (info == null || info.length < 1) return;
 
@@ -142,8 +148,13 @@ public class BlockVaultManager extends BaseDataManager<BlockVaultManager.VaultDa
     }
 
     public void markPending(Level level, BlockPos pos) {
-        if (has(level, pos)) {
-            getCurrentData().pendingRestore.add(getDictKey(level, pos));
+        VaultData current = getCurrentData();
+        if (current.vault.isEmpty()) {
+            return;
+        }
+        String key = getDictKey(level, pos);
+        if (current.vault.containsKey(key)) {
+            current.pendingRestore.add(key);
         }
     }
 

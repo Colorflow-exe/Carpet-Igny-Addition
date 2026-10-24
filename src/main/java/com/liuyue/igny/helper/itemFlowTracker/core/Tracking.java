@@ -188,7 +188,13 @@ public class Tracking {
             return;
         }
 
-        for (TrackMark mark : new ArrayList<>(marksOf(from))) {
+        List<TrackMark> marks = marksOf(from);
+
+        if (marks.isEmpty()) {
+            return;
+        }
+
+        for (TrackMark mark : new ArrayList<>(marks)) {
             if (isLive(mark)) {
                 attach(to, mark);
             }
@@ -265,7 +271,13 @@ public class Tracking {
             return;
         }
 
-        for (TrackMark mark : new ArrayList<>(marksOf(source))) {
+        List<TrackMark> marks = marksOf(source);
+
+        if (marks.isEmpty()) {
+            return;
+        }
+
+        for (TrackMark mark : new ArrayList<>(marks)) {
             arrive(destination, mark, amount);
         }
     }

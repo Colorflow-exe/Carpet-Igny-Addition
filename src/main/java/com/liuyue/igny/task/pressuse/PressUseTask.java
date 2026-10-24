@@ -164,7 +164,7 @@ public class PressUseTask implements ITask {
                             EntityPlayerActionPack.Action.continuous());
                 }
             } catch (Exception e) {
-                IGNYServer.LOGGER.error(e.getStackTrace());
+                IGNYServer.LOGGER.error("Failed to start pressing for {}", playerName, e);
                 stop();
             }
         }
@@ -177,7 +177,7 @@ public class PressUseTask implements ITask {
                     spi.getActionPack().stopAll();
                 }
             } catch (Exception e) {
-                IGNYServer.LOGGER.error(e.getStackTrace());
+                IGNYServer.LOGGER.error("Failed to stop pressing for {}", playerName, e);
             }
         }
     }

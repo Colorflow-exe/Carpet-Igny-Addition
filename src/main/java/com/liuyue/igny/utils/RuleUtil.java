@@ -15,30 +15,32 @@ import java.util.Objects;
 public class RuleUtil {
     //#if >= 1.20.5
     public static Boolean canSoundSuppression(String name) {
-        if ("false".equalsIgnoreCase(IGNYSettings.SIMPLE_SOUND_SUPPRESSION.value())) {
+        String mode = IGNYSettings.SIMPLE_SOUND_SUPPRESSION.value();
+        if ("false".equalsIgnoreCase(mode)) {
             return false;
         }
         if (name == null) {
             return false;
         }
-        if ("true".equalsIgnoreCase(IGNYSettings.SIMPLE_SOUND_SUPPRESSION.value())) {
+        if ("true".equalsIgnoreCase(mode)) {
             return "声音抑制器".equals(name) || "soundSuppression".equalsIgnoreCase(name);
         }
 
-        return Objects.equals(IGNYSettings.SIMPLE_SOUND_SUPPRESSION.value().toLowerCase(), name.toLowerCase());
+        return Objects.equals(mode.toLowerCase(), name.toLowerCase());
     }
     //#endif
 
     public static Boolean canEntityIDSuppression(ServerPlayer player) {
-        if ("false".equalsIgnoreCase(IGNYSettings.SIMPLE_ENTITY_ID_SUPPRESSION.value())) {
+        String mode = IGNYSettings.SIMPLE_ENTITY_ID_SUPPRESSION.value();
+        if ("false".equalsIgnoreCase(mode)) {
             return false;
         }
         String name = player.getGameProfile().getName(); //#replace >= 1.21.10 ? String name = player.getGameProfile().name();
-        if ("true".equalsIgnoreCase(IGNYSettings.SIMPLE_ENTITY_ID_SUPPRESSION.value())) {
+        if ("true".equalsIgnoreCase(mode)) {
             return "eIDSuppression".equalsIgnoreCase(name);
         }
 
-        return Objects.equals(IGNYSettings.SIMPLE_ENTITY_ID_SUPPRESSION.value().toLowerCase(), name.toLowerCase());
+        return Objects.equals(mode.toLowerCase(), name.toLowerCase());
     }
 
     public static Object getCarpetRulesValue(String modId, String ruleName) {

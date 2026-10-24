@@ -21,16 +21,15 @@ public class MultiPlayerGameModeMixin {
     private static final ThreadLocal<Boolean> igny_handling = ThreadLocal.withInitial(() -> false);
 
     @Unique
+    private static final StackWalker igny_walker = StackWalker.getInstance();
+
+    @Unique
     private static boolean igny_isFromEasyPlace() {
-        StackTraceElement[] stack = Thread.currentThread().getStackTrace();
-        for (int i = 3; i < stack.length; i++) {
-            String cls = stack[i].getClassName();
-            if ("fi.dy.masa.litematica.util.EasyPlaceUtils".equals(cls) ||
-                "fi.dy.masa.litematica.util.WorldUtils".equals(cls)) {
-                return true;
-            }
-        }
-        return false;
+        return igny_walker.walk(frames -> frames.skip(2).anyMatch(frame -> {
+            String cls = frame.getClassName();
+            return "fi.dy.masa.litematica.util.EasyPlaceUtils".equals(cls)
+                    || "fi.dy.masa.litematica.util.WorldUtils".equals(cls);
+        }));
     }
 
     @Inject(method = "useItemOn", at = @At("HEAD"), cancellable = true)
